@@ -6,11 +6,11 @@ import time
 
 def main():
     robot_instance = control_robot.robot()
-    robot_instance.headUp()
+    robot_instance.headFullyUp()
     time.sleep(3)
     robot_instance.centerHead()
     time.sleep(3)
-    robot_instance.headDown()
+    robot_instance.headFullyDown()
     time.sleep(3)
     robot_instance.centerHead()
     time.sleep(3)
