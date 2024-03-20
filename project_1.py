@@ -14,6 +14,7 @@ def main():
     time.sleep(3)
     robot_instance.centerHead()
     time.sleep(3)
+    robot_instance.rightShoulder()
     robot_instance.close()
 
 if __name__ == "__main__":
