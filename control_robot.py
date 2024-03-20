@@ -15,19 +15,24 @@ class robot:
     #  Handle body movement
     def move_forward(self):
         self.robot_controll.setTarget(2, 6000)
-        self.robot_controll.setTarget(0, 5250)
+        self.robot_controll.setTarget(0, 5500)
+        self.robot_controll.setTarget(1, 6000)
         # print("forward")
 
     def reverse(self):
         self.robot_controll.setTarget(2, 6000)
         self.robot_controll.setTarget(0, 6000)
+        self.robot_controll.setTarget(1, 5500)
         # print("forward")
 
     def fullyStop(self):
         self.robot_controll.setAccel(0,60)
         self.robot_controll.setSpeed(0, 10)
+        self.robot_controll.setAccel(1,60)
+        self.robot_controll.setSpeed(1, 10)
         self.robot_controll.setTarget(2, 6000)
         self.robot_controll.setTarget(0, 6000)
+        self.robot_controll.setTarget(1, 6000)
         # print("Full stop")
 
     def stop(self):
@@ -46,12 +51,12 @@ class robot:
         # print("right forward")
 
     def right(self):
-        self.robot_controll.setTarget(0, 6000)
+        self.robot_controll.setTarget(0, 5500)
         self.robot_controll.setTarget(2, 7000)
         # print("left")
 
     def left(self):
-        self.robot_controll.setTarget(0, 6000)
+        self.robot_controll.setTarget(1, 5500)
         self.robot_controll.setTarget(2, 5000)
         # print("right")
 
