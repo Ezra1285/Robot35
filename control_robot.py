@@ -162,6 +162,12 @@ class robot:
 
     def leftGripperClose(self):
         self.robot_controll.setTarget(16, 6000)
+    
+    def resetRight(self):
+        self.robot_controll.setTarget(5, 5900)
+    
+    def resetLeft(self):
+        self.robot_controll.setTarget(11, 5900)
 
     def close(self):
         self.robot_controll.close()
