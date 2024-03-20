@@ -16,8 +16,8 @@ class robot:
     def move_forward(self):
         self.robot_controll.setTarget(0, 6000)
         self.robot_controll.setTarget(1, 6000)
-        self.robot_controll.setTarget(0, 6400)
-        self.robot_controll.setTarget(1, 6400)
+        self.robot_controll.setTarget(0, 5200)
+        self.robot_controll.setTarget(1, 5200)
         # print("forward")
 
     def reverse(self):
