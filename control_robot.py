@@ -19,16 +19,16 @@ class robot:
         # print("forward")
 
     def reverse(self):
-        self.robot_controll.setAccel(1, 60)
-        self.robot_controll.setTarget(0, 7500)
-        self.robot_controll.setTarget(1, 4500)
+        # self.robot_controll.setAccel(1, 60)
+        self.robot_controll.setTarget(0, 7900)
+        self.robot_controll.setTarget(1, 4100)
         # print("forward")
 
     def fullyStop(self):
-        self.robot_controll.setAccel(0,60)
-        self.robot_controll.setSpeed(0, 10)
-        self.robot_controll.setAccel(1,60)
-        self.robot_controll.setSpeed(1, 10)
+        # self.robot_controll.setAccel(0,60)
+        # self.robot_controll.setSpeed(0, 10)
+        # self.robot_controll.setAccel(1,60)
+        # self.robot_controll.setSpeed(1, 10)
         self.robot_controll.setTarget(2, 6000)
         self.robot_controll.setTarget(0, 6000)
         self.robot_controll.setTarget(1, 6000)
