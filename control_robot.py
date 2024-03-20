@@ -18,6 +18,11 @@ class robot:
         self.robot_controll.setTarget(0, 5250)
         # print("forward")
 
+    def reverse(self):
+        self.robot_controll.setTarget(2, 6000)
+        self.robot_controll.setTarget(0, 6000)
+        # print("forward")
+
     def fullyStop(self):
         self.robot_controll.setAccel(0,60)
         self.robot_controll.setSpeed(0, 10)
@@ -149,7 +154,7 @@ class robot:
     def leftElbow(self):
         self.robot_controll.setTarget(13, 6000)
 
-    def lefttUpperForearm(self):
+    def leftUpperForearm(self):
         self.robot_controll.setTarget(14, 6000)
 
     def leftWrist(self):
