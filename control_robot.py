@@ -14,13 +14,13 @@ class robot:
 
     #  Handle body movement
     def move_forward(self):
-        self.robot_controll.setTarget(2, 6000)
+        self.robot_controll.setTarget(0, 6000)
         self.robot_controll.setTarget(0, 5500)
         self.robot_controll.setTarget(1, 6000)
         # print("forward")
 
     def reverse(self):
-        self.robot_controll.setTarget(2, 6000)
+        self.robot_controll.setTarget(0, 6000)
         self.robot_controll.setTarget(0, 6000)
         self.robot_controll.setTarget(1, 5500)
         # print("forward")
