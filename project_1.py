@@ -8,7 +8,7 @@ def main():
     robot_instance = control_robot.robot()
     robot_instance.move_forward()
     time.sleep(2)
-    # robot_instance.fullyStop()
+    robot_instance.fullyStop()
     robot_instance.reverse()
     time.sleep(2)
     # robot_instance.fullyStop()
