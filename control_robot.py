@@ -122,5 +122,41 @@ class robot:
         self.headTilt = 1800
         self.robot_controll.setTarget(4, self.headTilt)
 
+    def rightShoulder(self):
+        self.robot_controll.setTarget(5, 6000)
+
+    def rightBicep(self):
+        self.robot_controll.setTarget(6, 6000)
+
+    def rightElbow(self):
+        self.robot_controll.setTarget(7, 6000)
+
+    def rightUpperForearm(self):
+        self.robot_controll.setTarget(8, 6000)
+
+    def rightWrist(self):
+        self.robot_controll.setTarget(9, 6000)
+
+    def rightGripperClose(self):
+        self.robot_controll.setTarget(10, 6000)
+
+    def leftShoulder(self):
+        self.robot_controll.setTarget(11, 6000)
+
+    def leftBicep(self):
+        self.robot_controll.setTarget(12, 6000)
+
+    def leftElbow(self):
+        self.robot_controll.setTarget(13, 6000)
+
+    def lefttUpperForearm(self):
+        self.robot_controll.setTarget(14, 6000)
+
+    def leftWrist(self):
+        self.robot_controll.setTarget(15, 6000)
+
+    def leftGripperClose(self):
+        self.robot_controll.setTarget(16, 6000)
+
     def close(self):
         self.robot_controll.close()
