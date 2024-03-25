@@ -1,6 +1,8 @@
 import socket
 import sys
 import time
+import pyttsx3
+import control_robot
 
 HOST = socket.gethostname()
 PORT = 8899
@@ -35,12 +37,25 @@ def main(PORT):
                         conn.sendall(b"done")        
                         break
                     time.sleep(2)
-                    print("Server:", server_line)
+                    # print("Server:", server_line)
+                    speak(server_line)
                 conn.sendall(data)
                 time.sleep(1)
 
-# TODO: Make then head slowly look left and then slkowly look right
+def speak(speech):
+        engine = pyttsx3.init() 
+        # if (speech != " "):
+        while(speech != " "):    
+            engine.say(speech)
+            engine.runAndWait()
+
+# TODO: Make head slowly look left and then slowly look right
 def panHead():
+    robot_instance = control_robot.robot()
+    robot_instance.headLeft()
+    time.sleep(2)
+    robot_instance.headRight()
+    
     pass
 
 if __name__ == "__main__":
