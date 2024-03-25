@@ -9,6 +9,7 @@ class Text_To_Speech:
         self.engine.setProperty('rate', 150) # speech rate
 
     def speak(self):
+        global speech
         if (speech != ''):
             while(True):    
                 self.engine.say(speech)
