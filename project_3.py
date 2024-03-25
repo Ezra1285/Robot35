@@ -196,7 +196,11 @@ class Text_To_Speech:
 
 ### NOTE: When switching between the body and eyes dont switch too quickly or the eyes will break and look weird
 def main():
+    global speech
+    speech = "Hello World"
     window = tk.Tk()
+    tts = Text_To_Speech
+    tts.speak()
     window.title("Robot 35")
     window.geometry('800x480') # Sets the width x height of the window
     
@@ -218,7 +222,6 @@ def main():
     window.bind("b", robot_animations.createWordScreen)
 
     window.mainloop()
-    speech = "hello"
 if __name__ == "__main__":
     main()
 
