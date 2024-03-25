@@ -30,11 +30,17 @@ class RobotAnimations:
         # self.mouth = create_circle(425, 500, 80, self.canvas, 2, "red")
         # self.canvas.create_oval(425, 500, 80, 80, width=2, fill="red")
         self.curr_animation = "eyes"
+        # self.label = tk.Label(self.window, bg='gray', height=480, width=800, wraplength=500, font='time 20', text="The word is tango and this is a long example to test the length of string that will work",)
         self.canvas.pack()
 
     # TODO: Delete other canvas if needed and create canvas that will dipslay the words thr robot recives
-    def createWordScreen():
-        pass
+    def createWordScreen(self, event):
+        if self.curr_animation != "text":
+            self.removeCurrentCanvas()
+        self.label = tk.Label(self.window, bg='gray', height=480, width=800, wraplength=500, font='time 20', text="The word is tango and this is a long example to test the length of string that will work",)
+        # self.text = self.canvas.create_text(400, 100, text="The word is tango and this is a long example to test the length of string that will work", fill='black', font='time 20')
+        self.curr_animation = "text"
+        self.label.pack()
 
     def createBody(self):
         # Create the canvas that sits ontop the window
@@ -100,6 +106,9 @@ class RobotAnimations:
 
     def bodyIdle(self, key):
         print("Key:", key)
+        if self.curr_animation != "body":
+            self.removeCurrentCanvas()
+            self.createBody()
         x0, y0, x1, y1 = get_circle_coords(385, 85, 10, self.canvas)
         self.canvas.coords(self.leftEye, x0, y0, x1, y1)
         x0, y0, x1, y1 = get_circle_coords(415, 85, 10, self.canvas)
@@ -161,8 +170,11 @@ class RobotAnimations:
         self.count += 500
 
     def removeCurrentCanvas(self):
-        self.canvas.delete("all")
-        self.canvas.destroy()
+        if self.curr_animation == "text":
+            self.label.destroy()
+        if self.curr_animation == "body" or self.curr_animation == "eyes":
+            self.canvas.delete("all")
+            self.canvas.destroy()
 
 
 ### NOTE: When switching between the body and eyes dont switch to quickly or the eyes will break and look weird
@@ -175,6 +187,10 @@ def main():
     robot_animations = RobotAnimations(window)
     #TODO: Key Bindings will need to match what the robot uses
     # i.e.) lookUp will use the same key used in keyboard_control.py to make the robot loop up
+    
+    #  The add='+' allows us to bind multiple functions
+    # window.bind("w", robot_animations.lookUp, add='+')
+    # window.bind("w", robot_animations.createWordScreen, add='+')
     window.bind("w", robot_animations.lookUp)
     window.bind("a", robot_animations.lookleft)
     window.bind("s", robot_animations.lookDown)
@@ -182,6 +198,7 @@ def main():
     window.bind("<Left>", robot_animations.walkLeft)
     window.bind("<Right>", robot_animations.walkRight)
     window.bind("<space>", robot_animations.bodyIdle)
+    window.bind("b", robot_animations.createWordScreen)
 
     window.mainloop()
 
