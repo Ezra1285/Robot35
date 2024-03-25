@@ -1,5 +1,7 @@
 import tkinter as tk
 import time
+import _thread, threading
+import pyttx3
 
 def get_circle_coords(x, y, r, canvas): #center coordinates, radius, window/canvas
     x0 = x - r
@@ -176,8 +178,23 @@ class RobotAnimations:
             self.canvas.delete("all")
             self.canvas.destroy()
 
+class Text_To_Speech:
+    def __init__(self):
+        self.engine = pyttsx3.init()
+        self.engine.setProperty('rate', 150) # speech rate
 
-### NOTE: When switching between the body and eyes dont switch to quickly or the eyes will break and look weird
+    def speak(self):
+        global speech
+        if (speech != ''):
+            while(True):    
+                self.engine.say(speech)
+                self.engine.runAndWait()
+                speech = ''
+
+
+
+
+### NOTE: When switching between the body and eyes dont switch too quickly or the eyes will break and look weird
 def main():
     window = tk.Tk()
     window.title("Robot 35")
@@ -201,7 +218,13 @@ def main():
     window.bind("b", robot_animations.createWordScreen)
 
     window.mainloop()
-
+    speech = "hello"
 if __name__ == "__main__":
     main()
 
+
+# Commands needed to install tts
+# sudo apt-get upgrade
+# sudo apt-get update && sudo apt-get install espeak
+
+# pip install pyttsx3
