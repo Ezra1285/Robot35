@@ -16,7 +16,7 @@ def main():
     global speech
     tts = Text_To_Speech
     speech = "Hello World"
-    tts.speak()
+    tts.speak(tts)
 
 if __name__ == '__main__':
     main()
