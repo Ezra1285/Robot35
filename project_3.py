@@ -3,6 +3,7 @@ import time
 import _thread, threading
 import pyttsx3
 
+global speech
 def get_circle_coords(x, y, r, canvas): #center coordinates, radius, window/canvas
     x0 = x - r
     y0 = y - r
@@ -179,12 +180,12 @@ class RobotAnimations:
             self.canvas.destroy()
 
 class Text_To_Speech:
+    global speech
     def __init__(self):
         self.engine = pyttsx3.init()
         self.engine.setProperty('rate', 150) # speech rate
 
     def speak(self):
-        global speech
         if (speech != ''):
             while(True):    
                 self.engine.say(speech)

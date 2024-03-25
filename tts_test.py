@@ -1,5 +1,7 @@
 import pyttsx3
 
+
+global speech
 class Text_To_Speech:
     global speech
     def __init__(self):
@@ -15,8 +17,8 @@ class Text_To_Speech:
 
 def main():
     global speech
-    tts = Text_To_Speech
     speech = "Hello World"
+    tts = Text_To_Speech
     tts.speak(tts)
 
 if __name__ == '__main__':
