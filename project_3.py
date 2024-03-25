@@ -179,18 +179,14 @@ class RobotAnimations:
             self.canvas.delete("all")
             self.canvas.destroy()
 
-class Text_To_Speech:
-    global speech
-    def __init__(self):
-        self.engine = pyttsx3.init()
-        self.engine.setProperty('rate', 150) # speech rate
-
-    def speak(self):
-        if (speech != ''):
-            while(True):    
-                self.engine.say(speech)
-                self.engine.runAndWait()
-                speech = ''
+def speak():
+        global speech
+        engine = pyttsx3.init() 
+        # if (speech != " "):
+        while(speech != " "):    
+            engine.say(speech)
+            engine.runAndWait()
+            speech = " "
 
 
 
@@ -200,8 +196,7 @@ def main():
     global speech
     speech = "Hello World"
     window = tk.Tk()
-    tts = Text_To_Speech
-    tts.speak()
+    speak()
     window.title("Robot 35")
     window.geometry('800x480') # Sets the width x height of the window
     
