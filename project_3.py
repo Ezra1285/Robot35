@@ -1,7 +1,7 @@
 import tkinter as tk
 import time
 import _thread, threading
-import pyttx3
+import pyttsx3
 
 def get_circle_coords(x, y, r, canvas): #center coordinates, radius, window/canvas
     x0 = x - r
