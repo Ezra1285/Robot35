@@ -13,11 +13,11 @@ global speech # speech is a global so it can be set anywhere we want the robot t
 def speak():
         global speech
         engine = pyttsx3.init() 
-        if (speech != " "):
-            while(True):    
-                engine.say(speech)
-                engine.runAndWait()
-                speech = " "
+        # if (speech != " "):
+        while(speech != " "):    
+            engine.say(speech)
+            engine.runAndWait()
+            speech = " "
 
 def main():
     global speech
