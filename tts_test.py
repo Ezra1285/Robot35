@@ -20,6 +20,7 @@ def main():
     global speech
     speech = "Hello World"
     tts = Text_To_Speech
+    tts.__init__(tts)
     tts.speak(tts)
 
 if __name__ == '__main__':
