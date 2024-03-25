@@ -14,7 +14,8 @@ def speak():
         global speech
         engine = pyttsx3.init() 
         # if (speech != " "):
-        while(speech != " "):    
+        while(speech != " "): 
+            print(speech)   
             engine.say(speech)
             engine.runAndWait()
             speech = " "
