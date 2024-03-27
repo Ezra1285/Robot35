@@ -261,7 +261,7 @@ def main():
     
     inst = ThreadExample()
 
-    t = threading.Timer(1.0, inst.timedFunction)
+    t = threading.Timer(200.0, inst.timedFunction)
     t.start()
     ##inst.firstThread()
     ##inst.secondThread()
