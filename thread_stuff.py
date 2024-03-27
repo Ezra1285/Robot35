@@ -222,7 +222,8 @@ class ThreadExample():
         window.bind("b", robot_animations.createWordScreen)
         window.bind('<space>', robot_animations.idleEyes, add='+')
 
-
+    def timedFunction(self):
+        print("                1 seconds is up")
 
 def speak():
         global speech
