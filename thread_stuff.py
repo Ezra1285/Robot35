@@ -257,14 +257,14 @@ def main():
     ##inst.firstThread()
     ##inst.secondThread()
     try:
-        _thread.start_new_thread(inst.firstThread,())
+        _thread.start_new_thread(inst.bindKeys,())
     except:
         print ("Error: unable to start thread")
     try:
-        _thread.start_new_thread(inst.secondThread,())
+        _thread.start_new_thread(inst.readScript,())
     except:
         print ("Error: unable to start thread")
-    inst.mainThread()
+    inst.mainThread(window)
     print("We are done")
 
 
