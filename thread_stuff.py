@@ -213,7 +213,7 @@ class ThreadExample():
         window.bind('<a>', keys.lookLeft, add='+')
         window.bind('<s>', keys.lookDown, add='+')
         window.bind('<d>', keys.lookRight, add='+')
-        window.bind('<x>', robot_animations.idleEyes, add='+')
+        # window.bind('<x>', robot_animations.idleEyes, add='+')
         window.bind('<Up>', keys.moveFoward, add='+')  # Turn right
         window.bind('<Left>', keys.turnLeft, add='+') # waist left
         window.bind('<Down>', keys.moveBackwards, add='+') # turn left
