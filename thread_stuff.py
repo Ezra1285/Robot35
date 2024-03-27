@@ -81,6 +81,7 @@ class RobotAnimations:
         self.canvas.coords(self.pupil1, x0, y0, x1, y1)
         x0, y0, x1, y1 = get_circle_coords(500, 200, 30, self.canvas)
         self.canvas.coords(self.pupil2, x0, y0, x1, y1)
+        self.canvas.coords(self.mouth, 350, 325, 500, 335)
 
     def talkingMode(self):
         x0, y0, x1, y1 = get_circle_coords(350, 200, 30, self.canvas)
@@ -202,6 +203,7 @@ class ThreadExample():
         while len(SCRIPT) != 0:    
             engine.say(SCRIPT.pop(0))
             engine.runAndWait()
+            time.sleep(1)
         robot_animations.idleEyes()
 
 
