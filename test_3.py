@@ -203,7 +203,7 @@ def main():
     #TODO: Key Bindings will need to match what the robot uses
     # i.e.) lookUp will use the same key used in keyboard_control.py to make the robot loop up
     # Robot Keys:
-    keys =  new_keyboard_control.KeyControl()
+    keys =  new_keyboard_control.KeyControl(window)
     window.bind('<w>', keys.lookUp, add='+')
     window.bind('<a>', keys.lookLeft, add='+')
     window.bind('<s>', keys.lookDown, add='+')
