@@ -203,18 +203,21 @@ def main():
     #TODO: Key Bindings will need to match what the robot uses
     # i.e.) lookUp will use the same key used in keyboard_control.py to make the robot loop up
     # Robot Keys:
+    #  Tested
     keys =  new_keyboard_control.KeyControl(window)
     window.bind('<w>', keys.lookUp, add='+')
     window.bind('<a>', keys.lookLeft, add='+')
     window.bind('<s>', keys.lookDown, add='+')
     window.bind('<d>', keys.lookRight, add='+')
-    window.bind('<Up>', keys.moveFoward, add='+')
-    window.bind('<Left>', keys.turnLeft, add='+')
-    window.bind('<Down>', keys.moveBackwards, add='+')
-    window.bind('<Right>', keys.turnRight, add='+')
-    window.bind('<space>', keys.defualtMotors, add='+')
-    window.bind('<z>', keys.waistLeft)
-    window.bind('<c>', keys.waistRight)
+    #  Not Tested
+    window.bind('<Up>', keys.moveFoward, add='+')  # Turn right
+    window.bind('<Left>', keys.turnLeft, add='+') # waist left
+    window.bind('<Down>', keys.moveBackwards, add='+') # turn left
+    window.bind('<Right>', keys.turnRight, add='+') # waist right
+    window.bind('<space>', keys.defualtMotors, add='+') 
+
+    window.bind('<z>', keys.waistLeft) # foward
+    window.bind('<c>', keys.waistRight) # backward
             
 
 
