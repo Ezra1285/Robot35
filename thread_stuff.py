@@ -76,7 +76,7 @@ class RobotAnimations:
         self.canvas.pack()
 
 
-    def idleEyes(self):
+    def idleEyes(self, event=None):
         x0, y0, x1, y1 = get_circle_coords(350, 200, 30, self.canvas)
         self.canvas.coords(self.pupil1, x0, y0, x1, y1)
         x0, y0, x1, y1 = get_circle_coords(500, 200, 30, self.canvas)
@@ -88,7 +88,7 @@ class RobotAnimations:
         self.canvas.coords(self.pupil1, x0, y0, x1, y1)
         x0, y0, x1, y1 = get_circle_coords(500, 200, 30, self.canvas)
         self.canvas.coords(self.pupil2, x0, y0, x1, y1)
-        self.canvas.coords(self.mouth, 350, 300, 500, 350)
+        self.canvas.coords(self.mouth, 350, 315, 500, 350)
 
     def lookUp(self, button_event):
         if self.curr_animation != "eyes":
@@ -261,7 +261,7 @@ def main():
     
     inst = ThreadExample()
 
-    t = threading.Timer(200.0, inst.timedFunction)
+    t = threading.Timer(1.0, inst.timedFunction)
     t.start()
     ##inst.firstThread()
     ##inst.secondThread()
