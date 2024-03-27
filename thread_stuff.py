@@ -187,7 +187,7 @@ class ThreadExample():
     def mainThread(window):
         window.mainloop()
 
-    def readScript():
+    def readScript(self):
         engine = pyttsx3.init() 
         # if (speech != " "):
         while len(SCRIPT) != 0:    
