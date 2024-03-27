@@ -33,6 +33,7 @@ class RobotAnimations:
         create_circle(500, 200, 75, self.canvas, 3)  # eye 2
         self.pupil2 = create_circle(500, 200, 30, self.canvas, 3, "black")  # Pupil 2
         #  Mouth if we need
+        self.mouth = self.canvas.create_rectangle(350, 250, 400, 300, fill='red')
         # self.mouth = create_circle(425, 500, 80, self.canvas, 2, "red")
         # self.canvas.create_oval(425, 500, 80, 80, width=2, fill="red")
         self.curr_animation = "eyes"
@@ -187,7 +188,8 @@ class ThreadExample():
     def mainThread(self, window):
         window.mainloop()
 
-    def readScript(self):
+    def readScript(self, robot_animations):
+        # robot_animations.talking
         engine = pyttsx3.init() 
         # if (speech != " "):
         while len(SCRIPT) != 0:    
