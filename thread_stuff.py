@@ -76,20 +76,19 @@ class RobotAnimations:
         self.canvas.pack()
 
 
-    def idleEyes(self, event=None):
+    def idleEyes(self, event):
         x0, y0, x1, y1 = get_circle_coords(350, 200, 30, self.canvas)
         self.canvas.coords(self.pupil1, x0, y0, x1, y1)
         x0, y0, x1, y1 = get_circle_coords(500, 200, 30, self.canvas)
         self.canvas.coords(self.pupil2, x0, y0, x1, y1)
-        self.canvas.coords(self.mouth, 350, 325, 500, 335)
+        # self.canvas.coords(self.mouth, 350, 325, 500, 335)
 
-    def talkingMode(self):
-        print("talking")
-        x0, y0, x1, y1 = get_circle_coords(350, 200, 30, self.canvas)
-        self.canvas.coords(self.pupil1, x0, y0, x1, y1)
-        x0, y0, x1, y1 = get_circle_coords(500, 200, 30, self.canvas)
-        self.canvas.coords(self.pupil2, x0, y0, x1, y1)
-        self.canvas.coords(self.mouth, 350, 315, 500, 350)
+    # def talkingMode(self):
+    #     x0, y0, x1, y1 = get_circle_coords(350, 200, 30, self.canvas)
+    #     self.canvas.coords(self.pupil1, x0, y0, x1, y1)
+    #     x0, y0, x1, y1 = get_circle_coords(500, 200, 30, self.canvas)
+    #     self.canvas.coords(self.pupil2, x0, y0, x1, y1)
+    #     self.canvas.coords(self.mouth, 350, 315, 500, 350)
 
     def lookUp(self, button_event):
         if self.curr_animation != "eyes":
@@ -197,15 +196,15 @@ class ThreadExample():
     def mainThread(self, window):
         window.mainloop()
 
-    def readScript(self, robot_animations):
-        robot_animations.talkingMode()
+    def readScript(self):
+        # robot_animations.talkingMode()
         engine = pyttsx3.init() 
         # if (speech != " "):
         while len(SCRIPT) != 0:    
             engine.say(SCRIPT.pop(0))
             engine.runAndWait()
             time.sleep(1)
-        robot_animations.idleEyes()
+        # robot_animations.idleEyes()
 
 
     def bindKeys(self, window, keys, robot_animations):
@@ -234,7 +233,7 @@ class ThreadExample():
         window.bind("<Left>", robot_animations.walkLeft, add='+')
         window.bind("<Right>", robot_animations.walkRight, add='+')
         window.bind("b", robot_animations.createWordScreen)
-        window.bind('<space>', robot_animations.idleEyes, add='+')
+        # window.bind('<space>', robot_animations.idleEyes, add='+')
 
     def timedFunction(self):
         print("                1 seconds is up")
@@ -263,7 +262,7 @@ def main():
     
     inst = ThreadExample()
 
-    t = threading.Timer(1.0, inst.timedFunction)
+    t = threading.Timer(200.0, inst.timedFunction)
     t.start()
     ##inst.firstThread()
     ##inst.secondThread()
