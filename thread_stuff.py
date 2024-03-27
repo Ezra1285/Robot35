@@ -33,7 +33,7 @@ class RobotAnimations:
         create_circle(500, 200, 75, self.canvas, 3)  # eye 2
         self.pupil2 = create_circle(500, 200, 30, self.canvas, 3, "black")  # Pupil 2
         #  Mouth if we need
-        self.mouth = self.canvas.create_rectangle(350, 250, 400, 300, fill='red')
+        self.mouth = self.canvas.create_rectangle(350, 325, 500, 335, fill='red')
         # self.mouth = create_circle(425, 500, 80, self.canvas, 2, "red")
         # self.canvas.create_oval(425, 500, 80, 80, width=2, fill="red")
         self.curr_animation = "eyes"
@@ -81,6 +81,13 @@ class RobotAnimations:
         self.canvas.coords(self.pupil1, x0, y0, x1, y1)
         x0, y0, x1, y1 = get_circle_coords(500, 200, 30, self.canvas)
         self.canvas.coords(self.pupil2, x0, y0, x1, y1)
+
+    def talkingMode(self):
+        x0, y0, x1, y1 = get_circle_coords(350, 200, 30, self.canvas)
+        self.canvas.coords(self.pupil1, x0, y0, x1, y1)
+        x0, y0, x1, y1 = get_circle_coords(500, 200, 30, self.canvas)
+        self.canvas.coords(self.pupil2, x0, y0, x1, y1)
+        self.canvas.coords(self.mouth, 350, 300, 500, 350)
 
     def lookUp(self, button_event):
         if self.curr_animation != "eyes":
@@ -188,7 +195,7 @@ class ThreadExample():
     def mainThread(self, window):
         window.mainloop()
 
-    def readScript(self, robot_animations):
+    def readScript(self):
         # robot_animations.talking
         engine = pyttsx3.init() 
         # if (speech != " "):
@@ -250,12 +257,9 @@ def main():
     robot_animations = RobotAnimations(window)
     keys =  new_keyboard_control.KeyControl(window)
     
-    # readScript()
-    # bindKeys(window, keys, robot_animations)
-
     inst = ThreadExample()
 
-    t = threading.Timer(8.0, inst.timedFunction)
+    t = threading.Timer(200.0, inst.timedFunction)
     t.start()
     ##inst.firstThread()
     ##inst.secondThread()
