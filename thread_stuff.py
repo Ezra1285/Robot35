@@ -33,7 +33,7 @@ class RobotAnimations:
         create_circle(500, 200, 75, self.canvas, 3)  # eye 2
         self.pupil2 = create_circle(500, 200, 30, self.canvas, 3, "black")  # Pupil 2
         #  Mouth if we need
-        self.mouth = self.canvas.create_rectangle(350, 250, 475, 300, fill='red')
+        self.mouth = self.canvas.create_rectangle(350, 325, 500, 335, fill='red')
         # self.mouth = create_circle(425, 500, 80, self.canvas, 2, "red")
         # self.canvas.create_oval(425, 500, 80, 80, width=2, fill="red")
         self.curr_animation = "eyes"
@@ -256,9 +256,6 @@ def main():
     robot_animations = RobotAnimations(window)
     keys =  new_keyboard_control.KeyControl(window)
     
-    # readScript()
-    # bindKeys(window, keys, robot_animations)
-
     inst = ThreadExample()
 
     t = threading.Timer(8.0, inst.timedFunction)
