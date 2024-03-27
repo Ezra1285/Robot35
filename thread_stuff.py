@@ -196,7 +196,7 @@ class ThreadExample():
     def mainThread(self, window):
         window.mainloop()
 
-    def readScript(self):
+    def readScript(self, robot_animations):
         # robot_animations.talkingMode()
         engine = pyttsx3.init() 
         # if (speech != " "):
@@ -269,11 +269,11 @@ def main():
     try:
         _thread.start_new_thread(inst.bindKeys,(window, keys, robot_animations))
     except:
-        print ("Error: unable to start thread")
+        print ("Error: unable to start thread1 ")
     try:
         _thread.start_new_thread(inst.readScript,(robot_animations))
     except:
-        print ("Error: unable to start thread")
+        print ("Error: unable to start thread2 ")
     inst.mainThread(window)
     print("We are done")
 
