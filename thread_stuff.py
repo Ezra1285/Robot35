@@ -195,6 +195,7 @@ class ThreadExample():
         while len(SCRIPT) != 0:    
             engine.say(SCRIPT.pop(0))
             engine.runAndWait()
+            time.sleep(1)
 
 
     def bindKeys(self, window, keys, robot_animations):
