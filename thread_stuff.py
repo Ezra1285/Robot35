@@ -196,15 +196,15 @@ class ThreadExample():
     def mainThread(self, window):
         window.mainloop()
 
-    def readScript(self, robot_animations):
-        robot_animations.talkingMode()
+    def readScript(self):
+        # robot_animations.talkingMode()
         engine = pyttsx3.init() 
         # if (speech != " "):
         while len(SCRIPT) != 0:    
             engine.say(SCRIPT.pop(0))
             engine.runAndWait()
             time.sleep(1)
-        robot_animations.idleEyes()
+        # robot_animations.idleEyes()
 
 
     def bindKeys(self, window, keys, robot_animations):
@@ -232,7 +232,7 @@ class ThreadExample():
         window.bind("<Left>", robot_animations.walkLeft, add='+')
         window.bind("<Right>", robot_animations.walkRight, add='+')
         window.bind("b", robot_animations.createWordScreen)
-        window.bind('<space>', robot_animations.idleEyes, add='+')
+        # window.bind('<space>', robot_animations.idleEyes, add='+')
 
     def timedFunction(self):
         print("                1 seconds is up")
