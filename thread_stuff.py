@@ -257,7 +257,7 @@ def main():
     ##inst.firstThread()
     ##inst.secondThread()
     try:
-        _thread.start_new_thread(inst.bindKeys,())
+        _thread.start_new_thread(inst.bindKeys,(window, keys, robot_animations))
     except:
         print ("Error: unable to start thread")
     try:
