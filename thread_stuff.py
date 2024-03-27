@@ -196,7 +196,7 @@ class ThreadExample():
     def mainThread(self, window):
         window.mainloop()
 
-    def readScript(self):
+    def readScript(self, robot_animations):
         # robot_animations.talkingMode()
         engine = pyttsx3.init() 
         # if (speech != " "):
