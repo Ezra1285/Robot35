@@ -182,6 +182,48 @@ class RobotAnimations:
             self.canvas.delete("all")
             self.canvas.destroy()
 
+class ThreadExample(): 
+
+    def mainThread(window):
+        window.mainloop()
+
+    def readScript():
+        engine = pyttsx3.init() 
+        # if (speech != " "):
+        while len(SCRIPT) != 0:    
+            engine.say(SCRIPT.pop(0))
+            engine.runAndWait()
+
+
+    def bindKeys(window, keys, robot_animations):
+        window.bind('<w>', keys.lookUp, add='+')
+        window.bind('<a>', keys.lookLeft, add='+')
+        window.bind('<s>', keys.lookDown, add='+')
+        window.bind('<d>', keys.lookRight, add='+')
+        window.bind('<Up>', keys.moveFoward, add='+')  # Turn right
+        window.bind('<Left>', keys.turnLeft, add='+') # waist left
+        window.bind('<Down>', keys.moveBackwards, add='+') # turn left
+        window.bind('<Right>', keys.turnRight, add='+') # waist right
+        window.bind('<space>', keys.defualtMotors, add='+') 
+        window.bind('<z>', keys.waistLeft) # foward
+        window.bind('<c>', keys.waistRight) # backward
+                
+        #  The add='+' allows us to bind multiple functions
+        # window.bind("w", robot_animations.lookUp, add='+')
+        # window.bind("w", robot_animations.createWordScreen, add='+')
+        window.bind("w", robot_animations.lookUp, add='+')
+        window.bind("a", robot_animations.lookleft, add='+')
+        window.bind("s", robot_animations.lookDown, add='+')
+        window.bind("d", robot_animations.lookRight, add='+')
+        window.bind("<Down>", robot_animations.walkLeft, add='+')
+        window.bind("<Up>", robot_animations.walkRight, add='+')
+        window.bind("<Left>", robot_animations.walkLeft, add='+')
+        window.bind("<Right>", robot_animations.walkRight, add='+')
+        window.bind("b", robot_animations.createWordScreen)
+        window.bind('<space>', robot_animations.idleEyes, add='+')
+
+
+
 def speak():
         global speech
         engine = pyttsx3.init() 
@@ -190,13 +232,6 @@ def speak():
             engine.say(speech)
             engine.runAndWait()
             speech = " "
-
-def readScript():
-        engine = pyttsx3.init() 
-        # if (speech != " "):
-        while len(SCRIPT) != 0:    
-            engine.say(SCRIPT.pop(0))
-            engine.runAndWait()
 
 
 ### NOTE: When switching between the body and eyes dont switch too quickly or the eyes will break and look weird
@@ -209,42 +244,32 @@ def main():
     window.geometry('800x480') # Sets the width x height of the window
     
     robot_animations = RobotAnimations(window)
-    #TODO: Key Bindings will need to match what the robot uses
-    # i.e.) lookUp will use the same key used in keyboard_control.py to make the robot loop up
-    # Robot Keys:
-    #  Tested
     keys =  new_keyboard_control.KeyControl(window)
-    window.bind('<w>', keys.lookUp, add='+')
-    window.bind('<a>', keys.lookLeft, add='+')
-    window.bind('<s>', keys.lookDown, add='+')
-    window.bind('<d>', keys.lookRight, add='+')
-    #  Not Tested
-    window.bind('<Up>', keys.moveFoward, add='+')  # Turn right
-    window.bind('<Left>', keys.turnLeft, add='+') # waist left
-    window.bind('<Down>', keys.moveBackwards, add='+') # turn left
-    window.bind('<Right>', keys.turnRight, add='+') # waist right
-    window.bind('<space>', keys.defualtMotors, add='+') 
+    
+    # readScript()
+    # bindKeys(window, keys, robot_animations)
 
-    window.bind('<z>', keys.waistLeft) # foward
-    window.bind('<c>', keys.waistRight) # backward
-            
+    inst = ThreadExample()
+
+    t = threading.Timer(1.0, inst.timedFunction)
+    t.start()
+    ##inst.firstThread()
+    ##inst.secondThread()
+    try:
+        _thread.start_new_thread(inst.firstThread,())
+    except:
+        print ("Error: unable to start thread")
+    try:
+        _thread.start_new_thread(inst.secondThread,())
+    except:
+        print ("Error: unable to start thread")
+    inst.mainThread()
+    print("We are done")
 
 
-    #  The add='+' allows us to bind multiple functions
-    # window.bind("w", robot_animations.lookUp, add='+')
-    # window.bind("w", robot_animations.createWordScreen, add='+')
-    window.bind("w", robot_animations.lookUp, add='+')
-    window.bind("a", robot_animations.lookleft, add='+')
-    window.bind("s", robot_animations.lookDown, add='+')
-    window.bind("d", robot_animations.lookRight, add='+')
-    window.bind("<Down>", robot_animations.walkLeft, add='+')
-    window.bind("<Up>", robot_animations.walkRight, add='+')
-    window.bind("<Left>", robot_animations.walkLeft, add='+')
-    window.bind("<Right>", robot_animations.walkRight, add='+')
-    window.bind("b", robot_animations.createWordScreen)
-    window.bind('<space>', robot_animations.idleEyes, add='+')
 
-    window.mainloop()
+
+    # window.mainloop()
 
 
 if __name__ == "__main__":
