@@ -230,13 +230,14 @@ def main():
     window.bind("d", robot_animations.lookRight, add='+')
     window.bind("<Down>", robot_animations.walkLeft, add='+')
     window.bind("<Up>", robot_animations.walkRight, add='+')
-    window.bind("<Left>", robot_animations.bodyIdle, add='+')
-    window.bind("<Right>", robot_animations.bodyIdle, add='+')
+    window.bind("<Left>", robot_animations.walkLeft, add='+')
+    window.bind("<Right>", robot_animations.walkRight, add='+')
     window.bind("b", robot_animations.createWordScreen)
     window.bind('<space>', robot_animations.idleEyes, add='+')
 
-
     window.mainloop()
+
+
 if __name__ == "__main__":
     main()
 
