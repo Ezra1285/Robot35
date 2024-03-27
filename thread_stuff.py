@@ -184,7 +184,7 @@ class RobotAnimations:
 
 class ThreadExample(): 
 
-    def mainThread(window):
+    def mainThread(self, window):
         window.mainloop()
 
     def readScript(self):
@@ -195,7 +195,7 @@ class ThreadExample():
             engine.runAndWait()
 
 
-    def bindKeys(window, keys, robot_animations):
+    def bindKeys(self, window, keys, robot_animations):
         window.bind('<w>', keys.lookUp, add='+')
         window.bind('<a>', keys.lookLeft, add='+')
         window.bind('<s>', keys.lookDown, add='+')
