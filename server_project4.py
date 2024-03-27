@@ -37,7 +37,7 @@ def main(PORT):
                         conn.sendall(b"done")        
                         break
                     time.sleep(2)
-                    # print("Server:", server_line)
+                    print("Server:", server_line)
                     speak(server_line)
                 conn.sendall(data)
                 time.sleep(1)
