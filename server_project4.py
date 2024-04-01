@@ -36,16 +36,16 @@ def main(PORT):
                     if server_line == 'EOF':
                         conn.sendall(b"done")        
                         break 
-                    time.sleep(2)
                     print("Server:", server_line)
-                    # speak(server_line)
+                    speak(server_line)
+                    time.sleep(4)
                 conn.sendall(data)
                 time.sleep(1)
 
 def speak(speech):
         engine = pyttsx3.init() 
-        # if (speech != " "):
-        while(speech != " "):    
+        if (speech != " "):
+        # while(speech != " "):    
             engine.say(speech)
             engine.runAndWait()
 
@@ -57,4 +57,5 @@ def panHead():
 if __name__ == "__main__":
     port = int(sys.argv[1])
     main(port)
+    panHead()
     

@@ -27,7 +27,7 @@ def main(PORT):
                 break
             if not token: 
                 continue
-            time.sleep(2)
+            time.sleep(4)
             print("Client:", client_line)  
 
 if __name__ == "__main__":
