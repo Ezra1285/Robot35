@@ -5,7 +5,7 @@ import pyttsx3
 import control_robot
 
 
-HOST = socket.gethostname()
+HOST = '192.168.20.211'
 
 SCRIPT = [
             "Hi", 
