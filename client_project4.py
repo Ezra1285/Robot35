@@ -3,7 +3,6 @@ import sys
 import time
 
 HOST = socket.gethostname()
-PORT = 8899
 
 SCRIPT = [
             "Hi, you look familiar.", 
@@ -13,7 +12,7 @@ SCRIPT = [
             " What are the odds. Two robots run into to each other from the same state, and the same town, and the same room, with the same name?",
             "EOF"
         ]
-
+ 
 def main(PORT):
     print("CLIENT host:", HOST, "\n")
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
@@ -32,9 +31,4 @@ def main(PORT):
             print("Client:", client_line)  
 
 if __name__ == "__main__":
-    if len(sys.argv[1]) >= 3:
-        port = int(sys.argv[1])
-    else:
-        port = PORT
-    
-    main(port)
+    main(int(sys.argv[1]))

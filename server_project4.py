@@ -5,7 +5,6 @@ import pyttsx3
 import control_robot
 
 HOST = socket.gethostname()
-PORT = 8899
 
 SCRIPT = [
             "Hi", 
@@ -35,10 +34,10 @@ def main(PORT):
                     server_line = SCRIPT.pop(0)
                     if server_line == 'EOF':
                         conn.sendall(b"done")        
-                        break
+                        break 
                     time.sleep(2)
                     print("Server:", server_line)
-                    speak(server_line)
+                    # speak(server_line)
                 conn.sendall(data)
                 time.sleep(1)
 
@@ -55,13 +54,8 @@ def panHead():
     robot_instance.headLeft()
     time.sleep(2)
     robot_instance.headRight()
-    
-    pass
 
 if __name__ == "__main__":
-    if len(sys.argv[1]) >= 3:
-        port = int(sys.argv[1])
-    else:
-        port = PORT
+    port = int(sys.argv[1])
     main(port)
     panHead()
