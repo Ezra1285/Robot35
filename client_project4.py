@@ -1,6 +1,7 @@
 import socket
 import sys
 import time
+import pyttsx3
 
 HOST = socket.gethostname()
 
@@ -27,8 +28,16 @@ def main(PORT):
                 break
             if not token: 
                 continue
-            time.sleep(4)
+            speak(client_line)
             print("Client:", client_line)  
+            time.sleep(3)
+            
+def speak(speech):
+        engine = pyttsx3.init() 
+        if (speech != " "):
+        # while(speech != " "):    
+            engine.say(speech)
+            engine.runAndWait()
 
 if __name__ == "__main__":
     main(int(sys.argv[1]))

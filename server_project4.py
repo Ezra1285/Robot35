@@ -38,7 +38,7 @@ def main(PORT):
                         break 
                     print("Server:", server_line)
                     speak(server_line)
-                    time.sleep(4)
+                    time.sleep(3)
                 conn.sendall(data)
                 time.sleep(1)
 
