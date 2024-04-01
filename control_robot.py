@@ -1,4 +1,5 @@
 import maestro
+import time
 
 class robot:
     
@@ -95,6 +96,14 @@ class robot:
         self.headTurn += 200
         if(self.headTurn > 7900):
             self.headTurn = 7900
+        self.robot_controll.setTarget(3, self.headTurn)
+    
+    def lookAround(self):
+        # look left
+        self.headTurn = 1750
+        self.robot_controll.setTarget(3, self.headTurn)
+        time.sleep(2)
+        self.headTurn = 7000
         self.robot_controll.setTarget(3, self.headTurn)
 
     def headLeft(self):

@@ -4,6 +4,7 @@ import time
 import pyttsx3
 import control_robot
 
+
 HOST = socket.gethostname()
 
 SCRIPT = [
@@ -51,11 +52,9 @@ def speak(speech):
 # TODO: Make head slowly look left and then slowly look right
 def panHead():
     robot_instance = control_robot.robot()
-    robot_instance.headLeft()
-    time.sleep(2)
-    robot_instance.headRight()
+    robot_instance.lookAround()
 
 if __name__ == "__main__":
     port = int(sys.argv[1])
     main(port)
-    panHead()
+    
