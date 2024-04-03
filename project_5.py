@@ -110,17 +110,18 @@ def process_tango_chat(filename):
     agePatterns = []
     temp = False
     while True:
-        with sr.Microphone() as source:
-            r= sr.Recognizer()
-            r.adjust_for_ambient_noise(source)
-            r.dyanmic_energythreshhold = 3000
-            try:
-                print("Human: ", end="")
-                user_input = r.listen(source)            
-                user_input = r.recognize_google(user_input)
-                print(user_input)
-            except sr.UnknownValueError:
-                print("Don't know that word")
+        # with sr.Microphone() as source:
+        #     r= sr.Recognizer()
+        #     r.adjust_for_ambient_noise(source)
+        #     r.dyanmic_energythreshhold = 3000
+        #     try:
+        #         print("Human: ", end="")
+        #         user_input = r.listen(source)            
+        #         user_input = r.recognize_google(user_input)
+        #         print(user_input)
+        #     except sr.UnknownValueError:
+        #         print("Don't know that word")
+        user_input = input("User: ").strip()
         if not user_input:
             continue
         nameTest = False
@@ -203,7 +204,7 @@ def process_tango_chat(filename):
         matched_response = replace_variables(matched_response, variables)
 
         # Output robot's response
-        # print("Robot:", matched_response)
+        print("Robot:", matched_response)
         SpeakText(matched_response)
 
 # Example usage
