@@ -1,5 +1,13 @@
 import random
 import speech_recognition as sr
+import pyttsx3
+def SpeakText(command):
+     
+    # Initialize the engine
+    engine = pyttsx3.init()
+    engine.say(command) 
+    engine.runAndWait()
+
 # Function to parse definitions from the TangoChat file
 def parse_definitions(line):
     if line.startswith("~"):
@@ -195,7 +203,8 @@ def process_tango_chat(filename):
         matched_response = replace_variables(matched_response, variables)
 
         # Output robot's response
-        print("Robot:", matched_response)
+        # print("Robot:", matched_response)
+        SpeakText(matched_response)
 
 # Example usage
 if __name__ == "__main__":
