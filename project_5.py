@@ -106,13 +106,12 @@ def process_tango_chat(filename):
             r= sr.Recognizer()
             r.adjust_for_ambient_noise(source)
             r.dyanmic_energythreshhold = 3000
-            
             try:
                 print("Human: ", end="")
                 user_input = r.listen(source)            
                 user_input = r.recognize_google(user_input)
                 print(user_input)
-            except sr.AudioData:
+            except sr.UnknownValueError:
                 print("Don't know that word")
         if not user_input:
             continue
