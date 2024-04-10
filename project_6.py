@@ -11,7 +11,7 @@ def chat_with_gpt(prompt, client, voice='surprise_me'):
     messages=[
         {"role": "user", "content": f"{prompt} respond like a {voice} in a short answer."}
     ],
-    max_tokens=10
+    max_tokens=2
     )
     return response
 
