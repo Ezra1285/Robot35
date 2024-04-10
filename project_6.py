@@ -13,7 +13,8 @@ def chat_with_gpt(prompt, client, voice='surprise_me'):
     ],
     max_tokens=25
     )
-    return response
+    content = response['choices'][0]['text']
+    return content
 
 def speak(speech):
         engine = pyttsx3.init() 
