@@ -27,8 +27,8 @@ def speak(speech):
 
 # Example usage:
 if __name__ == "__main__":
-    openai.my_api_key = "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"
-    client = openai.OpenAI("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")
+    client = openai.OpenAI()
+    client.my_api_key = "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"
     question = "What is the meaning of life?"
     chosen_voice = 'pirate'  # Change the voice as desired
     response = chat_with_gpt(question, client, voice=chosen_voice)
