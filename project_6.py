@@ -1,4 +1,4 @@
-# import openai
+import openai
 import pyttsx3
 import os
 from openai import OpenAI
@@ -11,11 +11,10 @@ def chat_with_gpt(prompt, client, voice='surprise_me'):
     response = client.chat.completions.create(
     model="gpt-3.5-turbo",
     messages=[
-        {"role": "system", "content": f"{prompt} respond like a {voice} and give a short answer."}
+        {"role": "system", "content": f"{prompt} respond like a {voice} in a short answer."}
     ],
-    max_tokens=10
     )
-    
+    # max_tokens=10
     return response
 
 def speak(speech):
@@ -28,11 +27,22 @@ def speak(speech):
 # Example usage:
 if __name__ == "__main__":
     print("KEy is:", os.environ.get("OPENAI_API_KEY"))
-    client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"),)
+    client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
     # OpenAI.api_key = os.getenv('OPENAI_API_KEY')
     # client.my_api_key = "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"
-    question = "What is the meaning of life?"
-    chosen_voice = 'pirate'  # Change the voice as desired
-    response = chat_with_gpt(question, client, voice=chosen_voice)
-    print(response)
-    speak(response)
+    while True:
+        print("Enter your question or quit to exit:")
+        question = input()
+        if user_input == 'quit' or user_input == 'q':
+            break
+        print("Select an option:\na: pirate voice\nb: southern accent\nc: British accent")
+        voice_choice = input()
+        response = chat_with_gpt(question, client, voice=voice_choice)
+        print(response)
+        speak(response)    
+
+    
+    
+    # question = "What is the meaning of life?"
+    # chosen_voice = 'pirate'  # Change the voice as desired
+    
