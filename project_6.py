@@ -12,8 +12,7 @@ def chat_with_gpt(prompt, client, voice='surprise_me'):
     model="gpt-3.5-turbo",
     messages=[
         {"role": "system", "content": f"{prompt} respond like a {voice} in a short answer."}
-    ],
-    )
+    ])
     # max_tokens=10
     return response
 
