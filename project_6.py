@@ -13,7 +13,7 @@ def chat_with_gpt(prompt, client, voice='surprise_me'):
     ],
     max_tokens=25
     )
-    content = response['choices'][0]['text']
+    content = response['message'][0]
     return content
 
 def speak(speech):
