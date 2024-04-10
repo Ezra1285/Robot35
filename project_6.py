@@ -27,8 +27,8 @@ def speak(speech):
 
 # Example usage:
 if __name__ == "__main__":
-    client = OpenAI()
-    OpenAI.api_key = os.getenv('OPENAI_API_KEY')
+    client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"),)
+    # OpenAI.api_key = os.getenv('OPENAI_API_KEY')
     # client.my_api_key = "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"
     question = "What is the meaning of life?"
     chosen_voice = 'pirate'  # Change the voice as desired
