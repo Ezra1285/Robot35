@@ -33,7 +33,7 @@ if __name__ == "__main__":
     while True:
         print("Enter your question or quit to exit:")
         question = input()
-        if user_input == 'quit' or user_input == 'q':
+        if question == 'quit' or question == 'q':
             break
         print("Select an option:\na: pirate voice\nb: southern accent\nc: British accent")
         voice_choice = input()
