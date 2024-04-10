@@ -1,4 +1,5 @@
 # import openai
+import pyttsx3
 import os
 from openai import OpenAI
 
@@ -19,9 +20,17 @@ def chat_with_gpt(prompt, voice='surprise_me'):
     
     return response
 
+def speak(speech):
+        engine = pyttsx3.init() 
+        if (speech != " "):
+        # while(speech != " "):    
+            engine.say(speech)
+            engine.runAndWait()
+
 # Example usage:
 if __name__ == "__main__":
     question = "What is the meaning of life?"
     chosen_voice = 'pirate'  # Change the voice as desired
     response = chat_with_gpt(question, voice=chosen_voice)
     print(response)
+    speak(response)
