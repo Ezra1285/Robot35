@@ -16,7 +16,7 @@ def chat_with_gpt(prompt, client, voice='surprise_me'):
     # content = response.choices[0].message["content"]
     content = response.choices
     print("Choice: ", content)
-    content = content[0]
+    content = content[0].message
     print("Choice: ", content)
     # content = content.messages
     return content
