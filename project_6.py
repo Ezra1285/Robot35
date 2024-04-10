@@ -40,7 +40,7 @@ if __name__ == "__main__":
         question = input()
         if question == 'quit' or question == 'q':
             break
-        print("Select an option:\na: pirate voice\nb: southern accent\nc: British accent")
+        print("Select an option:\na: pirate voice\nb: southern accent\nc: British accent\n d  : darth vadar")
         voice_choice = input()
         response = chat_with_gpt(question, client, voice=voice_choice)
         # response = chat_with_gpt_new(question, voice_choice)
