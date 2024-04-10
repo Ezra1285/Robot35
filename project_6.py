@@ -1,7 +1,7 @@
 # import openai
 import pyttsx3
 import os
-import openai
+from openai import OpenAI
 
 
 # Define a function to interact with ChatGPT
@@ -27,8 +27,9 @@ def speak(speech):
 
 # Example usage:
 if __name__ == "__main__":
-    client = openai.OpenAI()
-    client.my_api_key = "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"
+    client = OpenAI()
+    OpenAI.api_key = os.getenv('OPENAI_API_KEY')
+    # client.my_api_key = "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"
     question = "What is the meaning of life?"
     chosen_voice = 'pirate'  # Change the voice as desired
     response = chat_with_gpt(question, client, voice=chosen_voice)
