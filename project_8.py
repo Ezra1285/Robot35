@@ -21,6 +21,7 @@ class LocationChip:
         line2 = self.chip.readline()
         print("Text 1 found: ", line1)
         print("Text 2 found: ", line2)
+        return line2
 
     def startReading(self):
         count = 0
@@ -28,6 +29,14 @@ class LocationChip:
             self.readData()
             time.sleep(2)
             count += 1
+
+    def findQuadrant(self):
+        data = self.readData()
+        self.cords = {'a0':data[1], 'a1':data[2], 'a2':data[3], 'a3':data[4]}
+        closest_cord = min(self.cords, key=self.cords.get)
+        print("Current cord:", closest_cord)
+        
+
 
 
     def __init__(self):
@@ -43,5 +52,5 @@ class LocationChip:
 
 if __name__ == "__main__":
     myChip = LocationChip()
-    myChip.startReading()
+    myChip.findQuadrant()
     print("Done")
