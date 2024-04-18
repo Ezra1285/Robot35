@@ -32,7 +32,7 @@ class LocationChip:
 
     def findQuadrant(self):
         data = self.readData()
-        self.cords = {'a0':data[1], 'a1':data[2], 'a2':data[3], 'a3':data[4]}
+        self.cords = {'a0':data[2], 'a1':data[3], 'a2':data[4], 'a3':data[5]} #messing with indexing here
         self.cords['a3'] = 1000
         closest_cord = min(self.cords, key=self.cords.get)
         print("Current cord:", closest_cord)
