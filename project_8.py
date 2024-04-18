@@ -26,6 +26,7 @@ class LocationChip:
         count = 0
         while count <= 10:
             self.readData()
+            time.sleep(2)
             count += 1
 
 
