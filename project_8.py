@@ -16,19 +16,31 @@ import pyttsx3
 
 class LocationChip:
 
-    def __init__(self):
-        ser = serial.Serial() 
-        ser.port = '/dev/ttyUSB0' 
-        ser.baudrate = 115200 
-        ser.bytesize = serial.EIGHTBITS 
-        ser.parity = serial.PARITY_NONE 
-        ser.stopbits = serial.STOPBITS_ONE 
-        ser.timeout = ser.open() 
-        # First read line is HEX and next one is decimal
-        text = ser.readline()
-        print("Text found: ", text)
+    def readData(self):
+        line1 = self.chip.readline()
+        line2 = self.chip.readline()
+        print("Text 1 found: ", line1)
+        print("Text 2 found: ", line2)
 
+    def startReading(self):
+        count = 0
+        while count >= 10:
+            self.readData()
+            count += 1
+
+
+    def __init__(self):
+        self.chip = serial.Serial() 
+        self.port = '/dev/ttyUSB0' 
+        self.baudrate = 115200 
+        self.bytesize = serial.EIGHTBITS 
+        self.parity = serial.PARITY_NONE 
+        self.stopbits = serial.STOPBITS_ONE 
+        self.timeout = self.chip.open() 
+        # First read line is HEX and next one is decimal
+        
 
 if __name__ == "__main__":
-    chip = LocationChip()
+    myChip = LocationChip()
+    myChip.startReading()
     print("Done")
