@@ -36,6 +36,7 @@ class LocationChip:
         self.cords['a3'] = 1000
         closest_cord = min(self.cords, key=self.cords.get)
         print("Current cord:", closest_cord)
+        print(self.cords)
         speak("I am in quadrant " + closest_cord)
         
 
