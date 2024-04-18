@@ -24,7 +24,7 @@ class LocationChip:
 
     def startReading(self):
         count = 0
-        while count >= 10:
+        while count <= 10:
             self.readData()
             count += 1
 
