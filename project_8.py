@@ -31,12 +31,12 @@ class LocationChip:
 
     def __init__(self):
         self.chip = serial.Serial() 
-        self.port = '/dev/ttyUSB0' 
-        self.baudrate = 115200 
-        self.bytesize = serial.EIGHTBITS 
-        self.parity = serial.PARITY_NONE 
-        self.stopbits = serial.STOPBITS_ONE 
-        self.timeout = self.chip.open() 
+        self.chip.port = '/dev/ttyUSB0' 
+        self.chip.baudrate = 115200 
+        self.chip.bytesize = serial.EIGHTBITS 
+        self.chip.parity = serial.PARITY_NONE 
+        self.chip.stopbits = serial.STOPBITS_ONE 
+        self.chip.timeout = self.chip.open() 
         # First read line is HEX and next one is decimal
         
 
