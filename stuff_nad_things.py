@@ -40,7 +40,7 @@ class myTest:
         self.cords = self.readData()  # read initial spot while looking up
         print("Initial Up cords:", self.cords)
         self.robot_contol.turnRight(1200)
-        time.sleep(1)
+        time.sleep(2)
         self.cords = self.readData()  # read initial spot while looking up
         print("Turn 1 cords:", self.cords)
         # self.robot_contol.defualtMotors()
@@ -105,15 +105,15 @@ class RobotControl():
         print("waist right")
         
             
-    def moveFoward(self):
-        self.motors += 200
+    def moveFoward(self, amount=200):
+        self.motors += amount
         if(self.motors > 7900):
             self.motors = 7900
         self.tango.setTarget(MOTORS, self.motors)
         print("Foward")
     
-    def moveBackwards(self):
-        self.motors -= 200
+    def moveBackwards(self, amount=200):
+        self.motors -= amount
         if(self.motors < 1510):
             self.motors = 1510
         self.tango.setTarget(MOTORS, self.motors)
