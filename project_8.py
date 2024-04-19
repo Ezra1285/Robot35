@@ -98,10 +98,10 @@ class LocationChip:
         return closest_cord
 
     def exitBox(self):
-        self.robot_contol.turnRight(800)
-        time.sleep(3)
+        # self.robot_contol.turnRight(800)
+        # time.sleep(3)
         self.robot_contol.moveFoward(1200)
-        time.sleep(3)
+        time.sleep(4)
         self.robot_contol.defualtMotors()
         speak("I have exited the box")    
 
