@@ -39,8 +39,8 @@ class myTest:
         time.sleep(3)
         self.cords = self.readData()  # read initial spot while looking up
         print("Initial Up cords:", self.cords)
-        self.robot_contol.turnRight(800)
-        time.sleep(2)
+        self.robot_contol.slowTurnRight(800)
+        time.sleep(1)
         self.cords = self.readData()  # read initial spot while looking up
         print("Turn 1 cords:", self.cords)
         # self.robot_contol.defualtMotors()
@@ -119,6 +119,15 @@ class RobotControl():
         self.tango.setTarget(MOTORS, self.motors)
 
     def turnRight(self, amount=200):
+        self.turn += amount
+        if(self.turn > 7400):
+            self.turn = 7400
+        self.tango.setTarget(TURN, self.turn)
+        print("Turning Right")
+
+    def slowTurnRight(self, amount=200):
+        self.tango.setSpeed(TURN, 1)
+        self.tango.setAccel(TURN, 3)
         self.turn += amount
         if(self.turn > 7400):
             self.turn = 7400
