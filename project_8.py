@@ -92,8 +92,10 @@ class LocationChip:
         return closest_cord
 
     def exitBox(self):
+        self.robot_contol.turnRight(300)
+        time.sleep(3)
         self.robot_contol.moveFoward(1000)
-        time.sleep(1)
+        time.sleep(2)
         self.robot_contol.defualtMotors()
         speak("I have exited the box")    
 
@@ -223,5 +225,5 @@ class RobotControl():
 if __name__ == "__main__":
     myChip = LocationChip()
     current_cord = myChip.findQuadrant()
-    
+    myChip.exitBox()
     print("Done")
