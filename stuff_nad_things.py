@@ -35,7 +35,7 @@ class myTest:
 
 
     def spinCycle(self):
-        self.robot_contol.lookUp('a', 1200)
+        self.robot_contol.lookUp(1400)
         time.sleep(1)
         self.cords = self.readData()
                 
