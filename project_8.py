@@ -16,12 +16,19 @@ import pyttsx3
 
 class LocationChip:
 
+    
+        
+
+
+
+    # Returns data as list, i.e) [a0, a1, a2, a3]
     def readData(self):
         line1 = self.chip.readline()
         line2 = self.chip.readline()
+        data = line2.decode('utf-8').split(",")
         print("Text 1 found: ", line1)
         print("Text 2 found: ", line2)
-        return line2
+        return data
 
     def startReading(self):
         count = 0
@@ -32,7 +39,7 @@ class LocationChip:
 
     def findQuadrant(self):
         data = self.readData()
-        self.cords = {'a0':data[2], 'a1':data[3], 'a2':data[4], 'a3':data[5]} #messing with indexing here
+        self.cords = {'a0':data[0], 'a1':data[1], 'a2':data[2], 'a3':data[3]} #messing with indexing here
         self.cords['a3'] = 1000
         closest_cord = min(self.cords, key=self.cords.get)
         print("Current cord:", closest_cord)
