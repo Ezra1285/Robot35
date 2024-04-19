@@ -84,13 +84,13 @@ class LocationChip:
         data = self.readData()
         print("Type", type(data[1]))
         print("Val", data[0])
-        if data[1] == 'NULL': 
+        if data[1] == 'NULL' or data[1] == 'null': 
             data[1] = 1000
-        if data[2] == 'NULL': 
+        if data[2] == 'NULL' or data[1] == 'null': 
             data[2] = 1000
-        if data[3] == 'NULL': 
+        if data[3] == 'NULL' or data[1] == 'null': 
             data[3] = 1000
-        if data[4] == 'NULL': 
+        if data[4] == 'NULL' or data[1] == 'null': 
             data[4] = 1000
         self.cords = {'a0':float(data[1]), 'a1':float(data[2]), 'a2':float(data[3]), 'a3':float(data[4])} #messing with indexing here
         # self.cords['a2'] = 1000
