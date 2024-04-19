@@ -42,16 +42,19 @@ class myTest:
         time.sleep(4)
         self.cords = self.readData()  # read initial spot while looking up
         print("Turn 1 cords:", self.cords)
+        self.robot_contol.defualtMotors()
 
         self.robot_contol.turnRight(900)
         time.sleep(4)
         self.cords = self.readData()  # read initial spot while looking up
         print("Turn 2 cords:", self.cords)
+        self.robot_contol.defualtMotors()
 
         self.robot_contol.turnRight(900)
         time.sleep(4)
         self.cords = self.readData()  # read initial spot while looking up
         print("Turn 3 cords:", self.cords)
+        self.robot_contol.defualtMotors()
         # self.robot_contol.defualtMotors()
         # self.cords = self.readData()
 
