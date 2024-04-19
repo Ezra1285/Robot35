@@ -35,13 +35,23 @@ class myTest:
 
     def spinCycle(self):
         self.robot_contol.lookUp(1800)
-        time.sleep(3)
+        time.sleep(2)
         self.cords = self.readData()  # read initial spot while looking up
         print("Initial Up cords:", self.cords)
         self.robot_contol.turnRight(900)
         time.sleep(4)
         self.cords = self.readData()  # read initial spot while looking up
         print("Turn 1 cords:", self.cords)
+
+        self.robot_contol.turnRight(900)
+        time.sleep(4)
+        self.cords = self.readData()  # read initial spot while looking up
+        print("Turn 2 cords:", self.cords)
+
+        self.robot_contol.turnRight(900)
+        time.sleep(4)
+        self.cords = self.readData()  # read initial spot while looking up
+        print("Turn 3 cords:", self.cords)
         # self.robot_contol.defualtMotors()
         # self.cords = self.readData()
 
