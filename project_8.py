@@ -103,12 +103,13 @@ class LocationChip:
     
 
     def exitBox(self):
-        self.robot_contol.turnLeft(800)
+        self.robot_contol.tango.setAccel(TURN, 5)
+        self.robot_contol.turnLeft(1200)
         time.sleep(5)
         self.robot_contol.defualtMotors()
         time.sleep(2)
         self.robot_contol.moveBackwards(900)
-        time.sleep(2)
+        time.sleep(2.5)
         self.robot_contol.defualtMotors()
         speak("I have exited the box")    
 
