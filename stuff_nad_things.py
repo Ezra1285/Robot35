@@ -126,7 +126,7 @@ class RobotControl():
         print("Turning Right")
 
     def slowTurnRight(self, amount=200):
-        self.tango.setSpeed(TURN, 1)
+        self.tango.setSpeed(TURN, 3)
         self.tango.setAccel(TURN, 3)
         self.turn += amount
         if(self.turn > 7400):
