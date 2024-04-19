@@ -105,8 +105,8 @@ class LocationChip:
     def exitBox(self):
         self.robot_contol.tango.setAccel(TURN, 3)
         self.robot_contol.tango.setSpeed(TURN, 3)
-        self.robot_contol.turnLeft(1200)
-        time.sleep(4)
+        self.robot_contol.turnLeft(1000)
+        time.sleep(5)
         self.robot_contol.defualtMotors()
         time.sleep(2)
         self.robot_contol.moveBackwards(900)
