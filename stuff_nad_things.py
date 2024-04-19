@@ -40,7 +40,7 @@ class myTest:
         self.cords = self.readData()  # read initial spot while looking up
         print("Initial Up cords:", self.cords)
         self.robot_contol.slowTurnRight(1200)
-        time.sleep(1)
+        time.sleep(4)
         self.cords = self.readData()  # read initial spot while looking up
         print("Turn 1 cords:", self.cords)
         # self.robot_contol.defualtMotors()
