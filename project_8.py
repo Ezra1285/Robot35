@@ -96,12 +96,13 @@ class LocationChip:
         speak("I am in quadrant " + closest_cord)
         time.sleep(2)
         return closest_cord
+    
 
     def exitBox(self):
-        # self.robot_contol.turnRight(800)
-        # time.sleep(3)
+        self.robot_contol.turnRight(800)
+        time.sleep(3)
         self.robot_contol.moveBackwards(1200)
-        time.sleep(4)
+        time.sleep(2)
         self.robot_contol.defualtMotors()
         speak("I have exited the box")    
 
