@@ -90,7 +90,12 @@ class LocationChip:
         speak("I am in quadrant " + closest_cord)
         time.sleep(2)
         return closest_cord
-        
+
+    def exitBox(self):
+        self.robot_contol.moveFoward(1000)
+        time.sleep(1)
+        self.robot_contol.defualtMotors()
+        speak("I have exited the box")    
 
 
     def __init__(self):
@@ -218,4 +223,5 @@ class RobotControl():
 if __name__ == "__main__":
     myChip = LocationChip()
     current_cord = myChip.findQuadrant()
+    
     print("Done")
