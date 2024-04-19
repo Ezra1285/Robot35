@@ -84,6 +84,10 @@ class LocationChip:
         data = self.readData()
         print("Type", type(data[1]))
         print("Val", data[0])
+        if data[1] == 'NULL': 
+            data[1] = 1000
+        if data[2] == 'NULL': 
+            data[2] = 1000
         if data[3] == 'NULL': 
             data[3] = 1000
         if data[4] == 'NULL': 
