@@ -220,8 +220,8 @@ class RobotControl():
         self.tango.setTarget(TURN, self.turn)
         print("Turning Right")
 
-    def turnLeft(self):
-        self.turn -= 200
+    def turnLeft(self, amount=200):
+        self.turn -= amount
         if(self.turn <2110):
             self.turn = 2110
         self.tango.setTarget(TURN, self.turn)
