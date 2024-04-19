@@ -106,6 +106,7 @@ class LocationChip:
         self.robot_contol.turnLeft(800)
         time.sleep(3)
         self.robot_contol.defualtMotors()
+        time.sleep(2)
         self.robot_contol.moveBackwards(1200)
         time.sleep(2)
         self.robot_contol.defualtMotors()
