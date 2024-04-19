@@ -106,7 +106,7 @@ class LocationChip:
         self.robot_contol.tango.setAccel(TURN, 3)
         self.robot_contol.tango.setSpeed(TURN, 3)
         self.robot_contol.turnLeft(1200)
-        time.sleep(3)
+        time.sleep(5)
         self.robot_contol.defualtMotors()
         time.sleep(2)
         self.robot_contol.moveBackwards(900)
