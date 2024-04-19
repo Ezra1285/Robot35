@@ -103,7 +103,7 @@ class LocationChip:
     
 
     def exitBox(self):
-        self.robot_contol.turnLeft(1400)
+        self.robot_contol.turnLeft(100)
         time.sleep(3)
         self.robot_contol.defualtMotors()
         time.sleep(2)
