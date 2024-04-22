@@ -128,11 +128,15 @@ class LocationChip:
         data = line2.decode('utf-8').split(",")
         print("Text 1 found: ", line1)
         print("Text 2 found: ", line2)
+        if data[0] == '$RANGEERROR':
+            return [] 
         return data[1:]
 
 
     def findQuadrant(self):
         data = self.readData()
+        if len(data) == 0:
+            return False
         if data[0] == 'NULL' or data[0] == 'null': 
             data[0] = 1000
         if data[1] == 'NULL' or data[1] == 'null': 
@@ -289,5 +293,8 @@ class RobotControl():
 if __name__ == "__main__":
     myChip = LocationChip()
     current_cord = myChip.findQuadrant()
-    myChip.findExit()
+    if current_cord == False:
+        speak("Range error")
+    else: 
+        myChip.findExit(current_cord)
     print("Done")
