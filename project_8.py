@@ -311,8 +311,9 @@ class RobotControl():
 if __name__ == "__main__":
     myChip = LocationChip()
     current_cord = myChip.findQuadrant()
-    if current_cord == False:
-        speak("Range error")
-    else: 
-        myChip.findExit(current_cord)
+    # if current_cord == False:
+    #     speak("Range error")
+    # else: 
+    #     myChip.findExit(current_cord)
+    myChip.exitBox()
     print("Done")
