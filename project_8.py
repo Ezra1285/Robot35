@@ -164,6 +164,7 @@ class LocationChip:
         while True:        
             line1 = self.chip.readline()
             line2 = self.chip.readline()
+            time.sleep(1)
             data = line2.decode('utf-8').split(",")
             print("Text 1 found: ", line1)
             print("Text 2 found: ", line2)
