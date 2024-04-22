@@ -146,11 +146,12 @@ class LocationChip:
             data[2] = 1000
         if data[3] == 'NULL' or data[3] == 'null': 
             data[3] = 1000
-        self.cords = {'a0':float(data[0]), 'a1':float(data[1]), 'a2':float(data[2]), 'a3':float(data[3])} #messing with indexing here
+        self.cords = data
+        cords_dict = {'a0':float(data[0]), 'a1':float(data[1]), 'a2':float(data[2]), 'a3':float(data[3])} #messing with indexing here
         # self.cords['a2'] = 1000
-        closest_cord = min(self.cords, key=self.cords.get)
+        closest_cord = min(cords_dict, key=cords_dict.get)
         print("Current cord:", closest_cord)
-        print(self.cords)
+        print(cords_dict)
         speak("I am in quadrant " + closest_cord)
         time.sleep(2)
         return closest_cord
