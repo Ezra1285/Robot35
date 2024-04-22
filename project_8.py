@@ -129,7 +129,7 @@ class LocationChip:
         data = line2.decode('utf-8').split(",")
         print("Text 1 found: ", line1)
         print("Text 2 found: ", line2)
-        if data[0] == '$RANGEERROR':
+        if data[0] == '$RANGE_ERROR':
             return [] 
         return data[1:]
 
