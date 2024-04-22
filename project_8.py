@@ -25,24 +25,25 @@ HEADTURN = 3
 
 class LocationChip:
 
-    def doChecks(self):
-        if len(self.cords) == 0:
-            return True
-        if self.cords[0] == 'NULL' or self.cords[0] == 'null': 
-            return True
-        if self.cords[1] == 'NULL' or self.cords[1] == 'null': 
-            return True
-        if self.cords[2] == 'NULL' or self.cords[2] == 'null': 
-            return True
-        if self.cords[3] == 'NULL' or self.cords[3] == 'null': 
-            return True
-        return False
+    # def doChecks(self):
+    #     if len(self.cords) == 0:
+    #         return True
+    #     if self.cords[0] == 'NULL' or self.cords[0] == 'null': 
+    #         return True
+    #     if self.cords[1] == 'NULL' or self.cords[1] == 'null': 
+    #         return True
+    #     if self.cords[2] == 'NULL' or self.cords[2] == 'null': 
+    #         return True
+    #     if self.cords[3] == 'NULL' or self.cords[3] == 'null': 
+    #         return True
+    #     return False
     
     # TODO: 
     #  1) Drive forward
     #  2) If the dist. from prev cord to new cord is rapidly approaching desired target then its probaly going the right way
     #  3) If its not getting way closer then we need to turn and try again
     def findExit(self, current_cord):
+        isFirst = True
         if current_cord == 'a0':
             while True:
                 prev_cord = self.cords
@@ -52,14 +53,11 @@ class LocationChip:
                 time.sleep(2)
                 self.cords = self.readData()
                 #  Calc needs testing
-                if self.doChecks():
-                    self.cords = self.readData()
-                    continue
-                if self.cords[0] == '$RANGE_ERROR':
-                    print("Range error, looking for new data")
-                    self.cords = self.readData()
-                    continue
-                elif float(prev_cord[0]) - float(self.cords[0]) > 1.5:
+                # if self.cords[0] == '$RANGE_ERROR':
+                #     print("Range error, looking for new data")
+                #     self.cords = self.readData()
+                #     continue
+                if float(prev_cord[0]) - float(self.cords[0]) > 1.5:
                     self.robot_contol.moveBackwards(800)
                     time.sleep(3)
                     self.robot_contol.defualtMotors()
@@ -80,14 +78,14 @@ class LocationChip:
                 time.sleep(2)
                 self.cords = self.readData()
                 #  Calc needs testing
-                if self.doChecks():
-                    self.cords = self.readData()
-                    continue
-                if self.cords[0] == '$RANGE_ERROR':
-                    print("Range error, looking for new data")
-                    self.cords = self.readData()
-                    continue
-                elif float(prev_cord[1]) - float(self.cords[1]) > 1.5:
+                # if self.doChecks():
+                #     self.cords = self.readData()
+                #     continue
+                # if self.cords[0] == '$RANGE_ERROR':
+                #     print("Range error, looking for new data")
+                #     self.cords = self.readData()
+                #     continue
+                if float(prev_cord[1]) - float(self.cords[1]) > 1.5:
                     self.robot_contol.moveBackwards(800)
                     time.sleep(3)
                     self.robot_contol.defualtMotors()
@@ -107,14 +105,14 @@ class LocationChip:
                 time.sleep(2)
                 self.cords = self.readData()
                 #  Calc needs testing
-                if self.doChecks():
-                    self.cords = self.readData()
-                    continue
-                if self.cords[0] == '$RANGE_ERROR':
-                    print("Range error, looking for new data")
-                    self.cords = self.readData()
-                    continue
-                elif float(prev_cord[2]) - float(self.cords[2]) > 1.2:
+                # if self.doChecks():
+                #     self.cords = self.readData()
+                #     continue
+                # if self.cords[0] == '$RANGE_ERROR':
+                #     print("Range error, looking for new data")
+                #     self.cords = self.readData()
+                #     continue
+                if float(prev_cord[2]) - float(self.cords[2]) > 1.2:
                     self.robot_contol.moveBackwards(800)
                     time.sleep(3)
                     self.robot_contol.defualtMotors()
@@ -134,14 +132,14 @@ class LocationChip:
                 time.sleep(2)
                 self.cords = self.readData()
                 #  Calc needs testing
-                if self.doChecks():
-                    self.cords = self.readData()
-                    continue
-                if self.cords[0] == '$RANGE_ERROR':
-                    print("Range error, looking for new data")
-                    self.cords = self.readData()
-                    continue
-                elif float(prev_cord[3]) - float(self.cords[3]) > 1.5:
+                # if self.doChecks():
+                #     self.cords = self.readData()
+                #     continue
+                # if self.cords[0] == '$RANGE_ERROR':
+                #     print("Range error, looking for new data")
+                #     self.cords = self.readData()
+                #     continue
+                if float(prev_cord[3]) - float(self.cords[3]) > 1.5:
                     self.robot_contol.moveBackwards(800)
                     time.sleep(3)
                     self.robot_contol.defualtMotors()
@@ -163,28 +161,29 @@ class LocationChip:
 
     # Returns data as list, i.e) [a0, a1, a2, a3]
     def readData(self):
-        line1 = self.chip.readline()
-        line2 = self.chip.readline()
-        data = line2.decode('utf-8').split(",")
-        print("Text 1 found: ", line1)
-        print("Text 2 found: ", line2)
-        if data[0] == '$RANGE_ERROR':
-            return [] 
-        return data[1:]
+        while True:        
+            line1 = self.chip.readline()
+            line2 = self.chip.readline()
+            data = line2.decode('utf-8').split(",")
+            print("Text 1 found: ", line1)
+            print("Text 2 found: ", line2)
+            if data[0] == '$RANGE_ERROR':
+                continue
+            if data[0] == 'NULL' or data[0] == 'null': 
+                continue
+            if data[1] == 'NULL' or data[1] == 'null': 
+                continue
+            if data[2] == 'NULL' or data[2] == 'null': 
+                continue
+            if data[3] == 'NULL' or data[3] == 'null': 
+                continue
+            if data[4] == 'NULL' or data[4] == 'null': 
+                continue
+            return data[1:]
 
 
     def findQuadrant(self):
         data = self.readData()
-        if len(data) == 0:
-            return False
-        if data[0] == 'NULL' or data[0] == 'null': 
-            data[0] = 1000
-        if data[1] == 'NULL' or data[1] == 'null': 
-            data[1] = 1000
-        if data[2] == 'NULL' or data[2] == 'null': 
-            data[2] = 1000
-        if data[3] == 'NULL' or data[3] == 'null': 
-            data[3] = 1000
         self.cords = data
         cords_dict = {'a0':float(data[0]), 'a1':float(data[1]), 'a2':float(data[2]), 'a3':float(data[3])} #messing with indexing here
         # self.cords['a2'] = 1000
