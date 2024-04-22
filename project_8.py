@@ -167,17 +167,19 @@ class LocationChip:
             data = line2.decode('utf-8').split(",")
             print("Text 1 found: ", line1)
             print("Text 2 found: ", line2)
-            if data[0] == '$RANGE_ERROR':
+            if len(data) == 0:
                 continue
-            if data[0] == 'NULL' or data[0] == 'null': 
+            elif data[0] == '$RANGE_ERROR':
                 continue
-            if data[1] == 'NULL' or data[1] == 'null': 
+            elif data[0] == 'NULL' or data[0] == 'null': 
                 continue
-            if data[2] == 'NULL' or data[2] == 'null': 
+            elif data[1] == 'NULL' or data[1] == 'null': 
                 continue
-            if data[3] == 'NULL' or data[3] == 'null': 
+            elif data[2] == 'NULL' or data[2] == 'null': 
                 continue
-            if data[4] == 'NULL' or data[4] == 'null': 
+            elif data[3] == 'NULL' or data[3] == 'null': 
+                continue
+            elif data[4] == 'NULL' or data[4] == 'null': 
                 continue
             return data[1:]
 
