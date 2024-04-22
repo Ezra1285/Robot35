@@ -188,13 +188,13 @@ class LocationChip:
 
 
     def __init__(self):
-        self.chip = serial.Serial() 
-        self.chip.port = '/dev/ttyUSB0' 
-        self.chip.baudrate = 115200 
-        self.chip.bytesize = serial.EIGHTBITS 
-        self.chip.parity = serial.PARITY_NONE 
-        self.chip.stopbits = serial.STOPBITS_ONE 
-        self.chip.timeout = self.chip.open()
+        # self.chip = serial.Serial() 
+        # self.chip.port = '/dev/ttyUSB0' 
+        # self.chip.baudrate = 115200 
+        # self.chip.bytesize = serial.EIGHTBITS 
+        # self.chip.parity = serial.PARITY_NONE 
+        # self.chip.stopbits = serial.STOPBITS_ONE 
+        # self.chip.timeout = self.chip.open()
         self.robot_contol = RobotControl()
         # First read line is HEX and next one is decimal
 
