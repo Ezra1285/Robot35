@@ -1,11 +1,10 @@
 import serial
+import tkinter as tk
+from maestro import Controller 
 import time
+import pyttsx3
 import tkinter as tk
 from maestro import Controller                                                     
-
-
-# data = b"$KT1,NULL,0.91,2.68,NULL,LO=[no soultion]\r\n"
-# data = data.decode('utf-8').split(",")
 
 MOTORS = 0
 TURN = 1
@@ -13,7 +12,180 @@ BODY = 2
 HEADTILT = 4
 HEADTURN = 3
 
-class myTest:
+
+# try: #print("in try") 
+#     ser = serial.Serial() 
+#     ser.port = '/dev/ttyUSB0' 
+#     ser.baudrate = 115200 
+#     ser.bytesize = serial.EIGHTBITS 
+#     ser.parity = serial.PARITY_NONE 
+#     ser.stopbits = serial.STOPBITS_ONE 
+#     ser.timeout = 1 ser.open()
+#     Ser.readline()
+
+class LocationChip:
+
+    def testMove(self):
+        cnt = 0
+        while True:
+            # prev_cord = self.cords
+            self.robot_contol.moveBackwards(800)
+            time.sleep(3)
+            self.robot_contol.defualtMotors()
+            time.sleep(2)
+            
+            # self.cords = self.readData()
+            #  Calc needs testing
+            # print("Prev:", prev_cord[0], "- New:", self.cords)
+            # if prev_cord[0] - self.cords[0] > 100:
+                # self.robot_contol.moveBackwards(800)
+                # time.sleep(3)
+                # self.robot_contol.defualtMotors()
+                # speak("I have exited")
+                # break
+            self.robot_contol.turnLeft(800)
+            time.sleep(3)
+            self.robot_contol.defualtMotors()
+            time.sleep(2)
+            if cnt == 3:
+                break
+            cnt +=1
+
+    # TODO: 
+    #  1) Drive forward
+    #  2) If the dist. from prev cord to new cord is rapidly approaching desired target then its probaly going the right way
+    #  3) If its not getting way closer then we need to turn and try again
+    def findExit(self, current_cord):
+        if current_cord == 'a0':
+            while True:
+                prev_cord = self.cords
+                self.robot_contol.moveBackwards(800)
+                time.sleep(3)
+                self.robot_contol.defualtMotors()
+                time.sleep(3)
+                self.cords = self.readData()
+                #  Calc needs testing
+                print("Prev:", prev_cord[0], "- New:", self.cords)
+                if prev_cord[0] - self.cords[0] > 100:
+                    self.robot_contol.moveBackwards(800)
+                    time.sleep(3)
+                    self.robot_contol.defualtMotors()
+                    speak("I have exited")
+                    break
+                self.robot_contol.turnLeft(800)
+                time.sleep(3)
+                self.robot_contol.defualtMotors()
+        elif current_cord == 'a1':
+            while True:
+                prev_cord = self.cords
+                self.robot_contol.moveBackwards(800)
+                time.sleep(3)
+                self.robot_contol.defualtMotors()
+                time.sleep(3)
+                self.cords = self.readData()
+                #  Calc needs testing
+                print("Prev:", prev_cord[0], "- New:", self.cords)
+                if prev_cord[1] - self.cords[1] > 100:
+                    self.robot_contol.moveBackwards(800)
+                    time.sleep(3)
+                    self.robot_contol.defualtMotors()
+                    speak("I have exited")
+                    break
+                self.robot_contol.turnLeft(800)
+                time.sleep(3)
+                self.robot_contol.defualtMotors()
+        elif current_cord == 'a2':
+            while True:
+                prev_cord = self.cords
+                self.robot_contol.moveBackwards(800)
+                time.sleep(3)
+                self.robot_contol.defualtMotors()
+                time.sleep(3)
+                self.cords = self.readData()
+                #  Calc needs testing
+                print("Prev:", prev_cord[0], "- New:", self.cords)
+                if prev_cord[2] - self.cords[2] > 100:
+                    self.robot_contol.moveBackwards(800)
+                    time.sleep(3)
+                    self.robot_contol.defualtMotors()
+                    speak("I have exited")
+                    break
+                self.robot_contol.turnLeft(800)
+                time.sleep(3)
+                self.robot_contol.defualtMotors()
+        elif current_cord == 'a3':
+            while True:
+                prev_cord = self.cords
+                self.robot_contol.moveBackwards(800)
+                time.sleep(3)
+                self.robot_contol.defualtMotors()
+                time.sleep(3)
+                self.cords = self.readData()
+                #  Calc needs testing
+                print("Prev:", prev_cord[0], "- New:", self.cords)
+                if prev_cord[3] - self.cords[3] > 100:
+                    self.robot_contol.moveBackwards(800)
+                    time.sleep(3)
+                    self.robot_contol.defualtMotors()
+                    speak("I have exited")
+                    break
+                self.robot_contol.turnLeft(800)
+                time.sleep(3)
+                self.robot_contol.defualtMotors()
+
+
+
+
+    def compareCords(self, prev_cords, new_cords, target):
+        # calculation needs testing
+        if prev_cords[target] - new_cords[target] > 100:
+            True
+        return False
+
+
+
+    # Returns data as list, i.e) [a0, a1, a2, a3]
+    def readData(self):
+        line1 = self.chip.readline()
+        line2 = self.chip.readline()
+        data = line2.decode('utf-8').split(",")
+        print("Text 1 found: ", line1)
+        print("Text 2 found: ", line2)
+        return data[1:]
+
+
+    def findQuadrant(self):
+        data = self.readData()
+        if data[0] == 'NULL' or data[0] == 'null': 
+            data[0] = 1000
+        if data[1] == 'NULL' or data[1] == 'null': 
+            data[1] = 1000
+        if data[2] == 'NULL' or data[2] == 'null': 
+            data[2] = 1000
+        if data[3] == 'NULL' or data[3] == 'null': 
+            data[3] = 1000
+        self.cords = {'a0':float(data[0]), 'a1':float(data[1]), 'a2':float(data[2]), 'a3':float(data[3])} #messing with indexing here
+        # self.cords['a2'] = 1000
+        closest_cord = min(self.cords, key=self.cords.get)
+        print("Current cord:", closest_cord)
+        print(self.cords)
+        speak("I am in quadrant " + closest_cord)
+        time.sleep(2)
+        return closest_cord
+    
+
+    def exitBox(self):
+        self.robot_contol.tango.setAccel(TURN, 3)
+        self.robot_contol.tango.setSpeed(TURN, 3)
+        self.robot_contol.turnLeft(1200)
+        time.sleep(3)
+        self.robot_contol.defualtMotors()
+        time.sleep(2)
+        self.robot_contol.moveBackwards(900)
+        time.sleep(2.5)
+        self.robot_contol.defualtMotors()
+        speak("I have exited the box")    
+
 
     def __init__(self):
         self.chip = serial.Serial() 
@@ -24,39 +196,15 @@ class myTest:
         self.chip.stopbits = serial.STOPBITS_ONE 
         self.chip.timeout = self.chip.open()
         self.robot_contol = RobotControl()
+        # First read line is HEX and next one is decimal
 
-    def readData(self):
-        line1 = self.chip.readline()
-        line2 = self.chip.readline()
-        data = line2.decode('utf-8').split(",")
-        print("Text 1 found: ", line1)
-        print("Text 2 found: ", line2)
-        return data
+def speak(speech):
+        engine = pyttsx3.init() 
+        if (speech != " "):
+        # while(speech != " "):    
+            engine.say(speech)
+            engine.runAndWait()      
 
-    def spinCycle(self):
-        self.robot_contol.lookUp(1800)
-        time.sleep(2)
-        self.cords = self.readData()  # read initial spot while looking up
-        print("Initial Up cords:", self.cords)
-        self.robot_contol.turnRight(900)
-        time.sleep(4)
-        self.cords = self.readData()  # read initial spot while looking up
-        print("Turn 1 cords:", self.cords)
-        self.robot_contol.defualtMotors()
-
-        self.robot_contol.turnRight(900)
-        time.sleep(4)
-        self.cords = self.readData()  # read initial spot while looking up
-        print("Turn 2 cords:", self.cords)
-        self.robot_contol.defualtMotors()
-
-        self.robot_contol.turnRight(900)
-        time.sleep(4)
-        self.cords = self.readData()  # read initial spot while looking up
-        print("Turn 3 cords:", self.cords)
-        self.robot_contol.defualtMotors()
-        # self.robot_contol.defualtMotors()
-        # self.cords = self.readData()
 
 class RobotControl():
     def __init__(self):
@@ -146,8 +294,8 @@ class RobotControl():
         self.tango.setTarget(TURN, self.turn)
         print("Turning Right")
 
-    def turnLeft(self):
-        self.turn -= 200
+    def turnLeft(self, amount=200):
+        self.turn -= amount
         if(self.turn <2110):
             self.turn = 2110
         self.tango.setTarget(TURN, self.turn)
@@ -161,8 +309,9 @@ class RobotControl():
         print("Deafulting motors")
 
 
-
-t = myTest()
-t.spinCycle()
-t.robot_contol.defaultHead()
-t.robot_contol.defualtMotors()
+if __name__ == "__main__":
+    myChip = LocationChip()
+    # current_cord = myChip.findQuadrant()
+    # myChip.findExit()
+    myChip.testMove()
+    print("Done")

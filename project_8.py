@@ -39,6 +39,7 @@ class LocationChip:
                 time.sleep(3)
                 self.cords = self.readData()
                 #  Calc needs testing
+                print("Prev:", prev_cord[0], "- New:", self.cords)
                 if prev_cord[0] - self.cords[0] > 100:
                     self.robot_contol.moveBackwards(800)
                     time.sleep(3)
@@ -57,6 +58,7 @@ class LocationChip:
                 time.sleep(3)
                 self.cords = self.readData()
                 #  Calc needs testing
+                print("Prev:", prev_cord[0], "- New:", self.cords)
                 if prev_cord[1] - self.cords[1] > 100:
                     self.robot_contol.moveBackwards(800)
                     time.sleep(3)
@@ -75,6 +77,7 @@ class LocationChip:
                 time.sleep(3)
                 self.cords = self.readData()
                 #  Calc needs testing
+                print("Prev:", prev_cord[0], "- New:", self.cords)
                 if prev_cord[2] - self.cords[2] > 100:
                     self.robot_contol.moveBackwards(800)
                     time.sleep(3)
@@ -93,6 +96,7 @@ class LocationChip:
                 time.sleep(3)
                 self.cords = self.readData()
                 #  Calc needs testing
+                print("Prev:", prev_cord[0], "- New:", self.cords)
                 if prev_cord[3] - self.cords[3] > 100:
                     self.robot_contol.moveBackwards(800)
                     time.sleep(3)
@@ -282,5 +286,5 @@ class RobotControl():
 if __name__ == "__main__":
     myChip = LocationChip()
     current_cord = myChip.findQuadrant()
-    myChip.exitBox()
+    myChip.findExit()
     print("Done")
