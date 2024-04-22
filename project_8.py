@@ -24,6 +24,20 @@ HEADTURN = 3
 #     Ser.readline()
 
 class LocationChip:
+
+    def doChecks(self, data):
+        if len(data) == 0:
+            return True
+        if data[0] == 'NULL' or data[0] == 'null': 
+            return True
+        if data[1] == 'NULL' or data[1] == 'null': 
+            return True
+        if data[2] == 'NULL' or data[2] == 'null': 
+            return True
+        if data[3] == 'NULL' or data[3] == 'null': 
+            return True
+        return False
+    
     # TODO: 
     #  1) Drive forward
     #  2) If the dist. from prev cord to new cord is rapidly approaching desired target then its probaly going the right way
@@ -38,8 +52,9 @@ class LocationChip:
                 time.sleep(2)
                 self.cords = self.readData()
                 #  Calc needs testing
-                print("Prev cord,", prev_cord, " - type:", type(prev_cord))
-                print("Prev:", prev_cord[0], "- New:", self.cords)
+                if self.doChecks():
+                    self.cords = self.readData()
+                    continue
                 if self.cords[0] == '$RANGE_ERROR':
                     print("Range error, looking for new data")
                     self.cords = self.readData()
@@ -50,6 +65,8 @@ class LocationChip:
                     self.robot_contol.defualtMotors()
                     speak("I have exited")
                     break
+            print("Prev cord,", prev_cord, " - type:", type(prev_cord))
+            print("Prev:", prev_cord[0], "- New:", self.cords)
             self.robot_contol.turnLeft(800)
             time.sleep(1)
             self.robot_contol.defualtMotors()
@@ -63,7 +80,9 @@ class LocationChip:
                 time.sleep(2)
                 self.cords = self.readData()
                 #  Calc needs testing
-                print("Prev:", prev_cord[0], "- New:", self.cords)
+                if self.doChecks():
+                    self.cords = self.readData()
+                    continue
                 if self.cords[0] == '$RANGE_ERROR':
                     print("Range error, looking for new data")
                     self.cords = self.readData()
@@ -74,6 +93,7 @@ class LocationChip:
                     self.robot_contol.defualtMotors()
                     speak("I have exited")
                     break
+            print("Prev:", prev_cord[0], "- New:", self.cords)
             self.robot_contol.turnLeft(800)
             time.sleep(1)
             self.robot_contol.defualtMotors()
@@ -87,7 +107,6 @@ class LocationChip:
                 time.sleep(2)
                 self.cords = self.readData()
                 #  Calc needs testing
-                print("Prev:", prev_cord[0], "- New:", self.cords)
                 if self.cords[0] == '$RANGE_ERROR':
                     print("Range error, looking for new data")
                     self.cords = self.readData()
@@ -98,6 +117,7 @@ class LocationChip:
                     self.robot_contol.defualtMotors()
                     speak("I have exited")
                     break
+            print("Prev:", prev_cord[0], "- New:", self.cords)
             self.robot_contol.turnLeft(800)
             time.sleep(1)
             self.robot_contol.defualtMotors()
@@ -111,7 +131,6 @@ class LocationChip:
                 time.sleep(2)
                 self.cords = self.readData()
                 #  Calc needs testing
-                print("Prev:", prev_cord[0], "- New:", self.cords)
                 if self.cords[0] == '$RANGE_ERROR':
                     print("Range error, looking for new data")
                     self.cords = self.readData()
@@ -122,13 +141,11 @@ class LocationChip:
                     self.robot_contol.defualtMotors()
                     speak("I have exited")
                     break
+                print("Prev:", prev_cord[0], "- New:", self.cords)
                 self.robot_contol.turnLeft(800)
                 time.sleep(1)
                 self.robot_contol.defualtMotors()
                 time.sleep(2)
-
-
-
 
     def compareCords(self, prev_cords, new_cords, target):
         # calculation needs testing
