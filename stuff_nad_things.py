@@ -26,30 +26,30 @@ HEADTURN = 3
 class LocationChip:
 
     def testMove(self):
-        cnt = 0
-        while True:
-            # prev_cord = self.cords
-            self.robot_contol.moveBackwards(800)
-            time.sleep(3)
-            self.robot_contol.defualtMotors()
-            time.sleep(2)
-            
-            # self.cords = self.readData()
-            #  Calc needs testing
-            # print("Prev:", prev_cord[0], "- New:", self.cords)
-            # if prev_cord[0] - self.cords[0] > 100:
-                # self.robot_contol.moveBackwards(800)
-                # time.sleep(3)
-                # self.robot_contol.defualtMotors()
-                # speak("I have exited")
-                # break
-            self.robot_contol.turnLeft(800)
-            time.sleep(3)
-            self.robot_contol.defualtMotors()
-            time.sleep(2)
-            if cnt == 3:
-                break
-            cnt +=1
+        # cnt = 0
+        # while True:
+        # prev_cord = self.cords
+        self.robot_contol.moveBackwards(800)
+        time.sleep(1)
+        self.robot_contol.defualtMotors()
+        time.sleep(2)
+        
+        # self.cords = self.readData()
+        #  Calc needs testing
+        # print("Prev:", prev_cord[0], "- New:", self.cords)
+        # if prev_cord[0] - self.cords[0] > 100:
+            # self.robot_contol.moveBackwards(800)
+            # time.sleep(3)
+            # self.robot_contol.defualtMotors()
+            # speak("I have exited")
+            # break
+        self.robot_contol.turnLeft(800)
+        time.sleep(2)
+        self.robot_contol.defualtMotors()
+        time.sleep(2)
+        # if cnt == 3:
+        #     break
+        # cnt +=1
 
     # TODO: 
     #  1) Drive forward
