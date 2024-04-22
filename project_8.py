@@ -107,6 +107,9 @@ class LocationChip:
                 time.sleep(2)
                 self.cords = self.readData()
                 #  Calc needs testing
+                if self.doChecks():
+                    self.cords = self.readData()
+                    continue
                 if self.cords[0] == '$RANGE_ERROR':
                     print("Range error, looking for new data")
                     self.cords = self.readData()
@@ -131,6 +134,9 @@ class LocationChip:
                 time.sleep(2)
                 self.cords = self.readData()
                 #  Calc needs testing
+                if self.doChecks():
+                    self.cords = self.readData()
+                    continue
                 if self.cords[0] == '$RANGE_ERROR':
                     print("Range error, looking for new data")
                     self.cords = self.readData()
