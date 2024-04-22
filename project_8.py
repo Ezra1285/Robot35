@@ -57,7 +57,7 @@ class LocationChip:
                 #     print("Range error, looking for new data")
                 #     self.cords = self.readData()
                 #     continue
-                if float(prev_cord[0]) - float(self.cords[0]) > 1.5:
+                if float(prev_cord[0]) - float(self.cords[0]) > .75:
                     self.robot_contol.moveBackwards(800)
                     time.sleep(3)
                     self.robot_contol.defualtMotors()
@@ -85,7 +85,7 @@ class LocationChip:
                 #     print("Range error, looking for new data")
                 #     self.cords = self.readData()
                 #     continue
-                if float(prev_cord[1]) - float(self.cords[1]) > 1.5:
+                if float(prev_cord[1]) - float(self.cords[1]) > .75:
                     self.robot_contol.moveBackwards(800)
                     time.sleep(3)
                     self.robot_contol.defualtMotors()
@@ -112,7 +112,7 @@ class LocationChip:
                 #     print("Range error, looking for new data")
                 #     self.cords = self.readData()
                 #     continue
-                if float(prev_cord[2]) - float(self.cords[2]) > 1.2:
+                if float(prev_cord[2]) - float(self.cords[2]) > .75:
                     self.robot_contol.moveBackwards(800)
                     time.sleep(3)
                     self.robot_contol.defualtMotors()
@@ -139,7 +139,7 @@ class LocationChip:
                 #     print("Range error, looking for new data")
                 #     self.cords = self.readData()
                 #     continue
-                if float(prev_cord[3]) - float(self.cords[3]) > 1.5:
+                if float(prev_cord[3]) - float(self.cords[3]) > .75:
                     self.robot_contol.moveBackwards(800)
                     time.sleep(3)
                     self.robot_contol.defualtMotors()
