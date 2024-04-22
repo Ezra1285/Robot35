@@ -25,42 +25,92 @@ HEADTURN = 3
 
 class LocationChip:
 
+    # TODO: 
+    #  1) Drive forward
+    #  2) If the dist. from prev cord to new cord is rapidly approaching desired target then its probaly going the right way
+    #  3) If its not getting way closer then we need to turn and try again
     def findExit(self, current_cord):
-
         if current_cord == 'a0':
-            pass
+            while True:
+                prev_cord = self.cords
+                self.robot_contol.moveBackwards(800)
+                time.sleep(3)
+                self.robot_contol.defualtMotors()
+                time.sleep(3)
+                self.cords = self.readData()
+                #  Calc needs testing
+                if prev_cord[0] - self.cords[0] > 100:
+                    self.robot_contol.moveBackwards(800)
+                    time.sleep(3)
+                    self.robot_contol.defualtMotors()
+                    speak("I have exited")
+                    break
+                self.robot_contol.turnLeft(800)
+                time.sleep(3)
+                self.robot_contol.defualtMotors()
         elif current_cord == 'a1':
-            pass
+            while True:
+                prev_cord = self.cords
+                self.robot_contol.moveBackwards(800)
+                time.sleep(3)
+                self.robot_contol.defualtMotors()
+                time.sleep(3)
+                self.cords = self.readData()
+                #  Calc needs testing
+                if prev_cord[1] - self.cords[1] > 100:
+                    self.robot_contol.moveBackwards(800)
+                    time.sleep(3)
+                    self.robot_contol.defualtMotors()
+                    speak("I have exited")
+                    break
+                self.robot_contol.turnLeft(800)
+                time.sleep(3)
+                self.robot_contol.defualtMotors()
         elif current_cord == 'a2':
-            pass
+            while True:
+                prev_cord = self.cords
+                self.robot_contol.moveBackwards(800)
+                time.sleep(3)
+                self.robot_contol.defualtMotors()
+                time.sleep(3)
+                self.cords = self.readData()
+                #  Calc needs testing
+                if prev_cord[2] - self.cords[2] > 100:
+                    self.robot_contol.moveBackwards(800)
+                    time.sleep(3)
+                    self.robot_contol.defualtMotors()
+                    speak("I have exited")
+                    break
+                self.robot_contol.turnLeft(800)
+                time.sleep(3)
+                self.robot_contol.defualtMotors()
         elif current_cord == 'a3':
-            pass
+            while True:
+                prev_cord = self.cords
+                self.robot_contol.moveBackwards(800)
+                time.sleep(3)
+                self.robot_contol.defualtMotors()
+                time.sleep(3)
+                self.cords = self.readData()
+                #  Calc needs testing
+                if prev_cord[3] - self.cords[3] > 100:
+                    self.robot_contol.moveBackwards(800)
+                    time.sleep(3)
+                    self.robot_contol.defualtMotors()
+                    speak("I have exited")
+                    break
+                self.robot_contol.turnLeft(800)
+                time.sleep(3)
+                self.robot_contol.defualtMotors()
 
-        
-        # self.robot_contol.lookUp('a', 800)
-        # time.sleep(1)
-        # self.cords = self.readData()
-                
-        # self.robot_contol.turnRight('a', 400)
-        # time.sleep(1)
-        # self.robot_contol.defualtMotors()
-        # self.cords = self.readData()
-        
 
-        # Move Robot foward a tiny amount
-        # Compare the new and prev coordinates
-        # Determine which way we just moved
-        # NOTE If robot exits we assume it was out of the correct exit
-        #      and stop the robot/speak
-        # while True:
-        #     self.robot_contol.moveFoward()
-        #     self.robot_contol.moveFoward()
-        #     time.sleep(2)
-        #     self.robot_contol.defualtMotors()
-        #     prev_cords = self.cords
-        #     self.cords = self.readData()
 
-        
+
+    def compareCords(self, prev_cords, new_cords, target):
+        # calculation needs testing
+        if prev_cords[target] - new_cords[target] > 100:
+            True
+        return False
 
 
 
@@ -71,28 +121,20 @@ class LocationChip:
         data = line2.decode('utf-8').split(",")
         print("Text 1 found: ", line1)
         print("Text 2 found: ", line2)
-        return data
+        return data[1:]
 
-    def startReading(self):
-        count = 0
-        while count <= 10:
-            self.readData()
-            time.sleep(2)
-            count += 1
 
     def findQuadrant(self):
         data = self.readData()
-        print("Type", type(data[1]))
-        print("Val", data[0])
+        if data[0] == 'NULL' or data[0] == 'null': 
+            data[0] = 1000
         if data[1] == 'NULL' or data[1] == 'null': 
             data[1] = 1000
         if data[2] == 'NULL' or data[2] == 'null': 
             data[2] = 1000
         if data[3] == 'NULL' or data[3] == 'null': 
             data[3] = 1000
-        if data[4] == 'NULL' or data[4] == 'null': 
-            data[4] = 1000
-        self.cords = {'a0':float(data[1]), 'a1':float(data[2]), 'a2':float(data[3]), 'a3':float(data[4])} #messing with indexing here
+        self.cords = {'a0':float(data[0]), 'a1':float(data[1]), 'a2':float(data[2]), 'a3':float(data[3])} #messing with indexing here
         # self.cords['a2'] = 1000
         closest_cord = min(self.cords, key=self.cords.get)
         print("Current cord:", closest_cord)
