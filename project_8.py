@@ -38,6 +38,7 @@ class LocationChip:
                 time.sleep(2)
                 self.cords = self.readData()
                 #  Calc needs testing
+                print("Prev cord,", prev_cord, " - type:", type(prev_cord))
                 print("Prev:", prev_cord[0], "- New:", self.cords)
                 if prev_cord[0] - self.cords[0] > 1.5:
                     self.robot_contol.moveBackwards(800)
