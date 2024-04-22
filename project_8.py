@@ -24,7 +24,6 @@ HEADTURN = 3
 #     Ser.readline()
 
 class LocationChip:
-
     # TODO: 
     #  1) Drive forward
     #  2) If the dist. from prev cord to new cord is rapidly approaching desired target then its probaly going the right way
@@ -34,78 +33,82 @@ class LocationChip:
             while True:
                 prev_cord = self.cords
                 self.robot_contol.moveBackwards(800)
-                time.sleep(3)
+                time.sleep(1)
                 self.robot_contol.defualtMotors()
-                time.sleep(3)
+                time.sleep(2)
                 self.cords = self.readData()
                 #  Calc needs testing
                 print("Prev:", prev_cord[0], "- New:", self.cords)
-                if prev_cord[0] - self.cords[0] > 100:
+                if prev_cord[0] - self.cords[0] > 1.5:
                     self.robot_contol.moveBackwards(800)
                     time.sleep(3)
                     self.robot_contol.defualtMotors()
                     speak("I have exited")
                     break
-                self.robot_contol.turnLeft(800)
-                time.sleep(3)
-                self.robot_contol.defualtMotors()
+            self.robot_contol.turnLeft(800)
+            time.sleep(1)
+            self.robot_contol.defualtMotors()
+            time.sleep(2)
         elif current_cord == 'a1':
             while True:
                 prev_cord = self.cords
                 self.robot_contol.moveBackwards(800)
-                time.sleep(3)
+                time.sleep(1)
                 self.robot_contol.defualtMotors()
-                time.sleep(3)
+                time.sleep(2)
                 self.cords = self.readData()
                 #  Calc needs testing
                 print("Prev:", prev_cord[0], "- New:", self.cords)
-                if prev_cord[1] - self.cords[1] > 100:
+                if prev_cord[1] - self.cords[1] > 1.5:
                     self.robot_contol.moveBackwards(800)
                     time.sleep(3)
                     self.robot_contol.defualtMotors()
                     speak("I have exited")
                     break
-                self.robot_contol.turnLeft(800)
-                time.sleep(3)
-                self.robot_contol.defualtMotors()
+            self.robot_contol.turnLeft(800)
+            time.sleep(1)
+            self.robot_contol.defualtMotors()
+            time.sleep(2)
         elif current_cord == 'a2':
             while True:
                 prev_cord = self.cords
                 self.robot_contol.moveBackwards(800)
-                time.sleep(3)
+                time.sleep(1)
                 self.robot_contol.defualtMotors()
-                time.sleep(3)
+                time.sleep(2)
                 self.cords = self.readData()
                 #  Calc needs testing
                 print("Prev:", prev_cord[0], "- New:", self.cords)
-                if prev_cord[2] - self.cords[2] > 100:
+                if prev_cord[2] - self.cords[2] > 1.5:
                     self.robot_contol.moveBackwards(800)
                     time.sleep(3)
                     self.robot_contol.defualtMotors()
                     speak("I have exited")
                     break
-                self.robot_contol.turnLeft(800)
-                time.sleep(3)
-                self.robot_contol.defualtMotors()
+            self.robot_contol.turnLeft(800)
+            time.sleep(1)
+            self.robot_contol.defualtMotors()
+            time.sleep(2)
         elif current_cord == 'a3':
             while True:
                 prev_cord = self.cords
                 self.robot_contol.moveBackwards(800)
-                time.sleep(3)
+                time.sleep(1)
                 self.robot_contol.defualtMotors()
-                time.sleep(3)
+                time.sleep(2)
                 self.cords = self.readData()
                 #  Calc needs testing
                 print("Prev:", prev_cord[0], "- New:", self.cords)
-                if prev_cord[3] - self.cords[3] > 100:
+                if prev_cord[3] - self.cords[3] > 1.5:
                     self.robot_contol.moveBackwards(800)
                     time.sleep(3)
                     self.robot_contol.defualtMotors()
                     speak("I have exited")
                     break
                 self.robot_contol.turnLeft(800)
-                time.sleep(3)
+                time.sleep(1)
                 self.robot_contol.defualtMotors()
+                time.sleep(2)
 
 
 
