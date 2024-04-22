@@ -44,7 +44,7 @@ class LocationChip:
             # speak("I have exited")
             # break
         self.robot_contol.turnLeft(800)
-        time.sleep(2)
+        time.sleep(1)
         self.robot_contol.defualtMotors()
         time.sleep(2)
         # if cnt == 3:
