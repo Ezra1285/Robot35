@@ -166,8 +166,8 @@ class LocationChip:
             line2 = self.chip.readline()
             time.sleep(1)
             data = line2.decode('utf-8').split(",")
-            print("Text 1 found: ", line1)
             print("Text 2 found: ", line2)
+            print("Data:", data)
             if len(data) == 0:
                 continue
             elif data[0] == '$RANGE_ERROR':
