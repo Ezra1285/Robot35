@@ -63,12 +63,12 @@ class LocationChip:
                     self.robot_contol.defualtMotors()
                     speak("I have exited")
                     break
-            print("Prev cord,", prev_cord, " - type:", type(prev_cord))
-            print("Prev:", prev_cord[0], "- New:", self.cords)
-            self.robot_contol.turnLeft(800)
-            time.sleep(1)
-            self.robot_contol.defualtMotors()
-            time.sleep(2)
+                print("Prev cord,", prev_cord, " - type:", type(prev_cord))
+                print("Prev:", prev_cord[0], "- New:", self.cords)
+                self.robot_contol.turnLeft(800)
+                time.sleep(1)
+                self.robot_contol.defualtMotors()
+                time.sleep(2)
         elif current_cord == 'a1':
             while True:
                 prev_cord = self.cords
@@ -91,11 +91,11 @@ class LocationChip:
                     self.robot_contol.defualtMotors()
                     speak("I have exited")
                     break
-            print("Prev:", prev_cord[0], "- New:", self.cords)
-            self.robot_contol.turnLeft(800)
-            time.sleep(1)
-            self.robot_contol.defualtMotors()
-            time.sleep(2)
+                print("Prev:", prev_cord[0], "- New:", self.cords)
+                self.robot_contol.turnLeft(800)
+                time.sleep(1)
+                self.robot_contol.defualtMotors()
+                time.sleep(2)
         elif current_cord == 'a2':
             while True:
                 prev_cord = self.cords
@@ -118,11 +118,11 @@ class LocationChip:
                     self.robot_contol.defualtMotors()
                     speak("I have exited")
                     break
-            print("Prev:", prev_cord[0], "- New:", self.cords)
-            self.robot_contol.turnLeft(800)
-            time.sleep(1)
-            self.robot_contol.defualtMotors()
-            time.sleep(2)
+                print("Prev:", prev_cord[0], "- New:", self.cords)
+                self.robot_contol.turnLeft(800)
+                time.sleep(1)
+                self.robot_contol.defualtMotors()
+                time.sleep(2)
         elif current_cord == 'a3':
             while True:
                 prev_cord = self.cords
@@ -147,7 +147,7 @@ class LocationChip:
                     break
                 print("Prev:", prev_cord[0], "- New:", self.cords)
                 self.robot_contol.turnLeft(800)
-                time.sleep(1)
+                time.sleep(2)
                 self.robot_contol.defualtMotors()
                 time.sleep(2)
 
