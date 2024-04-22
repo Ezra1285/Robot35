@@ -168,7 +168,7 @@ class LocationChip:
             data = line2.decode('utf-8').split(",")
             print("Text 2 found: ", line2)
             print("Data:", data)
-            if len(data) == 0:
+            if len(data) == 0 or len(data) == 1:
                 continue
             elif data[0] == '$RANGE_ERROR':
                 continue
