@@ -25,16 +25,16 @@ HEADTURN = 3
 
 class LocationChip:
 
-    def doChecks(self, data):
-        if len(data) == 0:
+    def doChecks(self):
+        if len(self.cords) == 0:
             return True
-        if data[0] == 'NULL' or data[0] == 'null': 
+        if self.cords[0] == 'NULL' or self.cords[0] == 'null': 
             return True
-        if data[1] == 'NULL' or data[1] == 'null': 
+        if self.cords[1] == 'NULL' or self.cords[1] == 'null': 
             return True
-        if data[2] == 'NULL' or data[2] == 'null': 
+        if self.cords[2] == 'NULL' or self.cords[2] == 'null': 
             return True
-        if data[3] == 'NULL' or data[3] == 'null': 
+        if self.cords[3] == 'NULL' or self.cords[3] == 'null': 
             return True
         return False
     
