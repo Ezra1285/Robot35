@@ -52,7 +52,7 @@ class LocationChip:
                 self.robot_contol.defualtMotors()
                 time.sleep(2)
                 self.cords = self.readData()
-                if float(prev_cord[0]) - float(self.cords[0]) > .50:
+                if float(prev_cord[0]) - float(self.cords[0]) > .25:
                     self.leaveBox()
                     break
                 print("Prev cord,", prev_cord, " - type:", type(prev_cord))
@@ -69,7 +69,7 @@ class LocationChip:
                 self.robot_contol.defualtMotors()
                 time.sleep(2)
                 self.cords = self.readData()
-                if float(prev_cord[1]) - float(self.cords[1]) > .50:
+                if float(prev_cord[1]) - float(self.cords[1]) > .25:
                     self.leaveBox()
                     break
                 print("Prev:", prev_cord[1], "- New:", self.cords[1])
@@ -85,7 +85,7 @@ class LocationChip:
                 self.robot_contol.defualtMotors()
                 time.sleep(2)
                 self.cords = self.readData()
-                if float(prev_cord[2]) - float(self.cords[2]) > .50:
+                if float(prev_cord[2]) - float(self.cords[2]) > .25:
                     self.leaveBox()
                     break
                 print("Prev:", prev_cord[2], "- New:", self.cords[2])
@@ -101,7 +101,7 @@ class LocationChip:
                 self.robot_contol.defualtMotors()
                 time.sleep(2)
                 self.cords = self.readData()
-                if float(prev_cord[3]) - float(self.cords[3]) > .50:
+                if float(prev_cord[3]) - float(self.cords[3]) > .25:
                     self.leaveBox()
                     break
                 print("Prev:", prev_cord[3], "- New:", self.cords[3])
@@ -114,7 +114,7 @@ class LocationChip:
     # Returns data as list, i.e) [a0, a1, a2, a3]
     def readData(self):
         while True:        
-            time.sleep(2)
+            time.sleep(4)
             line1 = self.chip.readline()
             line2 = self.chip.readline()
             data = line2.decode('utf-8').split(",")
