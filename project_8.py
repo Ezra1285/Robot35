@@ -52,16 +52,8 @@ class LocationChip:
                 self.robot_contol.defualtMotors()
                 time.sleep(2)
                 self.cords = self.readData()
-                #  Calc needs testing
-                # if self.cords[0] == '$RANGE_ERROR':
-                #     print("Range error, looking for new data")
-                #     self.cords = self.readData()
-                #     continue
-                if float(prev_cord[0]) - float(self.cords[0]) > .75:
-                    self.robot_contol.moveBackwards(800)
-                    time.sleep(3)
-                    self.robot_contol.defualtMotors()
-                    speak("I have exited")
+                if float(prev_cord[0]) - float(self.cords[0]) > .60:
+                    self.leaveBox()
                     break
                 print("Prev cord,", prev_cord, " - type:", type(prev_cord))
                 print("Prev:", prev_cord[0], "- New:", self.cords)
@@ -77,19 +69,8 @@ class LocationChip:
                 self.robot_contol.defualtMotors()
                 time.sleep(2)
                 self.cords = self.readData()
-                #  Calc needs testing
-                # if self.doChecks():
-                #     self.cords = self.readData()
-                #     continue
-                # if self.cords[0] == '$RANGE_ERROR':
-                #     print("Range error, looking for new data")
-                #     self.cords = self.readData()
-                #     continue
                 if float(prev_cord[1]) - float(self.cords[1]) > .75:
-                    self.robot_contol.moveBackwards(800)
-                    time.sleep(3)
-                    self.robot_contol.defualtMotors()
-                    speak("I have exited")
+                    self.leaveBox()
                     break
                 print("Prev:", prev_cord[0], "- New:", self.cords)
                 self.robot_contol.turnLeft(800)
@@ -104,19 +85,8 @@ class LocationChip:
                 self.robot_contol.defualtMotors()
                 time.sleep(2)
                 self.cords = self.readData()
-                #  Calc needs testing
-                # if self.doChecks():
-                #     self.cords = self.readData()
-                #     continue
-                # if self.cords[0] == '$RANGE_ERROR':
-                #     print("Range error, looking for new data")
-                #     self.cords = self.readData()
-                #     continue
                 if float(prev_cord[2]) - float(self.cords[2]) > .75:
-                    self.robot_contol.moveBackwards(800)
-                    time.sleep(3)
-                    self.robot_contol.defualtMotors()
-                    speak("I have exited")
+                    self.leaveBox()
                     break
                 print("Prev:", prev_cord[0], "- New:", self.cords)
                 self.robot_contol.turnLeft(800)
@@ -131,19 +101,8 @@ class LocationChip:
                 self.robot_contol.defualtMotors()
                 time.sleep(2)
                 self.cords = self.readData()
-                #  Calc needs testing
-                # if self.doChecks():
-                #     self.cords = self.readData()
-                #     continue
-                # if self.cords[0] == '$RANGE_ERROR':
-                #     print("Range error, looking for new data")
-                #     self.cords = self.readData()
-                #     continue
                 if float(prev_cord[3]) - float(self.cords[3]) > .75:
-                    self.robot_contol.moveBackwards(800)
-                    time.sleep(3)
-                    self.robot_contol.defualtMotors()
-                    speak("I have exited")
+                    self.leaveBox()
                     break
                 print("Prev:", prev_cord[0], "- New:", self.cords)
                 self.robot_contol.turnLeft(800)
@@ -183,6 +142,13 @@ class LocationChip:
             elif data[4] == 'NULL' or data[4] == 'null': 
                 continue
             return data[1:]
+
+
+    def leaveBox(self):
+        self.robot_contol.moveBackwards(800)
+        time.sleep(3)
+        self.robot_contol.defualtMotors()
+        speak("I have exited")
 
 
     def findQuadrant(self):
