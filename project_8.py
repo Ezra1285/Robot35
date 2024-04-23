@@ -53,7 +53,7 @@ class LocationChip:
                 time.sleep(2)
                 self.cords = self.readData()
                 if float(prev_cord[0]) - float(self.cords[0]) > .25:
-                    self.leaveBox()
+                    self.leaveBox(self.cords[0])
                     break
                 print("Prev cord,", prev_cord, " - type:", type(prev_cord))
                 print("Prev:", prev_cord[0], "- New:", self.cords[0])
@@ -70,7 +70,7 @@ class LocationChip:
                 time.sleep(2)
                 self.cords = self.readData()
                 if float(prev_cord[1]) - float(self.cords[1]) > .25:
-                    self.leaveBox()
+                    self.leaveBox(self.cords[1])
                     break
                 print("Prev:", prev_cord[1], "- New:", self.cords[1])
                 self.robot_contol.turnLeft(800)
@@ -86,7 +86,7 @@ class LocationChip:
                 time.sleep(2)
                 self.cords = self.readData()
                 if float(prev_cord[2]) - float(self.cords[2]) > .25:
-                    self.leaveBox()
+                    self.leaveBox(self.cords[2])
                     break
                 print("Prev:", prev_cord[2], "- New:", self.cords[2])
                 self.robot_contol.turnLeft(800)
@@ -102,7 +102,7 @@ class LocationChip:
                 time.sleep(2)
                 self.cords = self.readData()
                 if float(prev_cord[3]) - float(self.cords[3]) > .25:
-                    self.leaveBox()
+                    self.leaveBox(self.cords[3])
                     break
                 print("Prev:", prev_cord[3], "- New:", self.cords[3])
                 self.robot_contol.turnLeft(800)
@@ -138,9 +138,14 @@ class LocationChip:
             return data[1:]
 
 
-    def leaveBox(self):
-        self.robot_contol.moveBackwards(800)
-        time.sleep(3)
+    def leaveBox(self, current_anchor_dist):
+        #  Values will most likely need tweaking
+        if float(current_anchor_dist) > 2:
+            self.robot_contol.moveBackwards(1000)
+            time.sleep(4)
+        else:
+            self.robot_contol.moveBackwards(800)
+            time.sleep(3)
         self.robot_contol.defualtMotors()
         speak("I have exited")
 
