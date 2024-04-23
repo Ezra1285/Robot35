@@ -114,7 +114,7 @@ class LocationChip:
     # Returns data as list, i.e) [a0, a1, a2, a3]
     def readData(self):
         while True:      
-            self.chip.flush()  
+            self.chip.reset_input_buffer()  
             time.sleep(4)
             line1 = self.chip.readline()
             line2 = self.chip.readline()
