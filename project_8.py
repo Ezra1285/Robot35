@@ -114,9 +114,9 @@ class LocationChip:
     # Returns data as list, i.e) [a0, a1, a2, a3]
     def readData(self):
         while True:        
+            time.sleep(2)
             line1 = self.chip.readline()
             line2 = self.chip.readline()
-            time.sleep(1)
             data = line2.decode('utf-8').split(",")
             print("Text 2 found: ", line2)
             print("Data:", data)
