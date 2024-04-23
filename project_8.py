@@ -115,7 +115,7 @@ class LocationChip:
     def readData(self):
         while True:      
             self.chip.reset_input_buffer()  
-            time.sleep(4)
+            time.sleep(2)
             line1 = self.chip.readline()
             line2 = self.chip.readline()
             data = line2.decode('utf-8').split(",")
