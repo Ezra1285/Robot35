@@ -52,13 +52,13 @@ class LocationChip:
                 self.robot_contol.defualtMotors()
                 time.sleep(2)
                 self.cords = self.readData()
-                if float(prev_cord[0]) - float(self.cords[0]) > .60:
+                if float(prev_cord[0]) - float(self.cords[0]) > .50:
                     self.leaveBox()
                     break
                 print("Prev cord,", prev_cord, " - type:", type(prev_cord))
                 print("Prev:", prev_cord[0], "- New:", self.cords[0])
                 self.robot_contol.turnLeft(800)
-                time.sleep(1)
+                time.sleep(3)
                 self.robot_contol.defualtMotors()
                 time.sleep(2)
         elif current_cord == 'a1':
@@ -69,12 +69,12 @@ class LocationChip:
                 self.robot_contol.defualtMotors()
                 time.sleep(2)
                 self.cords = self.readData()
-                if float(prev_cord[1]) - float(self.cords[1]) > .60:
+                if float(prev_cord[1]) - float(self.cords[1]) > .50:
                     self.leaveBox()
                     break
                 print("Prev:", prev_cord[1], "- New:", self.cords[1])
                 self.robot_contol.turnLeft(800)
-                time.sleep(1)
+                time.sleep(3)
                 self.robot_contol.defualtMotors()
                 time.sleep(2)
         elif current_cord == 'a2':
@@ -85,12 +85,12 @@ class LocationChip:
                 self.robot_contol.defualtMotors()
                 time.sleep(2)
                 self.cords = self.readData()
-                if float(prev_cord[2]) - float(self.cords[2]) > .60:
+                if float(prev_cord[2]) - float(self.cords[2]) > .50:
                     self.leaveBox()
                     break
                 print("Prev:", prev_cord[2], "- New:", self.cords[2])
                 self.robot_contol.turnLeft(800)
-                time.sleep(1)
+                time.sleep(3)
                 self.robot_contol.defualtMotors()
                 time.sleep(2)
         elif current_cord == 'a3':
@@ -101,21 +101,14 @@ class LocationChip:
                 self.robot_contol.defualtMotors()
                 time.sleep(2)
                 self.cords = self.readData()
-                if float(prev_cord[3]) - float(self.cords[3]) > .60:
+                if float(prev_cord[3]) - float(self.cords[3]) > .50:
                     self.leaveBox()
                     break
                 print("Prev:", prev_cord[3], "- New:", self.cords[3])
                 self.robot_contol.turnLeft(800)
-                time.sleep(2)
+                time.sleep(3)
                 self.robot_contol.defualtMotors()
                 time.sleep(2)
-
-    def compareCords(self, prev_cords, new_cords, target):
-        # calculation needs testing
-        if prev_cords[target] - new_cords[target] > 100:
-            True
-        return False
-
 
 
     # Returns data as list, i.e) [a0, a1, a2, a3]
