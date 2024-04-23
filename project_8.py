@@ -56,7 +56,7 @@ class LocationChip:
                     self.leaveBox()
                     break
                 print("Prev cord,", prev_cord, " - type:", type(prev_cord))
-                print("Prev:", prev_cord[0], "- New:", self.cords)
+                print("Prev:", prev_cord[0], "- New:", self.cords[0])
                 self.robot_contol.turnLeft(800)
                 time.sleep(1)
                 self.robot_contol.defualtMotors()
@@ -69,10 +69,10 @@ class LocationChip:
                 self.robot_contol.defualtMotors()
                 time.sleep(2)
                 self.cords = self.readData()
-                if float(prev_cord[1]) - float(self.cords[1]) > .75:
+                if float(prev_cord[1]) - float(self.cords[1]) > .60:
                     self.leaveBox()
                     break
-                print("Prev:", prev_cord[0], "- New:", self.cords)
+                print("Prev:", prev_cord[1], "- New:", self.cords[1])
                 self.robot_contol.turnLeft(800)
                 time.sleep(1)
                 self.robot_contol.defualtMotors()
@@ -85,10 +85,10 @@ class LocationChip:
                 self.robot_contol.defualtMotors()
                 time.sleep(2)
                 self.cords = self.readData()
-                if float(prev_cord[2]) - float(self.cords[2]) > .75:
+                if float(prev_cord[2]) - float(self.cords[2]) > .60:
                     self.leaveBox()
                     break
-                print("Prev:", prev_cord[0], "- New:", self.cords)
+                print("Prev:", prev_cord[2], "- New:", self.cords[2])
                 self.robot_contol.turnLeft(800)
                 time.sleep(1)
                 self.robot_contol.defualtMotors()
@@ -101,10 +101,10 @@ class LocationChip:
                 self.robot_contol.defualtMotors()
                 time.sleep(2)
                 self.cords = self.readData()
-                if float(prev_cord[3]) - float(self.cords[3]) > .75:
+                if float(prev_cord[3]) - float(self.cords[3]) > .60:
                     self.leaveBox()
                     break
-                print("Prev:", prev_cord[0], "- New:", self.cords)
+                print("Prev:", prev_cord[3], "- New:", self.cords[3])
                 self.robot_contol.turnLeft(800)
                 time.sleep(2)
                 self.robot_contol.defualtMotors()
