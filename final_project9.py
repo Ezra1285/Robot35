@@ -124,7 +124,7 @@ class ThreadExample():
     #         time.sleep(1)
         # robot_animations.idleEyes()
 
-    def get_distance():
+    def get_distance(self):
         GPIO.setmode(GPIO.BCM)
 
         TRIG_PIN = 4
