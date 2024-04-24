@@ -39,5 +39,6 @@ def get_distance():
 
     return distance
 
-get_distance()
+while (True):
+    print(get_distance())
 
