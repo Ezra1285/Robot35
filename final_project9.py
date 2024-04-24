@@ -176,6 +176,14 @@ class ThreadExample():
         time.sleep(4)
         self.defualtMotors()
 
+    def doAll(self):
+        while True:
+            self.moveBackwards(1000)
+            dist = self.get_distance()
+            if dist < 50:
+                break
+        self.defualtMotors()
+
 def speak():
     global speech
     engine = pyttsx3.init() 
@@ -187,6 +195,10 @@ def speak():
 
 
 def main():
+    inst = ThreadExample()
+    inst.doAll()
+
+def main1():
     global speech
     speech = "Hello World"
     speak()
@@ -200,11 +212,11 @@ def main():
     ##inst.firstThread()
     ##inst.secondThread()
     try:
-        _thread.start_new_thread(inst.contUpdateDist, ())
+        _thread.start_new_thread(inst.tryFoward,(1000))
     except:
         print ("Error: unable to start thread1 ")
     try:
-        _thread.start_new_thread(inst.tryFoward,(1000))
+        _thread.start_new_thread(inst.contUpdateDist,())
     except:
         print ("Error: unable to start thread2 ")
     # inst.mainThread()
