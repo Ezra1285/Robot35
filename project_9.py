@@ -18,7 +18,7 @@ def get_distance():
     GPIO.output(TRIG_PIN, False)
 
     timeout = time.time()
-    while GPIO.output(ECHO_PIN, 0) == 0:
+    while GPIO.output(TRIG_PIN, 1) == 0:
         if (time.time() - timeout) > 3:
             print('timeout occured')
             return None
