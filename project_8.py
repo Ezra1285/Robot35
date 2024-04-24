@@ -37,23 +37,15 @@ class LocationChip:
                 self.robot_contol.defualtMotors()
                 time.sleep(2)
                 self.cords = self.readData()
-                #  Calc needs testing
-                print("Prev cord,", prev_cord, " - type:", type(prev_cord))
-                print("Prev:", prev_cord[0], "- New:", self.cords)
-                if self.cords[0] == '$RANGE_ERROR':
-                    print("Range error, looking for new data")
-                    self.cords = self.readData()
-                    continue
-                elif int(prev_cord[0]) - int(self.cords[0]) > 1.5:
-                    self.robot_contol.moveBackwards(800)
-                    time.sleep(3)
-                    self.robot_contol.defualtMotors()
-                    speak("I have exited")
+                if float(prev_cord[0]) - float(self.cords[0]) > .25:
+                    self.leaveBox(self.cords[0])
                     break
-            self.robot_contol.turnLeft(800)
-            time.sleep(1)
-            self.robot_contol.defualtMotors()
-            time.sleep(2)
+                print("Prev cord,", prev_cord, " - type:", type(prev_cord))
+                print("Prev:", prev_cord[0], "- New:", self.cords[0])
+                self.robot_contol.turnLeft(800)
+                time.sleep(3)
+                self.robot_contol.defualtMotors()
+                time.sleep(2)
         elif current_cord == 'a1':
             while True:
                 prev_cord = self.cords
@@ -62,22 +54,14 @@ class LocationChip:
                 self.robot_contol.defualtMotors()
                 time.sleep(2)
                 self.cords = self.readData()
-                #  Calc needs testing
-                print("Prev:", prev_cord[0], "- New:", self.cords)
-                if self.cords[0] == '$RANGE_ERROR':
-                    print("Range error, looking for new data")
-                    self.cords = self.readData()
-                    continue
-                elif int(prev_cord[1]) - int(self.cords[1]) > 1.5:
-                    self.robot_contol.moveBackwards(800)
-                    time.sleep(3)
-                    self.robot_contol.defualtMotors()
-                    speak("I have exited")
+                if float(prev_cord[1]) - float(self.cords[1]) > .25:
+                    self.leaveBox(self.cords[1])
                     break
-            self.robot_contol.turnLeft(800)
-            time.sleep(1)
-            self.robot_contol.defualtMotors()
-            time.sleep(2)
+                print("Prev:", prev_cord[1], "- New:", self.cords[1])
+                self.robot_contol.turnLeft(800)
+                time.sleep(3)
+                self.robot_contol.defualtMotors()
+                time.sleep(2)
         elif current_cord == 'a2':
             while True:
                 prev_cord = self.cords
@@ -86,22 +70,14 @@ class LocationChip:
                 self.robot_contol.defualtMotors()
                 time.sleep(2)
                 self.cords = self.readData()
-                #  Calc needs testing
-                print("Prev:", prev_cord[0], "- New:", self.cords)
-                if self.cords[0] == '$RANGE_ERROR':
-                    print("Range error, looking for new data")
-                    self.cords = self.readData()
-                    continue
-                elif int(prev_cord[2]) - int(self.cords[2]) > 1.2:
-                    self.robot_contol.moveBackwards(800)
-                    time.sleep(3)
-                    self.robot_contol.defualtMotors()
-                    speak("I have exited")
+                if float(prev_cord[2]) - float(self.cords[2]) > .25:
+                    self.leaveBox(self.cords[2])
                     break
-            self.robot_contol.turnLeft(800)
-            time.sleep(1)
-            self.robot_contol.defualtMotors()
-            time.sleep(2)
+                print("Prev:", prev_cord[2], "- New:", self.cords[2])
+                self.robot_contol.turnLeft(800)
+                time.sleep(3)
+                self.robot_contol.defualtMotors()
+                time.sleep(2)
         elif current_cord == 'a3':
             while True:
                 prev_cord = self.cords
@@ -110,44 +86,53 @@ class LocationChip:
                 self.robot_contol.defualtMotors()
                 time.sleep(2)
                 self.cords = self.readData()
-                #  Calc needs testing
-                print("Prev:", prev_cord[0], "- New:", self.cords)
-                if self.cords[0] == '$RANGE_ERROR':
-                    print("Range error, looking for new data")
-                    self.cords = self.readData()
-                    continue
-                elif int(prev_cord[3]) - int(self.cords[3]) > 1.5:
-                    self.robot_contol.moveBackwards(800)
-                    time.sleep(3)
-                    self.robot_contol.defualtMotors()
-                    speak("I have exited")
+                if float(prev_cord[3]) - float(self.cords[3]) > .25:
+                    self.leaveBox(self.cords[3])
                     break
+                print("Prev:", prev_cord[3], "- New:", self.cords[3])
                 self.robot_contol.turnLeft(800)
-                time.sleep(1)
+                time.sleep(3)
                 self.robot_contol.defualtMotors()
                 time.sleep(2)
 
 
-
-
-    def compareCords(self, prev_cords, new_cords, target):
-        # calculation needs testing
-        if prev_cords[target] - new_cords[target] > 100:
-            True
-        return False
-
-
-
     # Returns data as list, i.e) [a0, a1, a2, a3]
     def readData(self):
-        line1 = self.chip.readline()
-        line2 = self.chip.readline()
-        data = line2.decode('utf-8').split(",")
-        print("Text 1 found: ", line1)
-        print("Text 2 found: ", line2)
-        if data[0] == '$RANGE_ERROR':
-            return [] 
-        return data[1:]
+        while True:      
+            self.chip.reset_input_buffer()  
+            time.sleep(2)
+            line1 = self.chip.readline()
+            line2 = self.chip.readline()
+            data = line2.decode('utf-8').split(",")
+            print("Text 2 found: ", line2)
+            print("Data:", data)
+            if len(data) == 0 or len(data) == 1:
+                continue
+            elif data[0] == '$RANGE_ERROR':
+                continue
+            elif data[0] == 'NULL' or data[0] == 'null': 
+                continue
+            elif data[1] == 'NULL' or data[1] == 'null': 
+                continue
+            elif data[2] == 'NULL' or data[2] == 'null': 
+                continue
+            elif data[3] == 'NULL' or data[3] == 'null': 
+                continue
+            elif data[4] == 'NULL' or data[4] == 'null': 
+                continue
+            return data[1:]
+
+
+    def leaveBox(self, current_anchor_dist):
+        #  Values will most likely need tweaking
+        if float(current_anchor_dist) > 2:
+            self.robot_contol.moveBackwards(1000)
+            time.sleep(4)
+        else:
+            self.robot_contol.moveBackwards(800)
+            time.sleep(3)
+        self.robot_contol.defualtMotors()
+        speak("I have exited")
 
 
     def findQuadrant(self):
