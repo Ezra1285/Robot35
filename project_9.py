@@ -20,14 +20,14 @@ def get_distance():
     timeout = time.time()
     while GPIO.input(ECHO_PIN, 1) == 0:
         if (time.time() - timeout) > 3:
-            print('timeout occured')
+            print('timeout occured while waiting for signal')
             return None
     
     pulse_start = time.time()
     timeout = time.time()
     while GPIO.input(ECHO_PIN, 1) == 1:
         if (time.time() - timeout) > 3:
-            print('timeout occured')
+            print('timeout occured while recieving signal')
             return None
     print("AAA")
     pulse_end = time.time()
