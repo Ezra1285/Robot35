@@ -311,6 +311,7 @@ class ThreadExample():
         return distance
 
     def contUpdateDist(self):
+        print("checking dist")
         while (True):
             print(self.get_distance())
 
@@ -318,8 +319,10 @@ class ThreadExample():
         print("                1 seconds is up")
 
     def tryFoward(self, amount=200):
+        print("trying foward")
         self.moveBackwards(amount)
-        time.sleep(2)
+        time.sleep(4)
+        self.defualtMotors()
 
 def speak():
     global speech
