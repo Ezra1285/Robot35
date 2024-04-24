@@ -179,7 +179,7 @@ class ThreadExample():
     def doAll(self):
         while True:
             self.moveBackwards(1000)
-            time.sleep(2)
+            time.sleep(4)
             dist = self.get_distance()
             if dist < 50:
                 break
