@@ -1,15 +1,15 @@
 import RPi.GPIO as GPIO
 import time
 
-GPIO.setmode(GPIO.BCM)
-
-TRIG_PIN = 23
-ECHO_PIN = 24
-
-GPIO.setup(TRIG_PIN, GPIO.OUT)
-GPIO.setup(ECHO_PIN, GPIO.IN)
-
 def get_distance():
+    GPIO.setmode(GPIO.BCM)
+
+    TRIG_PIN = 23
+    ECHO_PIN = 24
+
+    GPIO.setup(TRIG_PIN, GPIO.OUT)
+    GPIO.setup(ECHO_PIN, GPIO.IN)
+
     GPIO.output(TRIG_PIN, False)
     time.sleep(0.1)
 
