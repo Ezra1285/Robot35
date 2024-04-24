@@ -1,15 +1,15 @@
 import RPi.GPIO as GPIO
 import time
 
+GPIO.setmode(GPIO.BCM)
+
+TRIG_PIN = 4
+ECHO_PIN = 17
+
+GPIO.setup(TRIG_PIN, GPIO.OUT)
+GPIO.setup(ECHO_PIN, GPIO.IN)
+
 def get_distance():
-    GPIO.setmode(GPIO.BCM)
-
-    TRIG_PIN = 4
-    ECHO_PIN = 17 
-
-    GPIO.setup(TRIG_PIN, GPIO.OUT)
-    GPIO.setup(ECHO_PIN, GPIO.IN)
-
     GPIO.output(TRIG_PIN, False)
     time.sleep(0.1)
 
@@ -20,14 +20,14 @@ def get_distance():
     timeout = time.time()
     while GPIO.input(ECHO_PIN) == 0:
         if (time.time() - timeout) > 3:
-            print('timeout occured while waiting for signal')
+            print('timeout occured')
             return None
-    
+
     pulse_start = time.time()
     timeout = time.time()
     while GPIO.input(ECHO_PIN) == 1:
         if (time.time() - timeout) > 3:
-            print('timeout occured while recieving signal')
+            print('timeout occured')
             return None
     print("AAA")
     pulse_end = time.time()
@@ -39,6 +39,5 @@ def get_distance():
 
     return distance
 
-while (True):
-    print(get_distance())
-
+while True:
+    get_distance()
