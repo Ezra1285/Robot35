@@ -4,8 +4,8 @@ import time
 def get_distance():
     GPIO.setmode(GPIO.BCM)
 
-    TRIG_PIN = 7
-    ECHO_PIN = 11 
+    TRIG_PIN = 4
+    ECHO_PIN = 17 
 
     GPIO.setup(TRIG_PIN, GPIO.OUT)
     GPIO.setup(ECHO_PIN, GPIO.IN)
