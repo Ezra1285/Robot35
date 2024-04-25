@@ -28,9 +28,10 @@ class ThreadExample():
         
     def selectRandomMovement(self):
         while len(SCRIPT) != 0:
-            print("Doing random movement")
+            # print("Doing random movement")
+            self.robot.getRandomMovement()
             time.sleep(1)
-        # self.robot.getRandomMovement()
+        
 
     def timedFunction(self):
         print("                1 seconds is up")
@@ -41,10 +42,10 @@ class ThreadExample():
 def main():
     # global speech
     
-    # robot_control = RobotControl()
+    robot_control = RobotControl()
     # keys =  new_keyboard_control.KeyControl(window)
     
-    inst = ThreadExample(10)
+    inst = ThreadExample(robot_control)
 
     t = threading.Timer(200.0, inst.timedFunction)
     t.start()
@@ -59,6 +60,7 @@ def main():
     except:
         print ("Error: unable to start thread2 ")
     inst.mainThread()
+    robot_control.defualtEverything()
     print("We are done")
 
 

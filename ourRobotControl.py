@@ -115,32 +115,164 @@ class RobotControl():
         self.body = 6000
         self.headTilt = 6000
         self.headTurn = 6000
+        self.rightShoulder = 6000
+        self.rightBicep = 6000
+        self.rightElbow = 6000
+        self.rightUpperforarm = 6000
+        self.rightWrist = 6000
+        self.rightGripper = 6000
+        self.leftShouler = 6000
+        self.leftBicep = 6000
+        self.leftElbow = 6000
+        self.leftUpperForearm = 6000
+        self.leftWrist = 6000
+        self.leftGripper = 6000
         self.tango.setTarget(MOTORS, self.motors)
         self.tango.setTarget(TURN, self.turn)
         self.tango.setTarget(BODY, self.body)
         self.tango.setTarget(HEADTILT, self.headTilt)
         self.tango.setTarget(HEADTURN, self.headTurn)
+        self.tango.setTarget(5, self.rightShoulder)
+        self.tango.setTarget(6, self.rightBicep)
+        self.tango.setTarget(7, self.rightElbow)
+        self.tango.setTarget(8, self.rightUpperforarm)
+        self.tango.setTarget(9, self.rightWrist)
+        self.tango.setTarget(10, self.rightGripper)
+        self.tango.setTarget(11, self.leftShouler)
+        self.tango.setTarget(12, self.leftBicep)
+        self.tango.setTarget(13, self.leftElbow)
+        self.tango.setTarget(14, self.leftUpperForearm)
+        self.tango.setTarget(15, self.leftWrist)
+        self.tango.setTarget(16, self.leftGripper)
         print("Defaulting everything")
 
-    def getRandomMovement():
+    def getRandomMovement(self):
         random_num = random.randint(1, 10)
         if random_num == 1:
-            pass
+            self.lookUp(800)
         elif random_num == 2:
-            pass
+            self.lookDown(800)
         elif random_num == 3:
-            pass
+            self.lookRight(800)
         elif random_num == 4:
-            pass
+            self.lookLeft(800)
         elif random_num == 5:
-            pass
+            self.defaultHead()
         elif random_num == 6:
-            pass
+            self.rightShoulderMove(7100)
         elif random_num == 7:
-            pass
+            self.leftShoulderMove(7100)
         elif random_num == 8:
-            pass
+            self.rightBicepMove(7000)
         elif random_num == 9:
-            pass
+            self.rightElbowMove(7000)
         elif random_num == 10:
-            pass
+            self.rightUpperForearmMove(7000)
+
+        # Maybe do the movement then defualt back after a second 
+        #  OR add a third third that randomly defaults everything
+
+    def rightShoulderMove(self, amount):
+        self.rightShoulder = amount
+        if(self.rightShoulder < 2110):
+            self.rightShoulder = 2110
+        if(self.rightShoulder > 7400):
+            self.rightShoulder = 7400
+        self.tango.setTarget(5, self.rightShoulder)
+
+    def rightBicepMove(self, amount):
+        self.rightBicep = amount
+        if(self.rightBicep < 2110):
+            self.rightBicep = 2110
+        if(self.rightBicep > 7400):
+            self.rightBicep = 7400
+        self.tango.setTarget(6, self.rightBicep)
+
+    def rightElbowMove(self, amount):
+        self.rightElbow = amount
+        if(self.rightElbow < 2110):
+            self.rightElbow = 2110
+        if(self.rightElbow > 7400):
+            self.rightElbow = 7400
+        self.tango.setTarget(7, self.rightElbow)
+        
+    def rightUpperForearmMove(self, amount):
+        self.rightUpperforarm = amount
+        if(self.rightUpperforarm < 2110):
+            self.rightUpperforarm = 2110
+        if(self.rightUpperforarm > 7400):
+            self.rightUpperforarm = 7400
+        self.tango.setTarget(8, self.rightUpperforarm)
+        
+    def rightWristMove(self, amount):
+        self.rightWrist = amount
+        if(self.rightWrist < 2110):
+            self.rightWrist = 2110
+        if(self.rightWrist > 7400):
+            self.rightWrist = 7400
+        self.tango.setTarget(9, self.rightWrist)
+
+    def rightGripperMove(self, amount):
+        self.rightGripper = amount
+        if(self.rightGripper < 2110):
+            self.rightGripper = 2110
+        if(self.rightGripper > 7400):
+            self.rightGripper = 7400
+        self.tango.setTarget(10, self.rightGripper)
+
+    def leftShoulderMove(self, amount):
+        self.leftShouler = amount
+        if(self.leftShouler < 2110):
+            self.leftShouler = 2110
+        if(self.leftShouler > 7400):
+            self.leftShouler = 7400
+        self.tango.setTarget(11, self.leftShouler)
+
+    def leftBicepMove(self, amount):
+        self.leftBicep = amount
+        if(self.leftBicep < 2110):
+            self.leftBicep = 2110
+        if(self.leftBicep > 7400):
+            self.leftBicep = 7400
+        self.tango.setTarget(12, self.leftBicep)
+
+    def leftElbowMove(self, amount):
+        self.leftElbow= amount
+        if(self.leftElbow < 2110):
+            self.leftElbow = 2110
+        if(self.leftElbow > 7400):
+            self.leftElbow = 7400
+        self.tango.setTarget(13, self.leftElbow)
+
+    def leftUpperForearmMove(self, amount):
+        self.leftUpperForearm= amount
+        if(self.leftUpperForearm < 2110):
+            self.leftUpperForearm = 2110
+        if(self.leftUpperForearm > 7400):
+            self.leftUpperForearm = 7400
+        self.tango.setTarget(14, self.leftUpperForearm)
+
+    def leftWristMove(self, amount):
+        self.leftWrist= amount
+        if(self.leftWrist < 2110):
+            self.leftWrist = 2110
+        if(self.leftWrist > 7400):
+            self.leftWrist = 7400
+        self.tango.setTarget(15, self.leftWrist)
+
+    def leftGripperMove(self, amount):
+        self.leftGripper = amount
+        if(self.leftGripper < 2110):
+            self.leftGripper = 2110
+        if(self.leftGripper > 7400):
+            self.leftGripper = 7400
+        self.tango.setTarget(16, self.leftGripper)
+
+    def resetRight(self):
+        self.robot_controll.setTarget(5, 5900)
+    
+    def resetLeft(self):
+        self.robot_controll.setTarget(11, 5900)
+
+    def close(self):
+        self.robot_controll.close()
