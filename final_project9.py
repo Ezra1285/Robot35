@@ -53,10 +53,12 @@ class ThreadExample():
     def contUpdateDist(self):
         while self.inBox:
             dist = self.get_distance()
+            print("Newest dist:", dist)
             if dist == None:
-                dist = 1000
+                self.chip.robot_contol.defaultMove()
+                continue
             self.object_distance = dist
-            time.sleep(1)
+            # time.sleep(1)
 
     def timedFunction(self):
         print("                1 seconds is up")
@@ -74,30 +76,25 @@ class ThreadExample():
                 self.inBox = self.checkInBox()
                     
     def tryFoward(self):
+        print("Obj dist:", self.object_distance)
         while self.object_distance > 60.0:
-            print("Obj dist:", self.object_distance)
+            print("FOWARD")
+        print("DEFAULT")
+
             # if self.robot.motors >= 6000: 
-            self.chip.fowardMove()
+            # self.chip.fowardMove()
             # time.sleep()
             # self.inBox = self.checkInBox()
-            self.inBox = self.checkInBox()
-        print("Deafulkting")
-        self.chip.defaultMove()
+            # self.inBox = self.checkInBox()
+        # print("Deafulkting")
+        # self.chip.defaultMove()
 
             
-
     def checkInBox(self):
         print("Checking in box")
         if self.inBox:
             self.inBox = self.chip.isInBox()
             time.sleep(1)
-
-def speak(speech):
-    engine = pyttsx3.init() 
-    if (speech != " "):
-        engine.say(speech)
-        engine.runAndWait()      
-
 
 def main():
     myChip = LocationChip()
@@ -107,7 +104,7 @@ def main():
     # else: 
     #     myChip.findExit(current_cord)
 
-    speak("Exit has been found")
+    # speak("Exit has been found")
     time.sleep(1)
         
     # sensor =  distSensor()
@@ -130,6 +127,7 @@ def main():
         _thread.start_new_thread(inst.tryFoward,())
     except:
         print ("Error: unable to start thread3 ")
+
     inst.mainThread()
     print("We are done")
 
