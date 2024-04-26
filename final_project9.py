@@ -73,7 +73,7 @@ class ThreadExample():
             # dist = self.get_distance()
             print("Newest dist:", distance)                
             self.object_distance = distance
-            time.sleep(1.5)
+            time.sleep(1)
 
     def timedFunction(self):
         print("                1 seconds is up")
@@ -99,7 +99,7 @@ class ThreadExample():
         while self.object_distance > 60.0:
             # if self.robot.motors >= 6000: 
             self.chip.fowardMove()
-            time.sleep(1.5)
+            time.sleep(1)
             # self.inBox = self.checkInBox()
             # self.inBox = self.checkInBox()
         # print("Deafulkting")
