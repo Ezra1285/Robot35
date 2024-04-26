@@ -55,7 +55,7 @@ class ThreadExample():
             dist = self.get_distance()
             print("Newest dist:", dist)
             if dist == None:
-                self.chip.robot_contol.defaultMove()
+                self.chip.defaultMove()
                 continue
             self.object_distance = dist
             time.sleep(1)
