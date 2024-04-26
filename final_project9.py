@@ -75,8 +75,9 @@ class ThreadExample():
                 time.sleep(1)
                 self.inBox = False
                 break    
-        print("DEFAULTING")
-        self.robot.defualtMotors()
+            else:
+                print("DEFAULTING")
+                self.robot.defualtMotors()
             
 
     def checkInBox(self):
