@@ -12,35 +12,32 @@ class ThreadExample():
         self.robot = robot_control
         self.chip = location_chip
         self.inBox = True
+        GPIO.setmode(GPIO.BCM)
+        self.TRIG_PIN = 4
+        self.ECHO_PIN = 17 
+        GPIO.setup(self.TRIG_PIN, GPIO.OUT)
+        GPIO.setup(self.ECHO_PIN, GPIO.IN)
+        GPIO.output(self.TRIG_PIN, False)
+        time.sleep(0.1)
+        GPIO.output(self.TRIG_PIN, True)
+        time.sleep(0.00001)
+        GPIO.output(self.TRIG_PIN, False)
   
     def mainThread(self):
-        self.robot.moveBackwards(1000)
+        print("Starting the thread")
+        # self.robot.moveBackwards(1000)
 
     def get_distance(self):
-        GPIO.setmode(GPIO.BCM)
-
-        TRIG_PIN = 4
-        ECHO_PIN = 17 
-
-        GPIO.setup(TRIG_PIN, GPIO.OUT)
-        GPIO.setup(ECHO_PIN, GPIO.IN)
-
-        GPIO.output(TRIG_PIN, False)
-        time.sleep(0.1)
-
-        GPIO.output(TRIG_PIN, True)
-        time.sleep(0.00001)
-        GPIO.output(TRIG_PIN, False)
 
         timeout = time.time()
-        while GPIO.input(ECHO_PIN) == 0:
+        while GPIO.input(self.ECHO_PIN) == 0:
             if (time.time() - timeout) > 3:
                 print('timeout occured while waiting for signal')
                 return None
         
         pulse_start = time.time()
         timeout = time.time()
-        while GPIO.input(ECHO_PIN) == 1:
+        while GPIO.input(self.ECHO_PIN) == 1:
             if (time.time() - timeout) > 3:
                 print('timeout occured while recieving signal')
                 return None
@@ -62,7 +59,7 @@ class ThreadExample():
     def timedFunction(self):
         print("                1 seconds is up")
 
-    def tryFoward(self, amount):
+    def tryFoward(self):
         print("trying foward")
         while self.inBox:
             print("trying foward")
@@ -70,7 +67,7 @@ class ThreadExample():
             if self.object_distance > 60:
                 if self.robot.motors >= 6000: 
                     print("Trying to move")
-                    self.robot.moveBackwards(amount)
+                    self.robot.moveBackwards(1000)
             else:
                 print("DEFAULTING")
                 self.robot.defualtMotors()
@@ -108,16 +105,16 @@ def main():
     t.start()
     ##inst.firstThread()
     ##inst.secondThread()
+    # try:
+    #     _thread.start_new_thread(inst.checkInBox,())
+    # except:
+    #     print ("Error: unable to start thread1 ")
     try:
-        _thread.start_new_thread(inst.checkInBox,())
-    except:
-        print ("Error: unable to start thread1 ")
-    try:
-        _thread.start_new_thread(inst.tryFoward,(1000))
+        _thread.start_new_thread(inst.contUpdateDist,())
     except:
         print ("Error: unable to start thread2 ")
     try:
-        _thread.start_new_thread(inst.contUpdateDist,())
+        _thread.start_new_thread(inst.tryFoward,())
     except:
         print ("Error: unable to start thread3 ")
     inst.mainThread()
