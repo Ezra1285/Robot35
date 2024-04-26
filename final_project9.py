@@ -48,12 +48,12 @@ class ThreadExample():
 
         distance = pulse_duration * 17150
         distance = round(distance, 2)
-        print("Dist:", distance)
+        # print("Dist:", distance)
         return distance
 
 
     def contUpdateDist(self):
-        while self.checkInBox():
+        while self.inBox:
             dist = self.get_distance()
             if dist == None:
                 dist = 1000
@@ -64,7 +64,7 @@ class ThreadExample():
         print("                1 seconds is up")
 
     def tryFoward(self):
-        while self.checkInBox():
+        while self.inBox:
             print("trying foward")
             # Stops only when distance is closer then 60
             print("Obj dist:", self.object_distance)
@@ -73,9 +73,11 @@ class ThreadExample():
                 print("Trying to move")
                 self.robot.moveBackwards(3000)
                 time.sleep(3)
-            else:    
-                print("DEFAULTING")
-                self.robot.defualtMotors()
+                self.inBox = False
+                break
+    
+        print("DEFAULTING")
+        self.robot.defualtMotors()
             
 
     def checkInBox(self):
@@ -99,7 +101,7 @@ def main():
     # else: 
     #     myChip.findExit(current_cord)
 
-    # speak("Exit has been found")
+    speak("Exit has been found")
     time.sleep(1)
         
     robot_control = RobotControl()
