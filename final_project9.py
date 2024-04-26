@@ -8,8 +8,7 @@ from project_8 import LocationChip, RobotControl
 
 
 class ThreadExample(): 
-    def __init__(self, robot_control, location_chip):
-        self.robot = robot_control
+    def __init__(self, location_chip):
         self.chip = location_chip
         self.object_distance = 1000
         self.inBox = True
@@ -105,9 +104,8 @@ def main():
     speak("Exit has been found")
     time.sleep(1)
         
-    robot_control = RobotControl()
     # sensor =  distSensor()
-    inst = ThreadExample(robot_control, myChip)
+    inst = ThreadExample(myChip)
     t = threading.Timer(200.0, inst.timedFunction)
     t.start()
 
