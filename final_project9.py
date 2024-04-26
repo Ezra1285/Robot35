@@ -53,7 +53,7 @@ class ThreadExample():
 
 
     def contUpdateDist(self):
-        while self.inBox:
+        while self.checkInBox():
             dist = self.get_distance()
             if dist == None:
                 dist = 1000
@@ -64,7 +64,7 @@ class ThreadExample():
         print("                1 seconds is up")
 
     def tryFoward(self):
-        while self.inBox:
+        while self.checkInBox():
             print("trying foward")
             # Stops only when distance is closer then 60
             print("Obj dist:", self.object_distance)
@@ -99,7 +99,7 @@ def main():
     # else: 
     #     myChip.findExit(current_cord)
 
-    speak("Exit has been found")
+    # speak("Exit has been found")
     time.sleep(1)
         
     robot_control = RobotControl()
