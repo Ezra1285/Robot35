@@ -24,26 +24,11 @@ HEADTURN = 3
 #     Ser.readline()
 
 class LocationChip:
-
-    # def doChecks(self):
-    #     if len(self.cords) == 0:
-    #         return True
-    #     if self.cords[0] == 'NULL' or self.cords[0] == 'null': 
-    #         return True
-    #     if self.cords[1] == 'NULL' or self.cords[1] == 'null': 
-    #         return True
-    #     if self.cords[2] == 'NULL' or self.cords[2] == 'null': 
-    #         return True
-    #     if self.cords[3] == 'NULL' or self.cords[3] == 'null': 
-    #         return True
-    #     return False
-    
     # TODO: 
     #  1) Drive forward
     #  2) If the dist. from prev cord to new cord is rapidly approaching desired target then its probaly going the right way
     #  3) If its not getting way closer then we need to turn and try again
     def findExit(self, current_cord):
-        isFirst = True
         if current_cord == 'a0':
             while True:
                 prev_cord = self.cords
@@ -165,6 +150,16 @@ class LocationChip:
 
     def findQuadrant(self):
         data = self.readData()
+        if len(data) == 0:
+            return False
+        if data[0] == 'NULL' or data[0] == 'null': 
+            data[0] = 1000
+        if data[1] == 'NULL' or data[1] == 'null': 
+            data[1] = 1000
+        if data[2] == 'NULL' or data[2] == 'null': 
+            data[2] = 1000
+        if data[3] == 'NULL' or data[3] == 'null': 
+            data[3] = 1000
         self.cords = data
         cords_dict = {'a0':float(data[0]), 'a1':float(data[1]), 'a2':float(data[2]), 'a3':float(data[3])} #messing with indexing here
         # self.cords['a2'] = 1000
@@ -313,8 +308,9 @@ class RobotControl():
 if __name__ == "__main__":
     myChip = LocationChip()
     current_cord = myChip.findQuadrant()
-    if current_cord == False:
-        speak("Range error")
-    else: 
-        myChip.findExit(current_cord)
+    # if current_cord == False:
+    #     speak("Range error")
+    # else: 
+    #     myChip.findExit(current_cord)
+    myChip.exitBox()
     print("Done")
