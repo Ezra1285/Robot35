@@ -11,7 +11,7 @@ class ThreadExample():
     def __init__(self, robot_control, location_chip):
         self.robot = robot_control
         self.chip = location_chip
-        self.object_distance = 20
+        self.object_distance = 1000
         self.inBox = True
         GPIO.setmode(GPIO.BCM)
         self.TRIG_PIN = 4
