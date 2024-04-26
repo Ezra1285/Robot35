@@ -78,7 +78,7 @@ class ThreadExample():
             print("Obj dist:", self.object_distance)
             # if self.robot.motors >= 6000: 
             self.chip.fowardMove()
-            time.sleep(1)
+            # time.sleep()
             # self.inBox = self.checkInBox()
             self.inBox = self.checkInBox()
         print("Deafulkting")
