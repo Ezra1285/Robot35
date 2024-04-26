@@ -85,18 +85,18 @@ def speak(speech):
 
 def main():
     myChip = LocationChip()
-    current_cord = myChip.findQuadrant()
-    if current_cord == False:
-        speak("Range error")
-    else: 
-        myChip.findExit(current_cord)
+    # current_cord = myChip.findQuadrant()
+    # if current_cord == False:
+    #     speak("Range error")
+    # else: 
+    #     myChip.findExit(current_cord)
 
     speak("Exit has been found")
     time.sleep(1)
         
-    # robot_animations = RobotControl()
+    robot_control = RobotControl()
     # sensor =  distSensor()
-    inst = ThreadExample(myChip)
+    inst = ThreadExample(myChip, robot_control)
 
     t = threading.Timer(200.0, inst.timedFunction)
     t.start()
