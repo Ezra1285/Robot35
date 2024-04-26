@@ -55,7 +55,7 @@ class ThreadExample():
 
 
     def contUpdateDist(self):
-        if self.inBox:
+        while self.inBox:
             self.object_distance = self.get_distance()
             time.sleep(1)
 
@@ -64,13 +64,14 @@ class ThreadExample():
 
     def tryFoward(self, amount):
         print("trying foward")
-        if self.inBox:
+        while self.inBox:
             # Stops only when distance is closer then 60
             if self.object_distance > 60:
                 if self.robot.motors >= 6000: 
                     self.robot.moveBackwards(amount)
             else:
                 self.robot.defualtMotors()
+            time.sleep(1)
 
     def checkInBox(self):
         if self.inBox:
