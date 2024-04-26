@@ -73,7 +73,8 @@ class ThreadExample():
                 print("Trying to move")
                 self.robot.moveBackwards(1000)
                 time.sleep(1)
-                self.inBox = self.checkInBox()
+                # self.inBox = self.checkInBox()
+                self.inBox = False
                 
             
         print("DEFAULTING")
