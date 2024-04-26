@@ -35,12 +35,14 @@ class ThreadExample():
             print(sentence)
             engine.runAndWait()
             time.sleep(1)
+        print("In read")
         
     def selectRandomMovement(self):
         while len(SCRIPT) != 0:
             # print("Doing random movement")
             self.robot.getRandomMovement()
             time.sleep(1)
+        print("In move")
         
 
     def timedFunction(self):
@@ -69,6 +71,7 @@ def main():
         _thread.start_new_thread(inst.selectRandomMovement,())        
     except:
         print ("Error: unable to start thread2 ")
+    
     inst.mainThread()
     robot_control.defualtEverything()
     print("We are done")
