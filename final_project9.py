@@ -11,6 +11,7 @@ class ThreadExample():
     def __init__(self, robot_control, location_chip):
         self.robot = robot_control
         self.chip = location_chip
+        self.object_distance = 1000
         self.inBox = True
         GPIO.setmode(GPIO.BCM)
         self.TRIG_PIN = 4
@@ -67,14 +68,15 @@ class ThreadExample():
             print("trying foward")
             # Stops only when distance is closer then 60
             print("Obj dist:", self.object_distance)
-            if self.object_distance > 60:
+            if self.object_distance > 60.0:
                 # if self.robot.motors >= 6000: 
                 print("Trying to move")
                 self.robot.moveBackwards(1000)
+                time.sleep(3)
             else:
                 print("DEFAULTING")
                 self.robot.defualtMotors()
-            time.sleep(3)
+            
 
     def checkInBox(self):
         print("Checking in box")
