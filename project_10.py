@@ -34,13 +34,13 @@ class ThreadExample():
             engine.say(sentence)
             print(sentence)
             engine.runAndWait()
-            time.sleep(2)
+            time.sleep(1)
         
     def selectRandomMovement(self):
         while len(SCRIPT) != 0:
             # print("Doing random movement")
             self.robot.getRandomMovement()
-            time.sleep(2)
+            time.sleep(1)
         
 
     def timedFunction(self):

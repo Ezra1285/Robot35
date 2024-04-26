@@ -147,7 +147,7 @@ class RobotControl():
         print("Defaulting everything")
 
     def getRandomMovement(self):
-        random_num = random.randint(1, 10)
+        random_num = random.randint(1, 15)
         if random_num == 1:
             self.lookUp(800)
         elif random_num == 2:
@@ -174,7 +174,10 @@ class RobotControl():
             self.rightElbowMove(5000)
         elif random_num == 13:
             self.rightShoulderMove(5000)
-
+        elif random_num == 14:
+            self.waistRight(800)
+        elif random_num == 15:
+            self.waistLeft(800)
         # Maybe do the movement then defualt back after a second 
         #  OR add a third third that randomly defaults everything
 
