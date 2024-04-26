@@ -36,6 +36,7 @@ class ThreadExample():
             engine.runAndWait()
             time.sleep(1)
         print("In read")
+        return
         
     def selectRandomMovement(self):
         while len(SCRIPT) != 0:
@@ -43,6 +44,7 @@ class ThreadExample():
             self.robot.getRandomMovement()
             time.sleep(1)
         print("In move")
+        return
         
 
     def timedFunction(self):
