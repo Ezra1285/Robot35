@@ -71,11 +71,10 @@ class ThreadExample():
             if self.object_distance > 60.0:
                 # if self.robot.motors >= 6000: 
                 print("Trying to move")
-                self.robot.moveBackwards(3000)
+                self.robot.moveBackwards(1500)
                 time.sleep(3)
                 self.inBox = False
-                break
-    
+                break    
         print("DEFAULTING")
         self.robot.defualtMotors()
             
