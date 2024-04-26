@@ -38,7 +38,7 @@ class LocationChip:
                 time.sleep(2)
                 self.cords = self.readData()
                 if float(prev_cord[0]) - float(self.cords[0]) > .25:
-                    self.leaveBox(self.cords[0])
+                    # self.leaveBox(self.cords[0])
                     break
                 print("Prev cord,", prev_cord, " - type:", type(prev_cord))
                 print("Prev:", prev_cord[0], "- New:", self.cords[0])
@@ -55,7 +55,7 @@ class LocationChip:
                 time.sleep(2)
                 self.cords = self.readData()
                 if float(prev_cord[1]) - float(self.cords[1]) > .25:
-                    self.leaveBox(self.cords[1])
+                    # self.leaveBox(self.cords[1])
                     break
                 print("Prev:", prev_cord[1], "- New:", self.cords[1])
                 self.robot_contol.turnLeft(800)
@@ -71,7 +71,7 @@ class LocationChip:
                 time.sleep(2)
                 self.cords = self.readData()
                 if float(prev_cord[2]) - float(self.cords[2]) > .25:
-                    self.leaveBox(self.cords[2])
+                    # self.leaveBox(self.cords[2])
                     break
                 print("Prev:", prev_cord[2], "- New:", self.cords[2])
                 self.robot_contol.turnLeft(800)
@@ -87,7 +87,7 @@ class LocationChip:
                 time.sleep(2)
                 self.cords = self.readData()
                 if float(prev_cord[3]) - float(self.cords[3]) > .25:
-                    self.leaveBox(self.cords[3])
+                    # self.leaveBox(self.cords[3])
                     break
                 print("Prev:", prev_cord[3], "- New:", self.cords[3])
                 self.robot_contol.turnLeft(800)
@@ -121,6 +121,19 @@ class LocationChip:
             elif data[4] == 'NULL' or data[4] == 'null': 
                 continue
             return data[1:]
+
+    #  Returns true is we have exited
+    def isInBox(self):
+        for x in range(20):      
+            self.chip.reset_input_buffer()  
+            line1 = self.chip.readline()
+            line2 = self.chip.readline()
+            data = line2.decode('utf-8').split(",")
+            print("isExited Data:", data)
+            if data[0] != '$RANGE_ERROR':
+                return True
+        return False
+            
 
 
     def leaveBox(self, current_anchor_dist):
@@ -183,11 +196,11 @@ class LocationChip:
         # First read line is HEX and next one is decimal
 
 def speak(speech):
-        engine = pyttsx3.init() 
-        if (speech != " "):
-        # while(speech != " "):    
-            engine.say(speech)
-            engine.runAndWait()      
+    engine = pyttsx3.init() 
+    if (speech != " "):
+    # while(speech != " "):    
+        engine.say(speech)
+        engine.runAndWait()      
 
 
 class RobotControl():
@@ -233,7 +246,6 @@ class RobotControl():
         self.tango.setTarget(HEADTURN, self.headTurn)
         print("Look left")
         
-
     def waistLeft(self):
         self.body -= 200
         if(self.body < 1510):
