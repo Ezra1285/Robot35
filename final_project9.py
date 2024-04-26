@@ -74,8 +74,7 @@ class ThreadExample():
                 self.robot.moveBackwards(3000)
                 time.sleep(3)
             else:
-                print("DEFAULTING")
-                self.robot.defualtMotors()
+                return
             
 
     def checkInBox(self):
@@ -106,6 +105,8 @@ def main():
     # sensor =  distSensor()
     inst = ThreadExample(robot_control, myChip)
     inst.tryFoward()
+    print("DEFAULTING")
+    robot_control.defualtMotors()
     t = threading.Timer(200.0, inst.timedFunction)
     t.start()
 
