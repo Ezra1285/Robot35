@@ -96,7 +96,7 @@ def main():
         
     robot_control = RobotControl()
     # sensor =  distSensor()
-    inst = ThreadExample(myChip, robot_control)
+    inst = ThreadExample(robot_control, myChip)
 
     t = threading.Timer(200.0, inst.timedFunction)
     t.start()
