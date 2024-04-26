@@ -113,11 +113,11 @@ def main():
     except:
         print ("Error: unable to start thread1 ")
     try:
-        _thread.start_new_thread(inst.contUpdateDist,())
+        _thread.start_new_thread(inst.tryFoward,(1000))
     except:
         print ("Error: unable to start thread2 ")
     try:
-        _thread.start_new_thread(inst.tryFoward,(1000))
+        _thread.start_new_thread(inst.contUpdateDist,())
     except:
         print ("Error: unable to start thread3 ")
     inst.mainThread()
