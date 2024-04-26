@@ -58,7 +58,7 @@ class ThreadExample():
                 self.chip.robot_contol.defaultMove()
                 continue
             self.object_distance = dist
-            # time.sleep(1)
+            time.sleep(1)
 
     def timedFunction(self):
         print("                1 seconds is up")
@@ -79,6 +79,7 @@ class ThreadExample():
         print("Obj dist:", self.object_distance)
         while self.object_distance > 60.0:
             print("FOWARD")
+            time.sleep(1)
         print("DEFAULT")
 
             # if self.robot.motors >= 6000: 
