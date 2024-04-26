@@ -56,14 +56,14 @@ class ThreadExample():
             while GPIO.input(self.ECHO_PIN) == 0:
                 if (time.time() - timeout) > 3:
                     print('timeout occured while waiting for signal')
-                    self.chip.defaultMove()
+                    # self.chip.defaultMove()
                     continue            
             pulse_start = time.time()
             timeout = time.time()
             while GPIO.input(self.ECHO_PIN) == 1:
                 if (time.time() - timeout) > 3:
                     print('timeout occured while recieving signal')
-                    self.chip.defaultMove()
+                    # self.chip.defaultMove()
                     continue
             pulse_end = time.time()
             pulse_duration = pulse_end - pulse_start
@@ -73,7 +73,7 @@ class ThreadExample():
             # dist = self.get_distance()
             print("Newest dist:", distance)                
             self.object_distance = distance
-            time.sleep(.5)
+            time.sleep(1.5)
 
     def timedFunction(self):
         print("                1 seconds is up")
@@ -99,7 +99,7 @@ class ThreadExample():
         while self.object_distance > 60.0:
             # if self.robot.motors >= 6000: 
             self.chip.fowardMove()
-            time.sleep(.5)
+            time.sleep(1.5)
             # self.inBox = self.checkInBox()
             # self.inBox = self.checkInBox()
         # print("Deafulkting")
