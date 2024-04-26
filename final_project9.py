@@ -125,7 +125,7 @@ def main():
         
     # sensor =  distSensor()
     inst = ThreadExample(myChip)
-    t = threading.Timer(100.0, inst.timedFunction)
+    t = threading.Timer(200.0, inst.timedFunction)
     t.start()
 
     ##inst.firstThread()
