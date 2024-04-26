@@ -56,7 +56,7 @@ class ThreadExample():
         while self.inBox:
             dist = self.get_distance()
             if dist == None:
-                continue
+                dist = 1000
             self.object_distance = dist
             time.sleep(2)
 
@@ -73,8 +73,9 @@ class ThreadExample():
                 print("Trying to move")
                 self.robot.moveBackwards(3000)
                 time.sleep(3)
-            else:
-                return
+            else:    
+                print("DEFAULTING")
+                self.robot.defualtMotors()
             
 
     def checkInBox(self):
@@ -104,9 +105,6 @@ def main():
     robot_control = RobotControl()
     # sensor =  distSensor()
     inst = ThreadExample(robot_control, myChip)
-    inst.tryFoward()
-    print("DEFAULTING")
-    robot_control.defualtMotors()
     t = threading.Timer(200.0, inst.timedFunction)
     t.start()
 
@@ -117,16 +115,16 @@ def main():
     # except:
     #     print ("Error: unable to start thread1 ")
     
-    # try:
-    #     _thread.start_new_thread(inst.contUpdateDist,())
-    # except:
-    #     print ("Error: unable to start thread2 ")
-    # try:
-    #     _thread.start_new_thread(inst.tryFoward,())
-    # except:
-    #     print ("Error: unable to start thread3 ")
-    # inst.mainThread()
-    # print("We are done")
+    try:
+        _thread.start_new_thread(inst.contUpdateDist,())
+    except:
+        print ("Error: unable to start thread2 ")
+    try:
+        _thread.start_new_thread(inst.tryFoward,())
+    except:
+        print ("Error: unable to start thread3 ")
+    inst.mainThread()
+    print("We are done")
 
 
 if __name__ == "__main__":
