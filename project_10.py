@@ -1,6 +1,6 @@
 import serial
 import time
-# import pyttsx3
+import pyttsx3
 import tkinter as tk
 from ourRobotControl import RobotControl
 import _thread, threading
@@ -19,11 +19,11 @@ class ThreadExample():
         # self.robot.defualtEverything()
 
     def readScript(self):
-        # engine = pyttsx3.init() 
+        engine = pyttsx3.init() 
         while len(SCRIPT) != 0:    
-            # engine.say(SCRIPT.pop(0))
-            print(SCRIPT.pop(0))
-            # engine.runAndWait()
+            engine.say(SCRIPT.pop(0))
+            # print(SCRIPT.pop(0))
+            engine.runAndWait()
             time.sleep(1)
         
     def selectRandomMovement(self):
