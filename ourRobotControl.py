@@ -168,6 +168,12 @@ class RobotControl():
             self.rightElbowMove(7000)
         elif random_num == 10:
             self.rightUpperForearmMove(7000)
+        elif random_num == 11:
+            self.rightUpperForearmMove(6000)
+        elif random_num == 12:
+            self.rightElbowMove(5000)
+        elif random_num == 13:
+            self.rightShoulderMove(5000)
 
         # Maybe do the movement then defualt back after a second 
         #  OR add a third third that randomly defaults everything
