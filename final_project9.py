@@ -71,10 +71,10 @@ class ThreadExample():
                 self.chip.fowardMove()
                 time.sleep(1)
                 # self.inBox = self.checkInBox()
-                self.inBox = False
-                
-        print("DEFAULTING")
-        self.chip.defaultMove()
+                self.inBox = self.checkInBox()
+            else:        
+                print("DEFAULTING")
+                self.chip.defaultMove()
             
 
     def checkInBox(self):
