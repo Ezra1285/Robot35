@@ -65,6 +65,7 @@ class ThreadExample():
     def tryFoward(self, amount):
         print("trying foward")
         while self.inBox:
+            print("trying foward")
             # Stops only when distance is closer then 60
             if self.object_distance > 60:
                 if self.robot.motors >= 6000: 
@@ -76,6 +77,7 @@ class ThreadExample():
             time.sleep(2)
 
     def checkInBox(self):
+        print("Checking in box")
         if self.inBox:
             self.inBox = self.chip.isInBox()
             time.sleep(1)
