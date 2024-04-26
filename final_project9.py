@@ -72,7 +72,7 @@ class ThreadExample():
                 # if self.robot.motors >= 6000: 
                 print("Trying to move")
                 self.robot.moveBackwards(1500)
-                time.sleep(3)
+                time.sleep(1)
                 self.inBox = False
                 break    
         print("DEFAULTING")
