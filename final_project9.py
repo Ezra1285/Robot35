@@ -58,7 +58,7 @@ class ThreadExample():
             if dist == None:
                 dist = 1000
             self.object_distance = dist
-            time.sleep(1)
+            time.sleep(.5)
 
     def timedFunction(self):
         print("                1 seconds is up")
@@ -74,6 +74,7 @@ class ThreadExample():
                 self.robot.moveBackwards(1000)
                 time.sleep(1)
                 self.inBox = self.checkInBox()
+                
             
         print("DEFAULTING")
         self.robot.defualtMotors()
