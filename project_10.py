@@ -20,17 +20,17 @@ class ThreadExample():
 
     def readScript(self):
         engine = pyttsx3.init() 
-        if len(SCRIPT) != 0:    
+        while len(SCRIPT) != 0:    
             engine.say(SCRIPT.pop(0))
             # print(SCRIPT.pop(0))
             engine.runAndWait()
-            time.sleep(1)
+            time.sleep(2)
         
     def selectRandomMovement(self):
-        if len(SCRIPT) != 0:
+        while len(SCRIPT) != 0:
             # print("Doing random movement")
             self.robot.getRandomMovement()
-            time.sleep(1)
+            time.sleep(2)
         
 
     def timedFunction(self):
