@@ -135,14 +135,21 @@ class LocationChip:
         return False
             
 
-
+    def fowardMove(self):
+        print("Trying to move")
+        self.robot_contol.moveBackwards(1100) 
+        
+    def defaultMove(self):
+        print("Trying to default")
+        self.robot_contol.defualtMotors() 
+        
     def leaveBox(self, current_anchor_dist):
         #  Values will most likely need tweaking
         if float(current_anchor_dist) > 2:
-            self.robot_contol.moveBackwards(1000)
+            self.robot_contol.moveBackwards(1200)
             time.sleep(4)
         else:
-            self.robot_contol.moveBackwards(800)
+            self.robot_contol.moveBackwards(1000)
             time.sleep(3)
         self.robot_contol.defualtMotors()
         speak("I have exited")
