@@ -30,8 +30,9 @@ class ThreadExample():
     def readScript(self):
         engine = pyttsx3.init() 
         while len(SCRIPT) != 0:    
-            engine.say(SCRIPT.pop(0))
-            print(SCRIPT.pop(0))
+            sentence = SCRIPT.pop(0)
+            engine.say(sentence)
+            print(sentence)
             engine.runAndWait()
             time.sleep(2)
         
