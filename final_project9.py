@@ -63,10 +63,10 @@ class ThreadExample():
         print("                1 seconds is up")
 
     def tryFoward(self):
-        print("trying foward")
         while self.inBox:
             print("trying foward")
             # Stops only when distance is closer then 60
+            print("Obj dist:", self.object_distance)
             if self.object_distance > 60:
                 if self.robot.motors >= 6000: 
                     print("Trying to move")
