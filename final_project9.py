@@ -61,7 +61,7 @@ class ThreadExample():
     def timedFunction(self):
         print("                1 seconds is up")
 
-    def tryFoward(self):
+    def tryFoward1(self):
         while self.inBox:
             print("trying foward")
             # Stops only when distance is closer then 60
@@ -72,9 +72,18 @@ class ThreadExample():
                 time.sleep(1)
                 # self.inBox = self.checkInBox()
                 self.inBox = self.checkInBox()
-            else:        
-                print("DEFAULTING")
-                self.chip.defaultMove()
+                    
+    def tryFoward(self):
+        while self.object_distance > 60.0:
+            print("Obj dist:", self.object_distance)
+            # if self.robot.motors >= 6000: 
+            self.chip.fowardMove()
+            time.sleep(1)
+            # self.inBox = self.checkInBox()
+            self.inBox = self.checkInBox()
+        print("Deafulkting")
+        self.chip.defaultMove()
+
             
 
     def checkInBox(self):
