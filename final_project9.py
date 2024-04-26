@@ -26,8 +26,37 @@ class ThreadExample():
         print("Starting the thread")
         # self.robot.moveBackwards(1000)
 
-    def get_distance(self):
+    def doItAll(self):
+        while self.inBox:
+            timeout = time.time()
+            while GPIO.input(self.ECHO_PIN) == 0:
+                if (time.time() - timeout) > 3:
+                    print('timeout occured while waiting for signal')
+                    self.chip.defaultMove()
+                    continue            
+            pulse_start = time.time()
+            timeout = time.time()
+            while GPIO.input(self.ECHO_PIN) == 1:
+                if (time.time() - timeout) > 3:
+                    print('timeout occured while recieving signal')
+                    self.chip.defaultMove()
+                    continue
+            pulse_end = time.time()
+            pulse_duration = pulse_end - pulse_start
+            distance = pulse_duration * 17150
+            distance = round(distance, 2)
+            # print("Dist:", distance)
+            # dist = self.get_distance()
+            print("Newest dist:", distance)                
+            
+            if distance > 60.0:
+                self.chip.fowardMove()
+            else: 
+                self.chip.defaultMove()
+            time.sleep(1)
 
+
+    def get_distance(self):
         timeout = time.time()
         while GPIO.input(self.ECHO_PIN) == 0:
             if (time.time() - timeout) > 3:
@@ -122,6 +151,7 @@ def main():
 
     # speak("Exit has been found")
     time.sleep(1)
+    myChip.fowardMove(7000)
         
     # sensor =  distSensor()
     inst = ThreadExample(myChip)
@@ -134,15 +164,19 @@ def main():
     #     _thread.start_new_thread(inst.checkInBox,())
     # except:
     #     print ("Error: unable to start thread1 ")
-    
     try:
-        _thread.start_new_thread(inst.contUpdateDist,())
-    except:
-        print ("Error: unable to start thread2 ")
-    try:
-        _thread.start_new_thread(inst.tryFoward,())
+        _thread.start_new_thread(inst.doItAll,())
     except:
         print ("Error: unable to start thread3 ")
+
+    # try:
+    #     _thread.start_new_thread(inst.contUpdateDist,())
+    # except:
+    #     print ("Error: unable to start thread2 ")
+    # try:
+    #     _thread.start_new_thread(inst.tryFoward,())
+    # except:
+    #     print ("Error: unable to start thread3 ")
 
     inst.mainThread()
     print("We are done")
