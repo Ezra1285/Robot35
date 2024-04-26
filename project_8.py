@@ -124,7 +124,7 @@ class LocationChip:
 
     #  Returns true is we have exited
     def isInBox(self):
-        for x in range(20):      
+        for x in range(5):      
             self.chip.reset_input_buffer()  
             line1 = self.chip.readline()
             line2 = self.chip.readline()

@@ -57,7 +57,7 @@ class ThreadExample():
     def contUpdateDist(self):
         while self.inBox:
             self.object_distance = self.get_distance()
-            time.sleep(1)
+            time.sleep(2)
 
     def timedFunction(self):
         print("                1 seconds is up")
@@ -68,14 +68,17 @@ class ThreadExample():
             # Stops only when distance is closer then 60
             if self.object_distance > 60:
                 if self.robot.motors >= 6000: 
+                    print("Trying to move")
                     self.robot.moveBackwards(amount)
             else:
+                print("DEFAULTING")
                 self.robot.defualtMotors()
-            time.sleep(1)
+            time.sleep(2)
 
     def checkInBox(self):
         if self.inBox:
             self.inBox = self.chip.isInBox()
+            time.sleep(1)
 
 def speak(speech):
     engine = pyttsx3.init() 
