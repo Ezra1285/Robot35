@@ -52,12 +52,27 @@ class ThreadExample():
 
     def contUpdateDist(self):
         while self.inBox:
-            dist = self.get_distance()
-            print("Newest dist:", dist)
-            if dist == None:
-                self.chip.defaultMove()
-                continue
-            self.object_distance = dist
+            timeout = time.time()
+            while GPIO.input(self.ECHO_PIN) == 0:
+                if (time.time() - timeout) > 3:
+                    print('timeout occured while waiting for signal')
+                    self.chip.defaultMove()
+                    continue            
+            pulse_start = time.time()
+            timeout = time.time()
+            while GPIO.input(self.ECHO_PIN) == 1:
+                if (time.time() - timeout) > 3:
+                    print('timeout occured while recieving signal')
+                    self.chip.defaultMove()
+                    continue
+            pulse_end = time.time()
+            pulse_duration = pulse_end - pulse_start
+            distance = pulse_duration * 17150
+            distance = round(distance, 2)
+            # print("Dist:", distance)
+            # dist = self.get_distance()
+            print("Newest dist:", distance)                
+            self.object_distance = distance
             time.sleep(1)
 
     def timedFunction(self):
@@ -77,14 +92,14 @@ class ThreadExample():
                     
     def tryFoward(self):
         print("Obj dist:", self.object_distance)
+        # while self.object_distance > 60.0:
+        #     print("FOWARD")
+        #     time.sleep(1)
+        # print("DEFAULT")
         while self.object_distance > 60.0:
-            print("FOWARD")
-            time.sleep(1)
-        print("DEFAULT")
-
             # if self.robot.motors >= 6000: 
-            # self.chip.fowardMove()
-            # time.sleep()
+            self.chip.fowardMove()
+            time.sleep(.5)
             # self.inBox = self.checkInBox()
             # self.inBox = self.checkInBox()
         # print("Deafulkting")
