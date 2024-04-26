@@ -2,9 +2,8 @@ import tkinter as tk
 import time
 import _thread, threading
 import pyttsx3
-from maestro import Controller 
 import RPi.GPIO as GPIO
-from project_8 import LocationChip, RobotControl
+from project_8 import LocationChip
 
 
 class ThreadExample(): 
