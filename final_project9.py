@@ -53,7 +53,10 @@ class ThreadExample():
 
     def contUpdateDist(self):
         while self.inBox:
-            self.object_distance = self.get_distance()
+            dist = self.get_distance()
+            if dist == None:
+                continue
+            self.object_distance = dist
             time.sleep(2)
 
     def timedFunction(self):
