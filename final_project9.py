@@ -68,13 +68,13 @@ class ThreadExample():
             # Stops only when distance is closer then 60
             print("Obj dist:", self.object_distance)
             if self.object_distance > 60:
-                if self.robot.motors >= 6000: 
-                    print("Trying to move")
-                    self.robot.moveBackwards(1000)
+                # if self.robot.motors >= 6000: 
+                print("Trying to move")
+                self.robot.moveBackwards(1000)
             else:
                 print("DEFAULTING")
                 self.robot.defualtMotors()
-            time.sleep(2)
+            time.sleep(3)
 
     def checkInBox(self):
         print("Checking in box")
