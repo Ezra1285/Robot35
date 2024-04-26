@@ -99,9 +99,40 @@ class KeyControl():
     def defualtMotors(self, key):
         self.motors = 6000
         self.turn = 6000
+        self.body = 6000
+        self.headTilt = 6000
+        self.headTurn = 6000
+        self.rightShoulder = 6000
+        self.rightBicep = 6000
+        self.rightElbow = 6000
+        self.rightUpperforarm = 6000
+        self.rightWrist = 6000
+        self.rightGripper = 6000
+        self.leftShouler = 6000
+        self.leftBicep = 6000
+        self.leftElbow = 6000
+        self.leftUpperForearm = 6000
+        self.leftWrist = 6000
+        self.leftGripper = 6000
         self.tango.setTarget(MOTORS, self.motors)
         self.tango.setTarget(TURN, self.turn)
-        print("Deafulting motors")
+        self.tango.setTarget(BODY, self.body)
+        self.tango.setTarget(HEADTILT, self.headTilt)
+        self.tango.setTarget(HEADTURN, self.headTurn)
+        self.tango.setTarget(5, self.rightShoulder)
+        self.tango.setTarget(6, self.rightBicep)
+        self.tango.setTarget(7, self.rightElbow)
+        self.tango.setTarget(8, self.rightUpperforarm)
+        self.tango.setTarget(9, self.rightWrist)
+        self.tango.setTarget(10, self.rightGripper)
+        self.tango.setTarget(11, self.leftShouler)
+        self.tango.setTarget(12, self.leftBicep)
+        self.tango.setTarget(13, self.leftElbow)
+        self.tango.setTarget(14, self.leftUpperForearm)
+        self.tango.setTarget(15, self.leftWrist)
+        self.tango.setTarget(16, self.leftGripper)
+        print("Defaulting everything")
+
 
 win = tk.Tk()
 keys = KeyControl(win)
