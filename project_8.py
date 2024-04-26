@@ -137,7 +137,7 @@ class LocationChip:
 
     def fowardMove(self):
         print("Trying to move")
-        self.robot_contol.moveBackwards(1100) 
+        self.robot_contol.setMotorsTo(5000) 
         
     def defaultMove(self):
         print("Trying to default")
@@ -279,6 +279,14 @@ class RobotControl():
         self.motors -= amount
         if(self.motors < 1510):
             self.motors = 1510
+        self.tango.setTarget(MOTORS, self.motors)
+
+    def setMotorsTo(self, amount=200):
+        self.motors = amount
+        if(self.motors < 1510):
+            self.motors = 1510
+        if(self.motors > 7900):
+            self.motors = 7900
         self.tango.setTarget(MOTORS, self.motors)
 
     def turnRight(self, amount=200):
