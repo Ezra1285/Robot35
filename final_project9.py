@@ -11,7 +11,7 @@ class ThreadExample():
     def __init__(self, robot_control, location_chip):
         self.robot = robot_control
         self.chip = location_chip
-        self.object_distance = 1000
+        self.object_distance = 20
         self.inBox = True
         GPIO.setmode(GPIO.BCM)
         self.TRIG_PIN = 4
@@ -105,25 +105,27 @@ def main():
     robot_control = RobotControl()
     # sensor =  distSensor()
     inst = ThreadExample(robot_control, myChip)
-
+    inst.tryFoward()
     t = threading.Timer(200.0, inst.timedFunction)
     t.start()
+
     ##inst.firstThread()
     ##inst.secondThread()
     # try:
     #     _thread.start_new_thread(inst.checkInBox,())
     # except:
     #     print ("Error: unable to start thread1 ")
-    try:
-        _thread.start_new_thread(inst.contUpdateDist,())
-    except:
-        print ("Error: unable to start thread2 ")
-    try:
-        _thread.start_new_thread(inst.tryFoward,())
-    except:
-        print ("Error: unable to start thread3 ")
-    inst.mainThread()
-    print("We are done")
+    
+    # try:
+    #     _thread.start_new_thread(inst.contUpdateDist,())
+    # except:
+    #     print ("Error: unable to start thread2 ")
+    # try:
+    #     _thread.start_new_thread(inst.tryFoward,())
+    # except:
+    #     print ("Error: unable to start thread3 ")
+    # inst.mainThread()
+    # print("We are done")
 
 
 if __name__ == "__main__":
