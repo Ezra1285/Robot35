@@ -30,7 +30,7 @@ class ThreadExample():
 
     def readScript(self):
         engine = pyttsx3.init() 
-        for x in len(SCRIPT):    
+        for x in SCRIPT:    
             sentence = x
             engine.say(sentence)
             print(sentence)
@@ -49,7 +49,6 @@ class ThreadExample():
         
     def timedFunction(self):
         print("                1 seconds is up")
-
 
 
 ### NOTE: When switching between the body and eyes dont switch too quickly or the eyes will break and look weird
