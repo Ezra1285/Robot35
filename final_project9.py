@@ -39,7 +39,7 @@ class ThreadExample():
             else: 
                 print("DEFAULTING")
                 # self.chip.defaultMove()
-            time.sleep(1)
+            time.sleep(.5)
 
 
     # def get_distance(self):
