@@ -35,7 +35,7 @@ class ThreadExample():
             dist = self.get_distance()           
             if dist > 60.0:
                 print("FOWARD")
-                self.chip.fowardMove(3500)
+                self.chip.fowardMove(7500)
                 time.sleep(1.5)
             else: 
                 print("DEFAULTING")
@@ -177,8 +177,9 @@ def main():
         
     # sensor =  distSensor()
     inst = ThreadExample(myChip)
-    t = threading.Timer(200.0, inst.timedFunction)
-    t.start()
+    inst.doItAll()
+    # t = threading.Timer(200.0, inst.timedFunction)
+    # t.start()
 
     ##inst.firstThread()
     ##inst.secondThread()
@@ -186,10 +187,10 @@ def main():
     #     _thread.start_new_thread(inst.checkInBox,())
     # except:
     #     print ("Error: unable to start thread1 ")
-    try:
-        _thread.start_new_thread(inst.doItAll,())
-    except:
-        print ("Error: unable to start thread3 ")
+    # try:
+        # _thread.start_new_thread(inst.doItAll,())
+    # except:
+        # print ("Error: unable to start thread3 ")
 
     # try:
     #     _thread.start_new_thread(inst.contUpdateDist,())
@@ -200,7 +201,7 @@ def main():
     # except:
     #     print ("Error: unable to start thread3 ")
 
-    inst.mainThread()
+    # inst.mainThread()
     print("We are done")
 
 
