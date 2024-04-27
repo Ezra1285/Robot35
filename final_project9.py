@@ -168,17 +168,18 @@ class ThreadExample():
 
 def main():
     myChip = LocationChip()
-    # current_cord = myChip.findQuadrant()
-    # if current_cord == False:
-    #     speak("Range error")
-    # else: 
-    #     myChip.findExit(current_cord)
+    current_cord = myChip.findQuadrant()
+    if current_cord == False:
+        # speak("Range error")
+        print("Range error")
+    else: 
+        myChip.findExit(current_cord)
 
     # speak("Exit has been found")
-        
+       
     # sensor =  distSensor()
-    inst = ThreadExample(myChip)
-    inst.doItAll()
+    # inst = ThreadExample(myChip)
+    # inst.doItAll()
     # t = threading.Timer(200.0, inst.timedFunction)
     # t.start()
 
