@@ -23,6 +23,9 @@ class ThreadExample():
         GPIO.output(self.TRIG_PIN, False)
   
     def mainThread(self):
+        # time.sleep(1)
+        self.chip.fowardMove(4500)
+        time.sleep(.5)
         print("Starting the thread")
         # self.robot.moveBackwards(1000)
 
@@ -150,8 +153,6 @@ def main():
     #     myChip.findExit(current_cord)
 
     # speak("Exit has been found")
-    time.sleep(1)
-    myChip.fowardMove(7000)
         
     # sensor =  distSensor()
     inst = ThreadExample(myChip)

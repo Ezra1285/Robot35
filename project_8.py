@@ -135,9 +135,9 @@ class LocationChip:
         return False
             
 
-    def fowardMove(self):
+    def fowardMove(self, amount):
         print("Trying to move")
-        self.robot_contol.setMotorsTo(4500) 
+        self.robot_contol.setMotorsTo(amount) 
         
     def defaultMove(self):
         print("Trying to default")
