@@ -39,7 +39,7 @@ class ThreadExample():
                 time.sleep(1.5)
             else: 
                 print("DEFAULTING")
-                self.chip.defaultMove()
+                # self.chip.defaultMove()
             
 
 
@@ -202,8 +202,9 @@ def main():
     #     print ("Error: unable to start thread3 ")
 
     # inst.mainThread()
+    inst.chip.defaultMove()
     print("We are done")
-
+    
 
 if __name__ == "__main__":
     main()
