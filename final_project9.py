@@ -35,10 +35,10 @@ class ThreadExample():
             dist = self.get_distance()           
             if dist > 60.0:
                 print("FOWARD")
-                # self.chip.fowardMove(4500)
+                self.chip.fowardMove(4500)
             else: 
                 print("DEFAULTING")
-                # self.chip.defaultMove()
+                self.chip.defaultMove()
             time.sleep(.5)
 
 
