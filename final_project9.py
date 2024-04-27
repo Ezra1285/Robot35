@@ -11,20 +11,21 @@ class ThreadExample():
         self.chip = location_chip
         self.object_distance = 1000
         self.inBox = True
-        GPIO.setmode(GPIO.BCM)
-        self.TRIG_PIN = 4
-        self.ECHO_PIN = 17 
-        GPIO.setup(self.TRIG_PIN, GPIO.OUT)
-        GPIO.setup(self.ECHO_PIN, GPIO.IN)
-        GPIO.output(self.TRIG_PIN, False)
-        time.sleep(0.1)
-        GPIO.output(self.TRIG_PIN, True)
-        time.sleep(0.00001)
-        GPIO.output(self.TRIG_PIN, False)
+        # GPIO.setmode(GPIO.BCM)
+        # self.TRIG_PIN = 4
+        # self.ECHO_PIN = 17 
+        # GPIO.setup(self.TRIG_PIN, GPIO.OUT)
+        # GPIO.setup(self.ECHO_PIN, GPIO.IN)
+        # GPIO.output(self.TRIG_PIN, False)
+        # time.sleep(0.1)
+        # GPIO.output(self.TRIG_PIN, True)
+        # time.sleep(0.00001)
+        # GPIO.output(self.TRIG_PIN, False)
   
+
     def mainThread(self):
         # time.sleep(1)
-        self.chip.fowardMove(4500)
+        # self.chip.fowardMove(4500)
         time.sleep(.5)
         print("Starting the thread")
         # self.robot.moveBackwards(1000)
@@ -61,28 +62,65 @@ class ThreadExample():
             time.sleep(1)
 
 
-    def get_distance(self):
+    # def get_distance(self):
+    #     timeout = time.time()
+    #     while GPIO.input(self.ECHO_PIN) == 0:
+    #         if (time.time() - timeout) > 3:
+    #             print('timeout occured while waiting for signal')
+    #             return None
+        
+    #     pulse_start = time.time()
+    #     timeout = time.time()
+    #     while GPIO.input(self.ECHO_PIN) == 1:
+    #         if (time.time() - timeout) > 3:
+    #             print('timeout occured while recieving signal')
+    #             return None
+    #     pulse_end = time.time()
+
+    #     pulse_duration = pulse_end - pulse_start
+
+    #     distance = pulse_duration * 17150
+    #     distance = round(distance, 2)
+    #     # print("Dist:", distance)
+    #     return distance
+
+    def get_distance():
+        GPIO.setmode(GPIO.BCM)
+
+        TRIG_PIN = 4
+        ECHO_PIN = 17 
+
+        GPIO.setup(TRIG_PIN, GPIO.OUT)
+        GPIO.setup(ECHO_PIN, GPIO.IN)
+
+        GPIO.output(TRIG_PIN, False)
+        time.sleep(0.1)
+
+        GPIO.output(TRIG_PIN, True)
+        time.sleep(0.00001)
+        GPIO.output(TRIG_PIN, False)
+
         timeout = time.time()
-        while GPIO.input(self.ECHO_PIN) == 0:
+        while GPIO.input(ECHO_PIN) == 0:
             if (time.time() - timeout) > 3:
                 print('timeout occured while waiting for signal')
                 return None
         
         pulse_start = time.time()
         timeout = time.time()
-        while GPIO.input(self.ECHO_PIN) == 1:
+        while GPIO.input(ECHO_PIN) == 1:
             if (time.time() - timeout) > 3:
                 print('timeout occured while recieving signal')
                 return None
+        print("AAA")
         pulse_end = time.time()
 
         pulse_duration = pulse_end - pulse_start
 
         distance = pulse_duration * 17150
         distance = round(distance, 2)
-        # print("Dist:", distance)
-        return distance
 
+        return distance
 
     def contUpdateDist(self):
         while self.inBox:
