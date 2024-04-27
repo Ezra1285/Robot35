@@ -35,7 +35,7 @@ class ThreadExample():
             dist = self.get_distance()           
             if dist > 60.0:
                 print("FOWARD")
-                self.chip.robot_contol.moveBackwards(800)
+                self.chip.robot_contol.moveBackwards(1200)
                 time.sleep(1.5)
             else: 
                 print("DEFAULTING")
