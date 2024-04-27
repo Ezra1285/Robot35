@@ -32,28 +32,8 @@ class ThreadExample():
 
     def doItAll(self):
         while self.inBox:
-            timeout = time.time()
-            while GPIO.input(self.ECHO_PIN) == 0:
-                if (time.time() - timeout) > 20:
-                    print('timeout occured while waiting for signal')
-                    self.chip.defaultMove()
-                    continue            
-            pulse_start = time.time()
-            timeout = time.time()
-            while GPIO.input(self.ECHO_PIN) == 1:
-                if (time.time() - timeout) > 20:
-                    print('timeout occured while recieving signal')
-                    self.chip.defaultMove()
-                    continue
-            pulse_end = time.time()
-            pulse_duration = pulse_end - pulse_start
-            distance = pulse_duration * 17150
-            distance = round(distance, 2)
-            # print("Dist:", distance)
-            # dist = self.get_distance()
-            print("Newest dist:", distance)                
-            
-            if distance > 60.0:
+            dist = self.get_distance()           
+            if dist > 60.0:
                 print("FOWARD")
                 # self.chip.fowardMove(4500)
             else: 
@@ -84,7 +64,7 @@ class ThreadExample():
     #     # print("Dist:", distance)
     #     return distance
 
-    def get_distance():
+    def get_distance(self):
         GPIO.setmode(GPIO.BCM)
 
         TRIG_PIN = 4
