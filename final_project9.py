@@ -86,14 +86,14 @@ class ThreadExample():
         while self.inBox:
             timeout = time.time()
             while GPIO.input(self.ECHO_PIN) == 0:
-                if (time.time() - timeout) > 3:
+                if (time.time() - timeout) > 20:
                     print('timeout occured while waiting for signal')
                     # self.chip.defaultMove()
                     continue            
             pulse_start = time.time()
             timeout = time.time()
             while GPIO.input(self.ECHO_PIN) == 1:
-                if (time.time() - timeout) > 3:
+                if (time.time() - timeout) > 20:
                     print('timeout occured while recieving signal')
                     # self.chip.defaultMove()
                     continue
