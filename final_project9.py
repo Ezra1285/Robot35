@@ -92,14 +92,14 @@ class ThreadExample():
             if (time.time() - timeout) > 3:
                 print('timeout occured while recieving signal')
                 return None
-        print("AAA")
+        
         pulse_end = time.time()
 
         pulse_duration = pulse_end - pulse_start
 
         distance = pulse_duration * 17150
         distance = round(distance, 2)
-
+        print("Dist:", distance)
         return distance
 
     def contUpdateDist(self):
