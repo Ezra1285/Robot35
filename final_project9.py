@@ -32,7 +32,8 @@ class ThreadExample():
 
     def doItAll(self):
         while self.inBox:
-            dist = self.get_distance()           
+            # dist = self.get_distance()           
+            dist = 70
             if dist > 60.0:
                 print("FOWARD")
                 self.chip.robot_contol.moveBackwards(1200)
