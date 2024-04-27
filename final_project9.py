@@ -36,7 +36,7 @@ class ThreadExample():
             # dist = 70
             if dist > 70.0:
                 print("FOWARD")
-                self.chip.robot_contol.moveBackwards(800)
+                self.chip.robot_contol.setMotorsTo(800)
                 time.sleep(1)
             else: 
                 print("DEFAULTING")
