@@ -53,7 +53,7 @@ class ThreadExample():
             print("Newest dist:", distance)                
             
             if distance > 60.0:
-                self.chip.fowardMove()
+                self.chip.fowardMove(4500)
             else: 
                 self.chip.defaultMove()
             time.sleep(1)
@@ -117,7 +117,7 @@ class ThreadExample():
             print("Obj dist:", self.object_distance)
             if self.object_distance > 60.0:
                 # if self.robot.motors >= 6000: 
-                self.chip.fowardMove()
+                self.chip.fowardMove(4500)
                 time.sleep(.5)
                 # self.inBox = self.checkInBox()
                 self.inBox = self.checkInBox()
@@ -130,7 +130,7 @@ class ThreadExample():
         # print("DEFAULT")
         while self.object_distance > 60.0:
             # if self.robot.motors >= 6000: 
-            self.chip.fowardMove()
+            self.chip.fowardMove(4500)
             time.sleep(1)
             # self.inBox = self.checkInBox()
             # self.inBox = self.checkInBox()
