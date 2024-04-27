@@ -32,12 +32,12 @@ class ThreadExample():
 
     def doItAll(self):
         while self.inBox:
-            # dist = self.get_distance()           
-            dist = 70
-            if dist > 60.0:
+            dist = self.get_distance()           
+            # dist = 70
+            if dist > 70.0:
                 print("FOWARD")
-                self.chip.robot_contol.moveBackwards(1200)
-                time.sleep(1.5)
+                self.chip.robot_contol.moveBackwards(800)
+                time.sleep(1)
             else: 
                 print("DEFAULTING")
                 # self.chip.defaultMove()
@@ -178,8 +178,12 @@ def main():
     # speak("Exit has been found")
        
     # sensor =  distSensor()
-    inst = ThreadExample(myChip)
-    inst.doItAll()
+    
+    try: 
+        inst = ThreadExample(myChip)
+        inst.doItAll()
+    except KeyboardInterrupt:
+        inst.chip.defaultMove()
     # t = threading.Timer(200.0, inst.timedFunction)
     # t.start()
 
@@ -204,7 +208,7 @@ def main():
     #     print ("Error: unable to start thread3 ")
 
     # inst.mainThread()
-    inst.chip.defaultMove()
+    
     print("We are done")
     
 
