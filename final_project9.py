@@ -40,7 +40,7 @@ class ThreadExample():
                 time.sleep(1)
             else: 
                 print("DEFAULTING")
-                # self.chip.defaultMove()
+                self.chip.defaultMove()
             
 
 
