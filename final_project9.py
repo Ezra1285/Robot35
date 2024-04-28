@@ -41,8 +41,9 @@ class ThreadExample():
                 fwd_count += 1
                 default_count = 0
                 if fwd_count >= 3:
-                    self.chip.robot_contol.setMotorsTo(1000)
-                    time.sleep(.5)
+                    wasSet = self.chip.robot_contol.setMotorsTo(4500)
+                    if wasSet:
+                        time.sleep(.5)
             else: 
                 print("DEFAULTING")
                 fwd_count = 0

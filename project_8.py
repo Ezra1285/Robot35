@@ -282,7 +282,7 @@ class RobotControl():
 
     def setMotorsTo(self, amount=200):
         if self.motors == amount:
-            return
+            return False
         self.motors = amount
         if(self.motors < 1510):
             self.motors = 1510
@@ -291,6 +291,7 @@ class RobotControl():
         self.tango.setSpeed(MOTORS, 5)
         self.tango.setAccel(MOTORS, 200)
         self.tango.setTarget(MOTORS, self.motors)
+        return True
 
     def turnRight(self, amount=200):
         self.turn += amount
