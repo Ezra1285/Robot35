@@ -36,7 +36,7 @@ class ThreadExample():
         while self.inBox:
             dist = self.get_distance()           
             # dist = 70
-            if dist > 120.0:
+            if dist > 110.0:
                 print("FOWARD")
                 fwd_count += 1
                 default_count = 0
@@ -52,6 +52,7 @@ class ThreadExample():
                 self.chip.defaultMove()
                 self.inBox = self.chip.isInBox()
                     # time.sleep(.5)
+        speak("I have exited")
             
 
 
@@ -176,6 +177,14 @@ class ThreadExample():
         if self.inBox:
             self.inBox = self.chip.isInBox()
             time.sleep(1)
+
+def speak(speech):
+    engine = pyttsx3.init() 
+    if (speech != " "):
+    # while(speech != " "):    
+        engine.say(speech)
+        engine.runAndWait()      
+
 
 def main():
     myChip = LocationChip()
