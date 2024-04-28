@@ -41,9 +41,9 @@ class ThreadExample():
                 fwd_count += 1
                 default_count = 0
                 if fwd_count >= 3:
-                    wasSet = self.chip.robot_contol.setMotorsTo(4500)
-                    if wasSet:
-                        time.sleep(.5)
+                    wasSet = self.chip.robot_contol.setMotorsTo(5100)
+                    # if wasSet:
+                        # time.sleep(.5)
             else: 
                 print("DEFAULTING")
                 fwd_count = 0
@@ -144,32 +144,32 @@ class ThreadExample():
     def timedFunction(self):
         print("                1 seconds is up")
 
-    def tryFoward1(self):
-        while self.inBox:
-            print("trying foward")
-            # Stops only when distance is closer then 60
-            print("Obj dist:", self.object_distance)
-            if self.object_distance > 60.0:
-                # if self.robot.motors >= 6000: 
-                self.chip.fowardMove(5200)
-                time.sleep(.5)
-                # self.inBox = self.checkInBox()
-                self.inBox = self.checkInBox()
+    # def tryFoward1(self):
+    #     while self.inBox:
+    #         print("trying foward")
+    #         # Stops only when distance is closer then 60
+    #         print("Obj dist:", self.object_distance)
+    #         if self.object_distance > 60.0:
+    #             # if self.robot.motors >= 6000: 
+    #             self.chip.fowardMove(5200)
+    #             time.sleep(.5)
+    #             # self.inBox = self.checkInBox()
+    #             self.inBox = self.checkInBox()
                     
-    def tryFoward(self):
-        print("Obj dist:", self.object_distance)
-        # while self.object_distance > 60.0:
-        #     print("FOWARD")
-        #     time.sleep(1)
-        # print("DEFAULT")
-        while self.object_distance > 60.0:
-            # if self.robot.motors >= 6000: 
-            self.chip.fowardMove(4500)
-            time.sleep(1)
-            # self.inBox = self.checkInBox()
-            # self.inBox = self.checkInBox()
-        # print("Deafulkting")
-        # self.chip.defaultMove()
+    # def tryFoward(self):
+    #     print("Obj dist:", self.object_distance)
+    #     # while self.object_distance > 60.0:
+    #     #     print("FOWARD")
+    #     #     time.sleep(1)
+    #     # print("DEFAULT")
+    #     while self.object_distance > 60.0:
+    #         # if self.robot.motors >= 6000: 
+    #         self.chip.fowardMove(4500)
+    #         time.sleep(1)
+    #         # self.inBox = self.checkInBox()
+    #         # self.inBox = self.checkInBox()
+    #     # print("Deafulkting")
+    #     # self.chip.defaultMove()
 
             
     def checkInBox(self):
