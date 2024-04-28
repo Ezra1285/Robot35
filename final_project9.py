@@ -50,6 +50,7 @@ class ThreadExample():
                 default_count += 1
                 # if default_count >= 2:
                 self.chip.defaultMove()
+                self.inBox = self.chip.isInBox()
                     # time.sleep(.5)
             
 
