@@ -31,16 +31,25 @@ class ThreadExample():
         # self.robot.moveBackwards(1000)
 
     def doItAll(self):
+        fwd_count = 0
+        default_count = 0
         while self.inBox:
             dist = self.get_distance()           
             # dist = 70
             if dist > 80.0:
                 print("FOWARD")
-                self.chip.robot_contol.setMotorsTo(600)
-                time.sleep(.5)
+                fwd_count += 1
+                default_count = 0
+                if fwd_count >= 3:
+                    self.chip.robot_contol.setMotorsTo(600)
+                    time.sleep(.5)
             else: 
                 print("DEFAULTING")
-                self.chip.defaultMove()
+                fwd_count = 0
+                default_count += 1
+                if default_count >= 3:
+                    self.chip.defaultMove()
+                    time.sleep(.5)
             
 
 
