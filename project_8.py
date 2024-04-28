@@ -288,8 +288,8 @@ class RobotControl():
             self.motors = 1510
         if(self.motors > 7900):
             self.motors = 7900
-        # self.tango.setSpeed(MOTORS, 50)
-        # self.tango.setAccel(MOTORS, 150)
+        self.tango.setSpeed(MOTORS, 1)
+        self.tango.setAccel(MOTORS, 1)
         self.tango.setTarget(MOTORS, self.motors)
 
     def turnRight(self, amount=200):
