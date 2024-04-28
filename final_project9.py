@@ -36,7 +36,7 @@ class ThreadExample():
         while self.inBox:
             dist = self.get_distance()           
             # dist = 70
-            if dist > 80.0:
+            if dist > 120.0:
                 print("FOWARD")
                 fwd_count += 1
                 default_count = 0
