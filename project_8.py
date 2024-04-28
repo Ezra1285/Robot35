@@ -288,7 +288,7 @@ class RobotControl():
             self.motors = 1510
         if(self.motors > 7900):
             self.motors = 7900
-        # self.tango.setSpeed(MOTORS, 10)
+        self.tango.setSpeed(MOTORS, 50)
         self.tango.setAccel(MOTORS, 200)
         self.tango.setTarget(MOTORS, self.motors)
 
