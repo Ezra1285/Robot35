@@ -47,8 +47,8 @@ class ThreadExample():
                 print("DEFAULTING")
                 fwd_count = 0
                 default_count += 1
-                if default_count >= 2:
-                    self.chip.defaultMove()
+                # if default_count >= 2:
+                self.chip.defaultMove()
                     # time.sleep(.5)
             
 
