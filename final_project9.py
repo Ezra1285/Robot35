@@ -34,10 +34,10 @@ class ThreadExample():
         while self.inBox:
             dist = self.get_distance()           
             # dist = 70
-            if dist > 70.0:
+            if dist > 80.0:
                 print("FOWARD")
-                self.chip.robot_contol.setMotorsTo(800)
-                time.sleep(1)
+                self.chip.robot_contol.setMotorsTo(600)
+                time.sleep(.5)
             else: 
                 print("DEFAULTING")
                 self.chip.defaultMove()
