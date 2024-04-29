@@ -32,8 +32,8 @@ class LocationChip:
         if current_cord == 'a0':
             while True:
                 prev_cord = self.cords
-                self.robot_contol.moveBackwards(1200)
-                time.sleep(2.5)
+                self.robot_contol.moveBackwards(800)
+                time.sleep(1.8)
                 self.robot_contol.defualtMotors()
                 time.sleep(2)
                 self.cords = self.readData()
@@ -49,8 +49,8 @@ class LocationChip:
         elif current_cord == 'a1':
             while True:
                 prev_cord = self.cords
-                self.robot_contol.moveBackwards(1200)
-                time.sleep(2.5)
+                self.robot_contol.moveBackwards(800)
+                time.sleep(1.8)
                 self.robot_contol.defualtMotors()
                 time.sleep(2)
                 self.cords = self.readData()
@@ -65,8 +65,8 @@ class LocationChip:
         elif current_cord == 'a2':
             while True:
                 prev_cord = self.cords
-                self.robot_contol.moveBackwards(1200)
-                time.sleep(2.5)
+                self.robot_contol.moveBackwards(800)
+                time.sleep(1.8)
                 self.robot_contol.defualtMotors()
                 time.sleep(2)
                 self.cords = self.readData()
@@ -81,8 +81,8 @@ class LocationChip:
         elif current_cord == 'a3':
             while True:
                 prev_cord = self.cords
-                self.robot_contol.moveBackwards(1200)
-                time.sleep(2.5)
+                self.robot_contol.moveBackwards(800)
+                time.sleep(1.8)
                 self.robot_contol.defualtMotors()
                 time.sleep(2)
                 self.cords = self.readData()
