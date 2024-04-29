@@ -9,7 +9,7 @@ import speech_recognition as sr
 class Main(tk.Tk):
     def __init__(self): 
         super().__init__()
-        self.canvas = tk.Canvas(self, width=1000, height=1000)
+        self.canvas = tk.Canvas(self, width=300, height=300)
         #self.attributes("-fullscreen", True)
         self.canvas.grid(row=0,column=0)
         self.boxes = []
