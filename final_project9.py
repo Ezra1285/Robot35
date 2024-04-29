@@ -32,22 +32,24 @@ class ThreadExample():
 
     def doItAll(self):
         fwd_count = 0
-        default_count = 0
+        isFwd = False
+        # default_count = 0
         while self.inBox:
             dist = self.get_distance()           
             # dist = 70
-            if dist > 110.0:
+            if dist > 120.0:
                 print("FOWARD")
                 fwd_count += 1
-                default_count = 0
-                if fwd_count >= 3:
-                    wasSet = self.chip.robot_contol.setMotorsTo(5100)
+                if isFwd == False:
+                    if fwd_count >= 3:
+                        wasSet = self.chip.robot_contol.setMotorsTo(5100)
+                        isFwd = True
                     # if wasSet:
                         # time.sleep(.5)
             else: 
                 print("DEFAULTING")
+                isFwd = False
                 fwd_count = 0
-                default_count += 1
                 # if default_count >= 2:
                 self.chip.defaultMove()
                 self.inBox = self.chip.isInBox()
