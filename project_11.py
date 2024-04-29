@@ -336,10 +336,10 @@ class Main(tk.Tk):
                     time.sleep(self.motors_forward.get("Distance"))
             elif x == 2:
                 if (self.motors_turn.get("Direction") == "Right"):
-                    robot_cotrol.turnLeft(self.motors_turn.get("Speed"))
+                    robot_cotrol.turnLeft(500)
                     time.sleep(self.motors_turn.get("Distance"))
                 if (self.motors_turn.get("Direction") == "Left"):
-                    robot_cotrol.turnRight(self.motors_turn.get("Speed"))
+                    robot_cotrol.turnRight(500)
                     time.sleep(self.motors_turn.get("Distance"))
             elif x == 3:
                 if (self.motors_turn.get("Direction") == "Right"):
