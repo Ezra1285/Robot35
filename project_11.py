@@ -9,7 +9,7 @@ import speech_recognition as sr
 class Main(tk.Tk):
     def __init__(self): 
         super().__init__()
-        self.canvas = tk.Canvas(self, width=500, height=500)
+        self.canvas = tk.Canvas(self, width=800, height=500)
         #self.attributes("-fullscreen", True)
         self.canvas.grid(row=0,column=0)
         self.boxes = []
@@ -272,7 +272,7 @@ class Main(tk.Tk):
         image = tk.PhotoImage(file="waist_turn.png")
         waist_turn_label.config(image=image)
         waist_turn_label.image = image
-        id_cLabel = self.canvas.create_window(50, 550, window=waist_turn_label)
+        id_cLabel = self.canvas.create_window(200, 450, window=waist_turn_label)
         waist_turn_label.bind("<ButtonRelease-1>", lambda event: self.create_duplicate(waist_turn_label))
 
         # Wait for input label
@@ -280,7 +280,7 @@ class Main(tk.Tk):
         image = tk.PhotoImage(file="wait_for_input.png")
         wait_for_input_label.config(image=image)
         wait_for_input_label.image = image
-        id_cLabel = self.canvas.create_window(50, 650, window=wait_for_input_label)
+        id_cLabel = self.canvas.create_window(300, 450, window=wait_for_input_label)
         wait_for_input_label.bind("<ButtonRelease-1>", lambda event: self.create_duplicate(wait_for_input_label))
 
         # execute button
