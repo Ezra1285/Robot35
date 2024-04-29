@@ -132,7 +132,7 @@ class LocationChip:
             # for lo in data[5]:
             print("Data 5 is:", float(data[5][4:]))
             print("Data 6 is:", float(data[6]))
-            print("Data 7 is:", float(data[7][:-1]))
+            print("Data 7 is:", float(data[7][:-3]))
             # for lo in 
             print("isExited Data:", data)
             if data[0] != '$RANGE_ERROR':
