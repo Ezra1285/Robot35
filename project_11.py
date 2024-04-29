@@ -353,7 +353,7 @@ class Main(tk.Tk):
                     except sr.UnknownValueError:
                         print("Don't know that word")
                 print(user_input)
-                
+            robot_cotrol.defualtEverything()
     def SpeakText(self, command):
         # Initialize the engine
         engine = pyttsx3.init()
