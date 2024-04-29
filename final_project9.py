@@ -188,17 +188,15 @@ def speak(speech):
 
 def main():
     myChip = LocationChip()
-    # current_cord = myChip.findQuadrant()
-    # if current_cord == False:
-    #     # speak("Range error")
-    #     print("Range error")
-    # else: 
-    #     myChip.findExit(current_cord)
-
-    # speak("Exit has been found")
+    current_cord = myChip.findQuadrant()
+    if current_cord == False:
+        speak("Range error")
+        print("Range error")
+    else: 
+        myChip.findExit(current_cord)
+    speak("Exit has been found")
        
     # sensor =  distSensor()
-    
     try: 
         inst = ThreadExample(myChip)
         inst.doItAll()
