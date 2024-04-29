@@ -66,8 +66,8 @@ class Main(tk.Tk):
         if label in self.icons:
             menu = tk.Menu(self, tearoff=False)
             speed_menu = tk.Menu(menu, tearoff=False)
-            speed_menu.add_command(label="Slow", command=lambda: self.set_motors_forwards(speed=200))
-            speed_menu.add_command(label="Medium", command=lambda: self.set_motors_forwards(speed=500))
+            speed_menu.add_command(label="Slow", command=lambda: self.set_motors_forwards(speed=600))
+            speed_menu.add_command(label="Medium", command=lambda: self.set_motors_forwards(speed=700))
             speed_menu.add_command(label="Fast", command=lambda: self.set_motors_forwards(speed=800))
 
             distance_menu = tk.Menu(menu, tearoff=False)
