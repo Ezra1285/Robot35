@@ -292,10 +292,34 @@ class Main(tk.Tk):
         execute_button_id = self.canvas.create_window(150, 20, window=execute_button_label)
 
 
+    def reset_gui(self):
+        # Clear all orders
+        self.orders = []
+
+        # Reset all motion parameters
+        self.motors_forward = {"Speed" : 200, "Distance" : 1, "Direction" : "Forward"}
+        self.motors_turn = {"Distance" : 1, "Direction" : "Right"}
+        self.head_tilt = {"Direction" : "Right"}
+        self.head_pan = {"Direction" : "Up"}
+        self.waist_turn = {"Direction" : "Right"}
+        self.talking = {"Speech" : "Hello"}
+
+        # Remove all icons from the canvas
+        for icon in self.icons:
+            icon.destroy()
+
+        # Clear the list of icons
+        self.icons = []
+
+        # Recreate the boxes and execute button
+        self.create_boxes()
+        self.create_canvas()
+
     def execute(self):
         t1 = threading.Thread(target=self.final)
         t1.start()
         t1.join()
+        self.reset_gui()
     
     def final(self):
         robot_cotrol = RobotControl()
