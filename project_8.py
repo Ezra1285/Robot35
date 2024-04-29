@@ -124,11 +124,14 @@ class LocationChip:
 
     #  Returns true is we have exited
     def isInBox(self):
-        for x in range(5):      
+        for x in range(2):      
             self.chip.reset_input_buffer()  
             line1 = self.chip.readline()
             line2 = self.chip.readline()
             data = line2.decode('utf-8').split(",")
+            # for lo in data[5]:
+            print("Data 5 is:", data[5])
+            # for lo in 
             print("isExited Data:", data)
             if data[0] != '$RANGE_ERROR':
                 return True
