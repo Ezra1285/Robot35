@@ -124,20 +124,23 @@ class LocationChip:
 
     #  Returns true is we have exited
     def isInBox(self):
-        for x in range(2):      
-            self.chip.reset_input_buffer()  
-            line1 = self.chip.readline()
-            line2 = self.chip.readline()
-            data = line2.decode('utf-8').split(",")
-            # for lo in data[5]:
-            print("Data 5 is:", float(data[5][4:]))
-            print("Data 6 is:", float(data[6]))
-            print("Data 7 is:", float(data[7][:-3]))
-            # for lo in 
-            print("isExited Data:", data)
-            if data[0] != '$RANGE_ERROR':
-                return True
-        return False
+        # for x in range(2):      
+        self.chip.reset_input_buffer()  
+        line1 = self.chip.readline()
+        line2 = self.chip.readline()
+        data = line2.decode('utf-8').split(",")
+        # for lo in data[5]:
+        lo1, lo2, lo3 = float(data[5][4:]), float(data[6]), float(data[7][:-3])
+        # print("Data 5 is:", float(data[5][4:]))
+        # print("Data 6 is:", float(data[6]))
+        # print("Data 7 is:", float(data[7][:-3]))
+        # for lo in 
+        if lo1 < 0 or lo1 < 0 or lo2 < 0:
+            return False
+        print("isExited Data:", data)
+            # if data[0] != '$RANGE_ERROR':
+            #     return True
+        return True
             
 
     def fowardMove(self, amount):
