@@ -130,7 +130,7 @@ class LocationChip:
             line2 = self.chip.readline()
             data = line2.decode('utf-8').split(",")
             # for lo in data[5]:
-            print("Data 5 is:", float(data[5][3:]))
+            print("Data 5 is:", float(data[5][4:]))
             print("Data 6 is:", float(data[6]))
             print("Data 7 is:", float(data[7][:-1]))
             # for lo in 
