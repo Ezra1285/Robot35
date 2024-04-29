@@ -124,25 +124,40 @@ class LocationChip:
 
     #  Returns true is we have exited
     def isInBox(self):
-        for x in range(5):      
-            self.chip.reset_input_buffer()  
-            line1 = self.chip.readline()
-            line2 = self.chip.readline()
-            data = line2.decode('utf-8').split(",")
-            print("isExited Data:", data)
-            if data[0] != '$RANGE_ERROR':
-                return True
-        return False
+        # for x in range(2):      
+        self.chip.reset_input_buffer()  
+        line1 = self.chip.readline()
+        line2 = self.chip.readline()
+        data = line2.decode('utf-8').split(",")
+        # for lo in data[5]:
+        if len(data) > 6:
+            lo1, lo2, lo3 = float(data[5][4:]), float(data[6]), float(data[7][:-3])
+        # print("Data 5 is:", float(data[5][4:]))
+        # print("Data 6 is:", float(data[6]))
+        # print("Data 7 is:", float(data[7][:-3]))
+        # for lo in 
+            if lo1 < 0 or lo1 < 0 or lo3 < 0:
+                return False
+        print("isExited Data:", data)
+            # if data[0] != '$RANGE_ERROR':
+            #     return True
+        return True
             
 
-
+    def fowardMove(self, amount):
+        self.robot_contol.setMotorsTo(amount) 
+        
+    def defaultMove(self):
+        print("Trying to default")
+        self.robot_contol.defualtMotors() 
+        
     def leaveBox(self, current_anchor_dist):
         #  Values will most likely need tweaking
         if float(current_anchor_dist) > 2:
-            self.robot_contol.moveBackwards(1000)
+            self.robot_contol.moveBackwards(1200)
             time.sleep(4)
         else:
-            self.robot_contol.moveBackwards(800)
+            self.robot_contol.moveBackwards(1000)
             time.sleep(3)
         self.robot_contol.defualtMotors()
         speak("I have exited")
@@ -273,6 +288,19 @@ class RobotControl():
         if(self.motors < 1510):
             self.motors = 1510
         self.tango.setTarget(MOTORS, self.motors)
+
+    def setMotorsTo(self, amount=200):
+        if self.motors == amount:
+            return False
+        self.motors = amount
+        if(self.motors < 1510):
+            self.motors = 1510
+        if(self.motors > 7900):
+            self.motors = 7900
+        self.tango.setSpeed(MOTORS, 2)
+        self.tango.setAccel(MOTORS, 245)
+        self.tango.setTarget(MOTORS, self.motors)
+        return True
 
     def turnRight(self, amount=200):
         self.turn += amount
