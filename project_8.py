@@ -130,9 +130,9 @@ class LocationChip:
             line2 = self.chip.readline()
             data = line2.decode('utf-8').split(",")
             # for lo in data[5]:
-            print("Data 5 is:", data[5])
-            print("Data 6 is:", data[6])
-            print("Data 7 is:", data[7])
+            print("Data 5 is:", float(data[5][3:]))
+            print("Data 6 is:", float(data[6]))
+            print("Data 7 is:", float(data[7][:-1]))
             # for lo in 
             print("isExited Data:", data)
             if data[0] != '$RANGE_ERROR':
