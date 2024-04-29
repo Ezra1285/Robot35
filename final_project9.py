@@ -42,7 +42,7 @@ class ThreadExample():
                 fwd_count += 1
                 if isFwd == False:
                     if fwd_count >= 3:
-                        wasSet = self.chip.robot_contol.setMotorsTo(5100)
+                        wasSet = self.chip.robot_contol.setMotorsTo(5200)
                         isFwd = True
                     # if wasSet:
                         # time.sleep(.5)
