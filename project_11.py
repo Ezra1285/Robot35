@@ -147,8 +147,7 @@ class Main(tk.Tk):
 
     def wait_for_input_dialog(self, label):
         if label in self.icons:
-            i = input("User: ")
-            print(i)
+            print("Hi")
         else:
             print("Icon must be dragged to the timeline before opening properties.")
 
@@ -342,8 +341,7 @@ class Main(tk.Tk):
                     robot_cotrol.waistLeft(600)
                     time.sleep(1)
             elif x == 7 :
-                robot_cotrol.defualtEverything()
-                time.sleep(2)
+                i = input("User: ")
                 # with sr.Microphone() as source:
                 #     r= sr.Recognizer()
                 #     r.adjust_for_ambient_noise(source)
