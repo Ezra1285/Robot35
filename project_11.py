@@ -77,8 +77,7 @@ class Main(tk.Tk):
 
             direction_menu = tk.Menu(menu, tearoff=False)
             direction_menu.add_command(label="Forward", command=lambda: self.set_motors_forwards(direction="Forward"))
-            direction_menu.add_command(label="Left", command=lambda: self.set_motors_forwards(direction="Left"))
-            direction_menu.add_command(label="Right", command=lambda: self.set_motors_forwards(direction="Right"))
+            direction_menu.add_command(label="Backward", command=lambda: self.set_motors_forwards(direction="Backward"))
 
             menu.add_cascade(label="Speed", menu=speed_menu)
             menu.add_cascade(label="Distance", menu=distance_menu)
@@ -148,27 +147,7 @@ class Main(tk.Tk):
 
     def wait_for_input_dialog(self, label):
         if label in self.icons:
-            menu = tk.Menu(self, tearoff=False)
-            speed_menu = tk.Menu(menu, tearoff=False)
-            speed_menu.add_command(label="Slow", command=lambda: print("Speed: Slow"))
-            speed_menu.add_command(label="Medium", command=lambda: print("Speed: Medium"))
-            speed_menu.add_command(label="Fast", command=lambda: print("Speed: Fast"))
-
-            distance_menu = tk.Menu(menu, tearoff=False)
-            distance_menu.add_command(label="Short", command=lambda: print("Distance: Short"))
-            distance_menu.add_command(label="Medium", command=lambda: print("Distance: Medium"))
-            distance_menu.add_command(label="Long", command=lambda: print("Distance: Long"))
-
-            direction_menu = tk.Menu(menu, tearoff=False)
-            direction_menu.add_command(label="Forward", command=lambda: print("Direction: Forward"))
-            direction_menu.add_command(label="Left", command=lambda: print("Direction: Left"))
-            direction_menu.add_command(label="Right", command=lambda: print("Direction: Right"))
-
-            menu.add_cascade(label="Speed", menu=speed_menu)
-            menu.add_cascade(label="Distance", menu=distance_menu)
-            menu.add_cascade(label="Direction", menu=direction_menu)
-
-            menu.post(label.winfo_rootx(), label.winfo_rooty())
+            i = input("User: ")
         else:
             print("Icon must be dragged to the timeline before opening properties.")
 
@@ -328,11 +307,8 @@ class Main(tk.Tk):
                 if (self.motors_forward.get("Direction") == "Forward"):
                     robot_cotrol.moveBackwards(self.motors_forward.get("Speed"))
                     time.sleep(self.motors_forward.get("Distance"))
-                if (self.motors_forward.get("Direction") == "Right"):
-                    robot_cotrol.turnLeft(self.motors_forward.get("Speed"))
-                    time.sleep(self.motors_forward.get("Distance"))
-                if (self.motors_forward.get("Direction") == "Left"):
-                    robot_cotrol.turnRight(self.motors_forward.get("Speed"))
+                if (self.motors_forward.get("Direction") == "Backward"):
+                    robot_cotrol.moveFoward(self.motors_forward.get("Speed"))
                     time.sleep(self.motors_forward.get("Distance"))
             elif x == 2:
                 if (self.motors_turn.get("Direction") == "Right"):
@@ -343,26 +319,26 @@ class Main(tk.Tk):
                     time.sleep(self.motors_turn.get("Distance"))
             elif x == 3:
                 if (self.motors_turn.get("Direction") == "Right"):
-                    robot_cotrol.lookRight()
+                    robot_cotrol.lookRight(600)
                     time.sleep(1)
                 if (self.motors_turn.get("Direction") == "Left"):
-                    robot_cotrol.lookLeft()
+                    robot_cotrol.lookLeft(600)
                     time.sleep(1)
             elif x == 4:
                 if (self.motors_turn.get("Direction") == "Up"):
-                    robot_cotrol.lookUp()
+                    robot_cotrol.lookUp(600)
                     time.sleep(1)
                 if (self.motors_turn.get("Direction") == "Down"):
-                    robot_cotrol.lookDown()
+                    robot_cotrol.lookDown(600)
                     time.sleep(1)
             elif x == 5:
                 self.SpeakText(self.talking.get("Speech"))
             elif x == 6:
                 if (self.motors_turn.get("Direction") == "Right"):
-                    robot_cotrol.waistRight()
+                    robot_cotrol.waistRight(600)
                     time.sleep(1)
                 if (self.motors_turn.get("Direction") == "Left"):
-                    robot_cotrol.waistLeft()
+                    robot_cotrol.waistLeft(600)
                     time.sleep(1)
             elif x == 7 :
                 robot_cotrol.defualtEverything()
