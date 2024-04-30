@@ -144,7 +144,7 @@ class RobotControl():
         self.tango.setTarget(14, self.leftUpperForearm)
         self.tango.setTarget(15, self.leftWrist)
         self.tango.setTarget(16, self.leftGripper)
-        print("Defaulting everything")
+        #print("Defaulting everything")
 
     def getRandomMovement(self):
         random_num = random.randint(1, 16)
