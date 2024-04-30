@@ -365,18 +365,20 @@ class Main(tk.Tk):
                     robot_cotrol.waistLeft()
                     time.sleep(1)
             elif x == 7 :
-                with sr.Microphone() as source:
-                    r= sr.Recognizer()
-                    r.adjust_for_ambient_noise(source)
-                    r.dyanmic_energythreshhold = 3000
-                    try:
-                        print("Human: ", end="")
-                        user_input = r.listen(source)            
-                        user_input = r.recognize_google(user_input)
-                        print(user_input)
-                    except sr.UnknownValueError:
-                        print("Don't know that word")
-                print(user_input)
+                robot_cotrol.defualtEverything()
+                time.sleep(2)
+                # with sr.Microphone() as source:
+                #     r= sr.Recognizer()
+                #     r.adjust_for_ambient_noise(source)
+                #     r.dyanmic_energythreshhold = 3000
+                #     try:
+                #         print("Human: ", end="")
+                #         user_input = r.listen(source)            
+                #         user_input = r.recognize_google(user_input)
+                #         print(user_input)
+                #     except sr.UnknownValueError:
+                #         print("Don't know that word")
+                # print(user_input)
             robot_cotrol.defualtEverything()
     def SpeakText(self, command):
         # Initialize the engine
