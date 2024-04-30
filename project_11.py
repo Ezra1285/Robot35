@@ -148,6 +148,7 @@ class Main(tk.Tk):
     def wait_for_input_dialog(self, label):
         if label in self.icons:
             i = input("User: ")
+            print(i)
         else:
             print("Icon must be dragged to the timeline before opening properties.")
 
