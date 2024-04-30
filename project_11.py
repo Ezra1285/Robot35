@@ -317,29 +317,29 @@ class Main(tk.Tk):
                 if (self.motors_turn.get("Direction") == "Left"):
                     robot_cotrol.turnRight(1200)
                     time.sleep(self.motors_turn.get("Distance"))
-            elif x == 3:
+            elif x == 4:
                 if (self.motors_turn.get("Direction") == "Right"):
                     robot_cotrol.lookRight(600)
                     time.sleep(1)
                 if (self.motors_turn.get("Direction") == "Left"):
                     robot_cotrol.lookLeft(600)
                     time.sleep(1)
-            elif x == 4:
+            elif x == 3:
                 if (self.motors_turn.get("Direction") == "Up"):
                     robot_cotrol.lookUp(600)
-                    time.sleep(1)
+                    time.sleep(0.5)
                 if (self.motors_turn.get("Direction") == "Down"):
                     robot_cotrol.lookDown(600)
-                    time.sleep(1)
+                    time.sleep(0.5)
             elif x == 5:
                 self.SpeakText(self.talking.get("Speech"))
             elif x == 6:
                 if (self.motors_turn.get("Direction") == "Right"):
                     robot_cotrol.waistRight(600)
-                    time.sleep(1)
+                    time.sleep(0.5)
                 if (self.motors_turn.get("Direction") == "Left"):
                     robot_cotrol.waistLeft(600)
-                    time.sleep(1)
+                    time.sleep(0.5)
             elif x == 7 :
                 robot_cotrol.defualtEverything()
                 time.sleep(2)
