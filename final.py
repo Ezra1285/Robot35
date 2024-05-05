@@ -39,7 +39,7 @@ def findSquare(quadrant, location):
     robot_cotrol = RobotControl()
     robot_cotrol.turnLeft(900)
     time.sleep(1)
-    robot_cotrol.moveBackwards(1000)
+    robot_cotrol.moveBackwards()
     time.sleep(1)
     robot_cotrol.defualtEverything()
     return location.findQuadrant()
