@@ -4,21 +4,41 @@ import _thread, threading
 import pyttsx3
 import RPi.GPIO as GPIO
 from project_8 import LocationChip
+from ourRobotControl import RobotControl
 def SpeakText(command):
     # Initialize the engine
     engine = pyttsx3.init()
     engine.say(command) 
     engine.runAndWait()
 def run(location):
-    closest_cord = location.findQuadrant()
-    if closest_cord == "a0":
-        SpeakText("I am in the starting quadrant")
-    if closest_cord == "a1":
-        SpeakText("I am in the charging station")
-    if closest_cord == "a2":
-        SpeakText("I am in hunters office ")
-    if closest_cord == "a3":
-        SpeakText("I am in restrooms")
+    not_done = True
+    asked = False
+    user = ""
+    while not_done:
+        dist = get_distance()
+        closest_cord = location.findQuadrant()
+        if closest_cord == "a0" and last_cord != "a0":
+            SpeakText("I am in the starting quadrant")
+        if closest_cord == "a1" and last_cord != "a1":
+            SpeakText("I am in the charging station")
+        if closest_cord == "a2" and last_cord != "a2":
+            SpeakText("I am in hunters office ")
+        if closest_cord == "a3" and last_cord != "a3":
+            SpeakText("I am in restrooms")
+        last_cord = closest_cord
+        if dist < 70 and not asked:
+            SpeakText("Greetings Human")
+            user = input("Where do you want to go? ")
+            closest_cord = findSquare(user, location)
+            asked = True
+        if closest_cord == user:
+            findSquare("a1", location)
+            not_done = True
+def findSquare(quadrant, location):
+    robot_cotrol = RobotControl()
+    robot_cotrol.turnLeft(500)
+    robot_cotrol.moveBackwards(500)
+    return location.findQuadrant()
 def get_distance():
         GPIO.setmode(GPIO.BCM)
 
