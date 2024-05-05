@@ -33,6 +33,7 @@ def run(location):
             closest_cord = findSquare(user, location)
             asked = True
         if closest_cord == user:
+            SpeakText("I need to talk")
             findSquare("a1", location)
             not_done = True
 def findSquare(quadrant, location):
