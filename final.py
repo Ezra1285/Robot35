@@ -14,6 +14,7 @@ def run(location):
     not_done = True
     asked = False
     user = ""
+    last_cord = ""
     while not_done:
         dist = get_distance()
         closest_cord = location.findQuadrant()
