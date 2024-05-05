@@ -40,7 +40,7 @@ def findSquare(quadrant, location):
     # robot_cotrol.turnLeft(900)
     # time.sleep(1)
     robot_cotrol.moveBackwards(700)
-    time.sleep(1)
+    time.sleep(5)
     robot_cotrol.defualtEverything()
     return location.findQuadrant()
 def get_distance():
