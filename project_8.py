@@ -181,7 +181,8 @@ class LocationChip:
         closest_cord = min(cords_dict, key=cords_dict.get)
         print("Current cord:", closest_cord)
         print(cords_dict)
-        speak("I am in quadrant " + closest_cord)
+
+        
         time.sleep(2)
         return closest_cord
     
