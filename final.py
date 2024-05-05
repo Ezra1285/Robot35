@@ -38,7 +38,10 @@ def run(location):
 def findSquare(quadrant, location):
     robot_cotrol = RobotControl()
     robot_cotrol.turnLeft(500)
+    time.sleep(1)
     robot_cotrol.moveBackwards(500)
+    time.sleep(1)
+    robot_cotrol.defualtEverything()
     return location.findQuadrant()
 def get_distance():
         GPIO.setmode(GPIO.BCM)
