@@ -37,9 +37,9 @@ def run(location):
             not_done = True
 def findSquare(quadrant, location):
     robot_cotrol = RobotControl()
-    robot_cotrol.turnLeft(700)
+    robot_cotrol.turnLeft(900)
     time.sleep(1)
-    robot_cotrol.moveBackwards(700)
+    robot_cotrol.moveBackwards(900)
     time.sleep(1)
     robot_cotrol.defualtEverything()
     return location.findQuadrant()
