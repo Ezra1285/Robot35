@@ -37,12 +37,17 @@ def run(location):
             not_done = True
 def findSquare(quadrant, location):
     robot_cotrol = RobotControl()
-    # robot_cotrol.turnLeft(900)
-    # time.sleep(1)
-    robot_cotrol.moveBackwards(700)
-    time.sleep(5)
-    robot_cotrol.defualtEverything()
-    return location.findQuadrant()
+    while True:
+        robot_cotrol.turnLeft(900)
+        time.sleep(1)
+        robot_cotrol.moveBackwards(700)
+        time.sleep(5)
+        robot_cotrol.defualtEverything()
+        closest_cord = location.findQuadrant()
+        if closest_cord == quadrant:
+            return closest_cord
+        else:
+            continue
 def get_distance():
         GPIO.setmode(GPIO.BCM)
 
