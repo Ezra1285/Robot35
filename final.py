@@ -4,7 +4,7 @@ import _thread, threading
 import pyttsx3
 import RPi.GPIO as GPIO
 from project_8 import LocationChip
-def SpeakText(self, command):
+def SpeakText(command):
     # Initialize the engine
     engine = pyttsx3.init()
     engine.say(command) 
