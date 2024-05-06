@@ -94,6 +94,9 @@ def findQuadrant(location, quadrant):
         robot_cotrol.moveFoward(750)
         time.sleep(2)
         robot_cotrol.defualtEverything()
+        robot_cotrol.turnRight(700)
+        time.sleep(1)
+        robot_cotrol.defualtEverything()
         return
     else:
         robot_cotrol.moveBackwards(750)
