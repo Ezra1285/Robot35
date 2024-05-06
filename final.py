@@ -42,7 +42,7 @@ def run(location):
 def findSquare(quadrant, location):
     robot_cotrol = RobotControl()
     while True:
-        robot_cotrol.turnRight(1500)
+        robot_cotrol.turnRight(1200)
         time.sleep(2)
         robot_cotrol.defualtMotors()
         t2 = threading.Thread(target=robot_cotrol.moveBackwards(1000))
