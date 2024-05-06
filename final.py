@@ -96,10 +96,12 @@ def findQuadrant(location, quadrant):
         robot_cotrol.defualtEverything()
         return
     else:
+        robot_cotrol.turnRight(900)
+        time.sleep(1)
+        robot_cotrol.defualtMotors()
         robot_cotrol.moveBackwards(800)
-        time.sleep(3)
-        # robot_cotrol.turnLeft(900)
-        # time.sleep(3)
+        time.sleep(2.5)
+
         robot_cotrol.defualtEverything()
         
 
