@@ -171,8 +171,9 @@ def main():
     
 
 if __name__ == "__main__":
-    try:
-        main()
-    except:
-        robot_cotrol = RobotControl()
-        robot_cotrol.defualtEverything()
+    # try:
+    #     main()
+    # except:
+    #     robot_cotrol = RobotControl()
+    #     robot_cotrol.defualtEverything()
+    main()
