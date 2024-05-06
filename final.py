@@ -90,15 +90,16 @@ def findQuadrant(location, quadrant):
     data2 = location.readData()
     cords_dict2 = {'a0':float(data2[0]), 'a1':float(data2[1]), 'a2':float(data2[2]), 'a3':float(data2[3])} #messing with indexing here
     if cords_dict.get(quadrant) < cords_dict2.get(quadrant):
-        print("WWADDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD")
-        robot_cotrol.moveBackwards(800)
-        time.sleep(1)
-        robot_cotrol.defualtEverything()
-    else:
         robot_cotrol.turnRight(900)
         time.sleep(1)
         robot_cotrol.defualtEverything()
         return
+    else:
+        print("WWADDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD")
+        robot_cotrol.moveBackwards(800)
+        time.sleep(1)
+        robot_cotrol.defualtEverything()
+        
 
 
 def get_distance():
