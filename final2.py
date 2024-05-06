@@ -48,11 +48,12 @@ def run(location):
         if dist < 120 and not asked:
             SpeakText("Greetings Human")
             SpeakText("What would you like to ask?")
-            while user != 'a0' or user != 'a1' or user != 'a2' or user != 'a3':
-                user = input("Where do you want to go? ")
-                if user == 'a0' or user == 'a1' or user == 'a2' or user == 'a3':
-                    continue
-                SpeakText("No more ChatGPT Tokens")
+            # while user != 'a0' or user != 'a1' or user != 'a2' or user != 'a3':
+            #     user = input("Where do you want to go? ")
+            #     if user == 'a0' or user == 'a1' or user == 'a2' or user == 'a3':
+            #         continue
+            #     SpeakText("No more ChatGPT Tokens")
+            user = input("Where do you want to go? ")
             closest_cord = findSquare(user, location)
             asked = True
         if closest_cord == user:
