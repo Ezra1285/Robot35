@@ -35,7 +35,7 @@ def run(location):
             closest_cord = findSquare(user, location)
             asked = True
         if closest_cord == user:
-            SpeakText("I need to talk")
+            SpeakText("I need to charge")
             findSquare("a1", location)
             not_done = True
 
@@ -51,7 +51,7 @@ def findSquare(quadrant, location):
         t2 = threading.Thread(target=robot_cotrol.moveBackwards(1000))
         t2.start()
         t2.join()
-        time.sleep(2)
+        time.sleep(2.5)
         robot_cotrol.defualtEverything()
         time.sleep(1)
         closest_cord = location.findQuadrant()
