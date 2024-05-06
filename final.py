@@ -81,7 +81,7 @@ def findQuadrant(location, quadrant):
     closest_cord = min(cords_dict, key=cords_dict.get)
     print("Current cord:", closest_cord)
     print(cords_dict)
-    robot_cotrol.turnRight(900)
+    robot_cotrol.turnRight(100)
     time.sleep(1)
     robot_cotrol.defualtMotors()
     robot_cotrol.moveBackwards(900)
