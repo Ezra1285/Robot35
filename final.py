@@ -48,7 +48,7 @@ def findSquare(quadrant, location):
         t2 = threading.Thread(target=robot_cotrol.moveBackwards(1000))
         t2.start()
         t2.join()
-        time.sleep(1)
+        time.sleep(2)
         robot_cotrol.defualtEverything()
         closest_cord = location.findQuadrant()
         if closest_cord == quadrant:
