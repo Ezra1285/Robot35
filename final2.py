@@ -24,6 +24,7 @@ def run(location):
             SpeakText("I am in the starting quadrant")
         if closest_cord == "a1" and last_cord != "a1":
             SpeakText("I am in the charging station")
+            SpeakText("Goodbye Human")
         if closest_cord == "a2" and last_cord != "a2":
             SpeakText("I am in hunters office ")
         if closest_cord == "a3" and last_cord != "a3":
@@ -35,39 +36,73 @@ def run(location):
             closest_cord = findSquare(user, location)
             asked = True
         if closest_cord == user:
-            SpeakText("I need to talk")
+            SpeakText("I need to charge")
             findSquare("a1", location)
             not_done = True
 
 def findSquare(quadrant, location):
     robot_cotrol = RobotControl()
-    count = 0
     while True:
-        if count == 0:
-            robot_cotrol.turnLeft(900)
-            time.sleep(2.5)
-            robot_cotrol.defualtMotors()
-            t2 = threading.Thread(target=robot_cotrol.moveBackwards(1000))
-            t2.start()
-            t2.join()
-            time.sleep(5)
-            robot_cotrol.defualtEverything()
-            closest_cord = location.findQuadrant()
-            count += 1
-        else:
-            robot_cotrol.turnRight(900)
-            time.sleep(2.5)
-            robot_cotrol.defualtMotors()
-            t2 = threading.Thread(target=robot_cotrol.moveBackwards(1000))
-            t2.start()
-            t2.join()
-            time.sleep(5)
-            robot_cotrol.defualtEverything()
-            closest_cord = location.findQuadrant()
+        closest_cord = location.findQuadrant()
+        if closest_cord == quadrant:
+            return closest_cord
+        t2 = threading.Thread(target=findQuadrant(location, quadrant))
+        t2.start()
+        t2.join()
+        # robot_cotrol.turnRight(1200)
+        # time.sleep(1)
+        # robot_cotrol.defualtMotors()
+        # t2 = threading.Thread(target=robot_cotrol.moveBackwards(1000))
+        # t2.start()
+        # t2.join()
+        # time.sleep(2.5)
+        # robot_cotrol.defualtEverything()
+        # time.sleep(1)
+        closest_cord = location.findQuadrant()
+        print(closest_cord)
         if closest_cord == quadrant:
             return closest_cord
         else:
             continue
+def findQuadrant(location, quadrant):
+    robot_cotrol = RobotControl()
+    data = location.readData()
+    if len(data) == 0:
+        return False
+    if data[0] == 'NULL' or data[0] == 'null': 
+        data[0] = 1000
+    if data[1] == 'NULL' or data[1] == 'null': 
+        data[1] = 1000
+    if data[2] == 'NULL' or data[2] == 'null': 
+        data[2] = 1000
+    if data[3] == 'NULL' or data[3] == 'null': 
+        data[3] = 1000
+    location.cords = data
+    cords_dict = {'a0':float(data[0]), 'a1':float(data[1]), 'a2':float(data[2]), 'a3':float(data[3])} #messing with indexing here
+    closest_cord = min(cords_dict, key=cords_dict.get)
+    print("Current cord:", closest_cord)
+    print(cords_dict)
+    robot_cotrol.turnLeft(1000)
+    time.sleep(1)
+    robot_cotrol.defualtMotors()
+    robot_cotrol.moveBackwards(700)
+    time.sleep(1)
+    robot_cotrol.defualtMotors()
+    data2 = location.readData()
+    cords_dict2 = {'a0':float(data2[0]), 'a1':float(data2[1]), 'a2':float(data2[2]), 'a3':float(data2[3])} #messing with indexing here
+    if cords_dict.get(quadrant) < cords_dict2.get(quadrant):
+        robot_cotrol.moveFoward(700)
+        time.sleep(2)
+        robot_cotrol.defualtEverything()
+        return
+    else:
+        robot_cotrol.moveBackwards(800)
+        time.sleep(2.5)
+
+        robot_cotrol.defualtEverything()
+        
+
+
 def get_distance():
         GPIO.setmode(GPIO.BCM)
 
@@ -117,4 +152,8 @@ def main():
     
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except:
+        robot_cotrol = RobotControl()
+        robot_cotrol.defualtEverything()
