@@ -45,21 +45,55 @@ def findSquare(quadrant, location):
         closest_cord = location.findQuadrant()
         if closest_cord == quadrant:
             return closest_cord
-        robot_cotrol.turnRight(1200)
-        time.sleep(1)
-        robot_cotrol.defualtMotors()
-        t2 = threading.Thread(target=robot_cotrol.moveBackwards(1000))
+        t2 = threading.Thread(target=findQuadrant(location, quadrant))
         t2.start()
         t2.join()
-        time.sleep(2.5)
-        robot_cotrol.defualtEverything()
-        time.sleep(1)
+        # robot_cotrol.turnRight(1200)
+        # time.sleep(1)
+        # robot_cotrol.defualtMotors()
+        # t2 = threading.Thread(target=robot_cotrol.moveBackwards(1000))
+        # t2.start()
+        # t2.join()
+        # time.sleep(2.5)
+        # robot_cotrol.defualtEverything()
+        # time.sleep(1)
         closest_cord = location.findQuadrant()
         print(closest_cord)
         if closest_cord == quadrant:
             return closest_cord
         else:
             continue
+def findQuadrant(location, quadrant):
+    robot_cotrol = RobotControl()
+    data = location.readData()
+    if len(data) == 0:
+        return False
+    if data[0] == 'NULL' or data[0] == 'null': 
+        data[0] = 1000
+    if data[1] == 'NULL' or data[1] == 'null': 
+        data[1] = 1000
+    if data[2] == 'NULL' or data[2] == 'null': 
+        data[2] = 1000
+    if data[3] == 'NULL' or data[3] == 'null': 
+        data[3] = 1000
+    location.cords = data
+    cords_dict = {'a0':float(data[0]), 'a1':float(data[1]), 'a2':float(data[2]), 'a3':float(data[3])} #messing with indexing here
+    closest_cord = min(cords_dict, key=cords_dict.get)
+    print("Current cord:", closest_cord)
+    print(cords_dict)
+    robot_cotrol.turnRight(900)
+    time.sleep(1)
+    robot_cotrol.moveBackwards(1000)
+    time.sleep(1)
+    data2 = location.readData()
+    cords_dict2 = {'a0':float(data2[0]), 'a1':float(data2[1]), 'a2':float(data2[2]), 'a3':float(data2[3])} #messing with indexing here
+    if cords_dict.get(quadrant) < cords_dict2.get(quadrant):
+        robot_cotrol.moveBackwards(1000)
+        time.sleep(1)
+    else:
+        return
+
+
 def get_distance():
         GPIO.setmode(GPIO.BCM)
 
