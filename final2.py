@@ -87,10 +87,10 @@ def findQuadrant(location, quadrant):
     robot_cotrol.defualtMotors()
     if quadrant == 'a3':
         robot_cotrol.moveBackwards(900)
-        time.sleep(1)
+        time.sleep(2)
     else:
         robot_cotrol.moveBackwards(800)
-        time.sleep(1)
+        time.sleep(2)
     robot_cotrol.defualtMotors()
     data2 = location.readData()
     cords_dict2 = {'a0':float(data2[0]), 'a1':float(data2[1]), 'a2':float(data2[2]), 'a3':float(data2[3])} #messing with indexing here
@@ -104,8 +104,8 @@ def findQuadrant(location, quadrant):
         robot_cotrol.defualtEverything()
         return
     else:
-        robot_cotrol.moveBackwards(750)
-        time.sleep(2)
+        robot_cotrol.moveBackwards(800)
+        time.sleep(1)
         robot_cotrol.defualtEverything()
         robot_cotrol.turnLeft(700)
         time.sleep(1)
