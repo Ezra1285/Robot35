@@ -5,6 +5,22 @@ import pyttsx3
 import RPi.GPIO as GPIO
 from project_8 import LocationChip
 from ourRobotControl import RobotControl
+def chat_with_gpt(prompt, client, voice='surprise_me'):
+    # Send the prompt to ChatGPT and get the response
+    response = client.chat.completions.create(
+    model="gpt-3.5-turbo",
+    messages=[
+        {"role": "user", "content": f"{prompt} respond like a {voice} in a short answer."}
+    ],
+    max_tokens=25
+    )
+    # content = response.choices[0].message["content"]
+    content = response.choices
+    # print("Choice: ", content)
+    content = content[0].message.content
+    print("Choice: ", content)
+    # content = content.messages
+    return content
 
 def SpeakText(command):
     # Initialize the engine
@@ -32,7 +48,12 @@ def run(location):
         last_cord = closest_cord
         if dist < 120 and not asked:
             SpeakText("Greetings Human")
-            user = input("Where do you want to go? ")
+            SpeakText("What would you like to ask?")
+            while user != 'a0' or user != 'a1' or user != 'a2' or user != 'a3':
+                user = input("Where do you want to go? ")
+                if user == 'a0' or user == 'a1' or user == 'a2' or user == 'a3':
+                    continue
+                SpeakText("No more ChatGPT Tokens")
             closest_cord = findSquare(user, location)
             asked = True
         if closest_cord == user:
