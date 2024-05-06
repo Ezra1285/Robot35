@@ -84,7 +84,7 @@ def findQuadrant(location, quadrant):
     robot_cotrol.turnRight(900)
     time.sleep(1)
     robot_cotrol.defualtMotors()
-    robot_cotrol.moveBackwards(800)
+    robot_cotrol.moveBackwards(900)
     time.sleep(1)
     robot_cotrol.defualtMotors()
     data2 = location.readData()
