@@ -90,7 +90,9 @@ def findQuadrant(location, quadrant):
     if cords_dict.get(quadrant) < cords_dict2.get(quadrant):
         robot_cotrol.moveBackwards(1000)
         time.sleep(1)
+        robot_cotrol.defualtEverything()
     else:
+        robot_cotrol.defualtEverything()
         return
 
 
@@ -143,4 +145,8 @@ def main():
     
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except:
+        robot_cotrol = RobotControl()
+        robot_cotrol.defualtEverything()
