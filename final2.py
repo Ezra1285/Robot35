@@ -95,7 +95,7 @@ def findQuadrant(location, quadrant):
     data2 = location.readData()
     cords_dict2 = {'a0':float(data2[0]), 'a1':float(data2[1]), 'a2':float(data2[2]), 'a3':float(data2[3])} #messing with indexing here
     print(abs(cords_dict.get(quadrant) - cords_dict2.get(quadrant)))
-    if abs(cords_dict.get(quadrant) - cords_dict2.get(quadrant)) < 0.01:
+    if abs(cords_dict.get(quadrant) - cords_dict2.get(quadrant)) <= 0.01:
         robot_cotrol.moveFoward(750)
         time.sleep(2)
         robot_cotrol.defualtEverything()
