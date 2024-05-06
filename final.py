@@ -82,37 +82,17 @@ def findQuadrant(location, quadrant):
     closest_cord = min(cords_dict, key=cords_dict.get)
     print("Current cord:", closest_cord)
     print(cords_dict)
-    robot_cotrol.turnLeft(1000)
-    time.sleep(1)
-    robot_cotrol.defualtMotors()
-    robot_cotrol.moveBackwards(900)
-    time.sleep(1)
-    robot_cotrol.defualtMotors()
-    data2 = location.readData()
-    cords_dict2 = {'a0':float(data2[0]), 'a1':float(data2[1]), 'a2':float(data2[2]), 'a3':float(data2[3])} #messing with indexing here
-    if cords_dict.get(quadrant) < cords_dict2.get(quadrant):
-        robot_cotrol.turnRight(1000)
-        time.sleep(1)
-        robot_cotrol.defualtMotors()
-        robot_cotrol.moveBackwards(900)
-        time.sleep(1)
-        robot_cotrol.defualtMotors()
-        return
-    else:
-        robot_cotrol.moveBackwards(800)
-        time.sleep(3)
-        robot_cotrol.defualtEverything()
     robot_cotrol.turnRight(1000)
     time.sleep(1)
     robot_cotrol.defualtMotors()
-    robot_cotrol.moveBackwards(900)
+    robot_cotrol.moveBackwards(700)
     time.sleep(1)
     robot_cotrol.defualtMotors()
     data2 = location.readData()
     cords_dict2 = {'a0':float(data2[0]), 'a1':float(data2[1]), 'a2':float(data2[2]), 'a3':float(data2[3])} #messing with indexing here
     if cords_dict.get(quadrant) < cords_dict2.get(quadrant):
-        robot_cotrol.turnRight(900)
-        time.sleep(2)
+        robot_cotrol.turnLeft(900)
+        time.sleep(3)
         robot_cotrol.defualtEverything()
         return
     else:
