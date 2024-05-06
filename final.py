@@ -24,6 +24,7 @@ def run(location):
             SpeakText("I am in the starting quadrant")
         if closest_cord == "a1" and last_cord != "a1":
             SpeakText("I am in the charging station")
+            SpeakText("Goodbye Human")
         if closest_cord == "a2" and last_cord != "a2":
             SpeakText("I am in hunters office ")
         if closest_cord == "a3" and last_cord != "a3":
