@@ -39,12 +39,11 @@ def run(location):
         if closest_cord == "a0" and last_cord != "a0":
             SpeakText("I am in the starting quadrant")
         if closest_cord == "a1" and last_cord != "a1":
-            SpeakText("I am in the charging station")
-            SpeakText("Goodbye Human")
+            SpeakText("Charging activated")
         if closest_cord == "a2" and last_cord != "a2":
-            SpeakText("I am in hunters office ")
+            SpeakText("Goodbye Human")
         if closest_cord == "a3" and last_cord != "a3":
-            SpeakText("I am in restrooms")
+            SpeakText("Goodbye Human")
         last_cord = closest_cord
         if dist < 120 and not asked:
             SpeakText("Greetings Human")
