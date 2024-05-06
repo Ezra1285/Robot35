@@ -82,7 +82,7 @@ def findQuadrant(location, quadrant):
     print("Current cord:", closest_cord)
     print(cords_dict)
     robot_cotrol.turnRight(900)
-    time.sleep(1)
+    time.sleep(0.5)
     robot_cotrol.moveBackwards(1000)
     time.sleep(1)
     data2 = location.readData()
