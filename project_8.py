@@ -179,8 +179,6 @@ class LocationChip:
         cords_dict = {'a0':float(data[0]), 'a1':float(data[1]), 'a2':float(data[2]), 'a3':float(data[3])} #messing with indexing here
         # self.cords['a2'] = 1000
         closest_cord = min(cords_dict, key=cords_dict.get)
-        print("Current cord:", closest_cord)
-        print(cords_dict)
 
         
         #time.sleep(1)

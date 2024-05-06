@@ -59,7 +59,6 @@ def findSquare(quadrant, location):
         # robot_cotrol.defualtEverything()
         # time.sleep(1)
         closest_cord = location.findQuadrant()
-        print(closest_cord)
         if closest_cord == quadrant:
             return closest_cord
         else:
@@ -80,8 +79,6 @@ def findQuadrant(location, quadrant):
     location.cords = data
     cords_dict = {'a0':float(data[0]), 'a1':float(data[1]), 'a2':float(data[2]), 'a3':float(data[3])} #messing with indexing here
     closest_cord = min(cords_dict, key=cords_dict.get)
-    print("Current cord:", closest_cord)
-    print(cords_dict)
     robot_cotrol.turnLeft(1000)
     time.sleep(1)
     robot_cotrol.defualtMotors()
@@ -94,7 +91,6 @@ def findQuadrant(location, quadrant):
     robot_cotrol.defualtMotors()
     data2 = location.readData()
     cords_dict2 = {'a0':float(data2[0]), 'a1':float(data2[1]), 'a2':float(data2[2]), 'a3':float(data2[3])} #messing with indexing here
-    print(cords_dict.get(quadrant) - cords_dict2.get(quadrant))
     if cords_dict.get(quadrant) - cords_dict2.get(quadrant) <= 0:
         robot_cotrol.moveFoward(750)
         time.sleep(2)
