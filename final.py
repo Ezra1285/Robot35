@@ -83,6 +83,7 @@ def findQuadrant(location, quadrant):
     print(cords_dict)
     robot_cotrol.turnRight(900)
     time.sleep(0.5)
+    robot_cotrol.defualtMotors()
     robot_cotrol.moveBackwards(1000)
     time.sleep(2)
     robot_cotrol.defualtMotors()
